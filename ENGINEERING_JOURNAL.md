@@ -7,7 +7,7 @@ Real decisions made while building ClauseGuard — what happened, what the numbe
 ## Entry 1 — Evaluation before development
 
 - Built a labeled test set before writing any prompts, so later decisions could be measured against real numbers instead of intuition.
-- Result: `evaluation/datasets/test_set.json` — 8 real documents, 56 hand-labeled clauses.
+- Result: `evaluation/datasets/test_set.json` — 63 hand-labeled clauses across 8 documents. 53 of those clauses come from the 5 real documents and are what every reported number is scored on; the other 10 come from 3 synthetic documents I kept only for checking the pipeline runs end to end.
 
 ---
 
