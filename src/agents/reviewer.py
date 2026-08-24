@@ -38,9 +38,23 @@ def check_relevance(category, clause_text):
     content = re.sub(r"<think>.*?</think>", "", response.content.strip(), flags=re.DOTALL).strip()
 
     try:
-        return json.loads(content)
+        result = json.loads(content)
     except json.JSONDecodeError as e:
         raise ValueError(f"relevance check didn't return valid json, got: {content!r}") from e
+
+    # reviewer_node reads result["relevant"] as a boolean and gates the whole
+    # pipeline on it. a string "true" is truthy, so it would sail through the
+    # gate as if the clause had been verified, and a missing key would raise
+    # KeyError inside the node. reject both here, where reviewer_node's existing
+    # ValueError handling marks the category unverified instead.
+    if not isinstance(result, dict):
+        raise ValueError(f"relevance check returned {type(result).__name__}, expected an object: {content!r}")
+    if not isinstance(result.get("relevant"), bool):
+        raise ValueError(f"relevance check returned a non-boolean 'relevant': {result.get('relevant')!r}")
+    if not result.get("reason"):
+        raise ValueError("relevance check returned no reason")
+
+    return result
 
 
 if __name__ == "__main__":

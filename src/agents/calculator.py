@@ -16,6 +16,10 @@ load_dotenv()
 
 MODEL_NAME = "openai/gpt-oss-120b"
 
+# the fields the extraction prompt asks for. every one of them ends up in
+# arithmetic, so every one of them gets checked.
+FEE_FIELDS = ("flat_fee", "daily_fee", "grace_period_days")
+
 EXTRACTION_PROMPT = """You extract numeric fee terms from a lease clause about late fees.
 
 Return ONLY valid JSON in this exact format:
@@ -36,9 +40,28 @@ def extract_fee_terms(clause_text):
     content = re.sub(r"<think>.*?</think>", "", response.content.strip(), flags=re.DOTALL).strip()
 
     try:
-        return json.loads(content)
+        result = json.loads(content)
     except json.JSONDecodeError as e:
         raise ValueError(f"extraction didn't return valid json, got: {content!r}") from e
+
+    # these numbers go straight into arithmetic and then into a dollar figure the
+    # user might actually act on. a string like "$25" is truthy, so it survives
+    # the `or 0` in compute_late_fee_exposure and then either throws on the
+    # multiply or concatenates into nonsense. bools are rejected explicitly
+    # because in python True is an int and would silently count as 1.
+    if not isinstance(result, dict):
+        raise ValueError(f"extraction returned {type(result).__name__}, expected an object: {content!r}")
+
+    for field in FEE_FIELDS:
+        value = result.get(field)
+        if value is None:
+            continue  # null is a valid answer here - it means the clause didn't say
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
+            raise ValueError(f"extraction returned a non-numeric {field}: {value!r}")
+        if value < 0:
+            raise ValueError(f"extraction returned a negative {field}: {value!r}")
+
+    return result
 
 
 def compute_late_fee_exposure(flat_fee, daily_fee, days_late):
