@@ -1,47 +1,47 @@
 [
   {
-    "clause": "Guests of the Tenant are allowed for periods not lasting for more than 48 hours unless otherwise approved by the Landlord in writing.",
+    "clause": "The Tenant shall not undertake, or permit his/her family or guests to undertake, any hazardous acts or do anything that will increase the project's insurance premiums. Such action constitutes a material non-compliance.",
     "label": "concerning",
-    "reason": "48-hour guest limit is restrictive and easy to violate unknowingly without realizing it's a lease term."
+    "reason": "The trigger is vague, anything that raises insurance costs, and the consequence is serious enough to end the tenancy."
   },
   {
-    "clause": "The Landlord is prohibited from making any type of retaliatory acts against the Tenant including but not limited to restricting access to the Premises, decreasing or cancelling services or utilities, failure to repair appliances or fixtures.",
-    "label": "favorable",
-    "reason": "Explicit tenant protection against landlord retaliation, stronger than many leases include."
-  },
-  {
-    "clause": "The Landlord shall have the right to enter the Premises during normal working hours by providing at least twenty-four (24) hours notice.",
-    "label": "neutral",
-    "reason": "Standard notice period, matches typical market practice."
-  },
-  {
-    "clause": "You are forced into binding arbitration in case of disputes",
+    "clause": "Whenever damage is caused by carelessness, misuse, or neglect on the part of the Tenant, his/her family or visitors, the Tenant agrees to pay rent for the period the unit is damaged whether or not the unit is habitable.",
     "label": "concerning",
-    "reason": "Removes your ability to take a dispute to court."
+    "reason": "You keep paying full rent for a place you cannot live in, which most people would not expect."
   },
   {
-    "clause": "You have the right to leave this service at any time",
+    "clause": "If any of the following changes occur, the Tenant agrees to advise the Landlord immediately...If the Tenant does not advise the Landlord of these interim changes, the Landlord may increase the Tenant's rent to the HUD-approved market rent.",
+    "label": "concerning",
+    "reason": "Missing a paperwork deadline, rather than breaking any rule of the tenancy, can push your rent up to full market rate."
+  },
+  {
+    "clause": "If any Court declares a particular provision of this Agreement to be invalid or illegal, all other terms of this Agreement will remain in effect and both the Landlord and the Tenant will continue to be bound by them.",
+    "label": "neutral",
+    "reason": "Standard severability wording found in almost every contract, not a burden specific to this one."
+  },
+  {
+    "clause": "The Tenant agrees not to: sublet or assign the unit, or any part of the unit; use the unit for unlawful purposes.",
+    "label": "neutral",
+    "reason": "Standard restrictions on subletting and illegal use, expected in nearly every lease."
+  },
+  {
+    "clause": "The Tenant agrees not to install additional or different locks or gates on any doors or windows of the unit without the written permission of the Landlord. When this Agreement ends, the Tenant agrees to return all keys to the dwelling unit to the Landlord. The Landlord may charge the Tenant a fee for each key not returned.",
+    "label": "neutral",
+    "reason": "Normal lock and key terms, sounds restrictive but is common practice."
+  },
+  {
+    "clause": "The Landlord may not terminate this Agreement for failure to pay late charges, but may terminate this Agreement for non-payment of rent.",
     "label": "favorable",
-    "reason": "No lock-in on account termination."
+    "reason": "Protects the tenant from losing the home over a late fee, which not every lease spells out."
   },
   {
-    "clause": "The terms may be changed at any time, but you will receive notification of the changes",
-    "label": "neutral",
-    "reason": "Standard change-of-terms clause, but with real notice, which is the fairer version of this pattern."
+    "clause": "If the unit is damaged by fire, wind, or rain to the extent that the unit cannot be lived in and the damage is not caused or made worse by the Tenant, the Tenant will be responsible for rent only up to the date of the destruction. Additional rent will not accrue until the unit has been repaired to a livable condition.",
+    "label": "favorable",
+    "reason": "Rent stops when the place is unlivable through no fault of the tenant, which is better than many leases offer."
   },
   {
-    "clause": "The service provider makes no warranty regarding uninterrupted, timely, secure or error-free service",
-    "label": "neutral",
-    "reason": "Standard defensive disclaimer used across nearly all software and service agreements, not an unusual burden specific to this document."
-  },
-  {
-    "clause": "This service has a no refund policy with some exceptions",
-    "label": "neutral",
-    "reason": "Common industry-standard policy; sounds restrictive but is not unusual for this type of service."
-  },
-  {
-    "clause": "Users who have been permanently banned from this service are not allowed to re-register under a new account",
-    "label": "neutral",
-    "reason": "Standard platform enforcement term; negative phrasing but a normal, expected policy."
+    "clause": "Landlord agrees to allow tenant and tenant organizers to conduct on the property the activities related to the establishment or operation of a tenant organization set out in accordance with HUD requirements.",
+    "label": "favorable",
+    "reason": "Explicit right to organize with other tenants, a protection most leases do not mention."
   }
 ]
