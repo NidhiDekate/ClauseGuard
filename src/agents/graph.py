@@ -14,7 +14,7 @@ from langgraph.graph import StateGraph, START, END
 
 from clause_search_server import mcp
 from calculator import extract_fee_terms, compute_late_fee_exposure
-from reviewer import check_relevance
+from reviewer import select_best_clause
 
 sys.path.append(str(Path(__file__).resolve().parents[1] / "prompts"))
 from classify_clause import classify_clause  # noqa: E402
@@ -30,6 +30,14 @@ class ClauseGuardState(TypedDict):
     fee_computations: dict[str, dict]
     decision_report: list[dict]
 
+
+# retrieval depth. was 2, chosen without an experiment. the retrieval eval
+# (evaluation/eval_retrieval.py) measured where the correct clause actually
+# lands: recall@1 75%, recall@2 83%, recall@3 100% on clause-boundary chunks.
+# so 3 is where every answer in the eval set is reachable. retrieval is local
+# and free, and the reviewer still makes one call per category regardless of
+# how many candidates are in it, so this costs nothing.
+RETRIEVAL_K = 3
 
 LEASE_CONCERN_CATEGORIES = [
     "late fees and rent payment terms",
@@ -70,7 +78,7 @@ def planner_node(state: ClauseGuardState) -> dict:
     return {"concern_categories": categories}
 
 
-async def _search_all_categories(document_text, categories, k=2):
+async def _search_all_categories(document_text, categories, k=RETRIEVAL_K):
     results = {}
     async with Client(mcp) as client:
         for category in categories:
@@ -94,6 +102,10 @@ def retriever_node(state: ClauseGuardState) -> dict:
 
 
 def reviewer_node(state: ClauseGuardState) -> dict:
+    # this used to check only clauses[0] and answer yes or no. the retrieval eval
+    # showed a quarter of the correct clauses arrive below rank 1, so they were
+    # being fetched and then thrown away unread. it now sees every candidate and
+    # picks the best one, or none. still one model call per category.
     reviewed = {}
 
     for category, clauses in state["retrieved_clauses"].items():
@@ -101,16 +113,19 @@ def reviewer_node(state: ClauseGuardState) -> dict:
             reviewed[category] = {"verified": False, "clause": None, "reason": "nothing retrieved"}
             continue
 
-        top_clause = clauses[0]
         try:
-            result = check_relevance(category, top_clause)
+            result = select_best_clause(category, clauses)
         except ValueError:
-            reviewed[category] = {"verified": False, "clause": top_clause, "reason": "relevance check failed"}
+            reviewed[category] = {"verified": False, "clause": None, "reason": "clause selection failed"}
+            continue
+
+        if result["index"] is None:
+            reviewed[category] = {"verified": False, "clause": None, "reason": result["reason"]}
             continue
 
         reviewed[category] = {
-            "verified": result["relevant"],
-            "clause": top_clause if result["relevant"] else None,
+            "verified": True,
+            "clause": clauses[result["index"]],
             "reason": result["reason"],
         }
 
