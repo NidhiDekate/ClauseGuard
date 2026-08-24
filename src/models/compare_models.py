@@ -43,6 +43,7 @@ def evaluate_model(model_name, clauses):
     total_latency = 0.0
     errors = 0
     total = len(clauses)
+    per_clause = []
 
     print(f"\n=== {model_name} ===")
     for i, item in enumerate(clauses, start=1):
@@ -56,25 +57,56 @@ def evaluate_model(model_name, clauses):
             # (output_parse_failed) - want to skip and keep going, not die here
             errors += 1
             print(f"error: {type(e).__name__}: {e}")
+            per_clause.append({
+                "doc_id": item["doc_id"],
+                "clause_ref": item["clause_ref"],
+                "expected": item["expected_label"],
+                "predicted": None,
+                "correct": False,
+                "error": f"{type(e).__name__}: {e}",
+            })
             continue
         elapsed = time.monotonic() - start
         total_latency += elapsed
 
         predicted = result.get("label")
-        if predicted == item["expected_label"]:
+        is_correct = predicted == item["expected_label"]
+        if is_correct:
             correct += 1
             print(f"correct ({predicted}, {elapsed:.2f}s)")
         else:
             print(f"wrong (expected={item['expected_label']}, got={predicted}, {elapsed:.2f}s)")
 
-    scored = total - errors
+        per_clause.append({
+            "doc_id": item["doc_id"],
+            "clause_ref": item["clause_ref"],
+            "expected": item["expected_label"],
+            "predicted": predicted,
+            "correct": is_correct,
+            "latency_seconds": elapsed,
+        })
+
+    answered = total - errors
+
+    # accuracy is over EVERY clause, not just the ones the model managed to answer.
+    # dividing by (total - errors) grades a model only on the questions it got
+    # around to, which quietly rewards failing. that is how qwen came out looking
+    # like the most accurate model in the phase 3 writeup when, counted over all 53,
+    # it tied for last. a clause the model cannot answer is a clause the user gets
+    # no answer for, so it counts against it.
     return {
         "model": model_name,
-        "accuracy": correct / scored if scored else 0.0,
+        "accuracy": correct / total if total else 0.0,
         "correct": correct,
-        "total": scored,
+        "total": total,
+        "answered": answered,
+        "coverage": answered / total if total else 0.0,
         "errors": errors,
-        "avg_latency_seconds": total_latency / scored if scored else 0.0,
+        # latency is averaged over answered calls only, since a failed call has no
+        # meaningful duration. note it also includes prompt construction and two
+        # file reads, because classify_clause rebuilds its chain on every call.
+        "avg_latency_seconds": total_latency / answered if answered else 0.0,
+        "per_clause": per_clause,
     }
 
 
@@ -92,21 +124,25 @@ def main():
                 "model": model,
                 "accuracy": None,
                 "correct": 0,
-                "total": 0,
+                "total": len(clauses),
+                "answered": 0,
+                "coverage": 0.0,
                 "errors": len(clauses),
                 "avg_latency_seconds": None,
+                "per_clause": [],
                 "note": str(e),
             })
 
     print("\n\n=== comparison ===")
-    print(f"{'model':<30} {'accuracy':<14} {'avg latency':<14} errors")
+    print(f"{'model':<30} {'accuracy':<20} {'coverage':<16} {'avg latency':<14} errors")
     for r in results:
         if r["accuracy"] is None:
             print(f"{r['model']:<30} FAILED - {r.get('note', '?')}")
             continue
         print(
             f"{r['model']:<30} "
-            f"{r['accuracy']:.1%} ({r['correct']}/{r['total']})".ljust(24)
+            + f"{r['accuracy']:.1%} ({r['correct']}/{r['total']})".ljust(20)
+            + f"{r['coverage']:.1%} ({r['answered']}/{r['total']})".ljust(16)
             + f"{r['avg_latency_seconds']:.2f}s".ljust(14)
             + str(r["errors"])
         )
