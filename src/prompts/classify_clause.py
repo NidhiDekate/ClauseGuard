@@ -2,6 +2,7 @@
 # Runs the clause classifier using the prompt in clause_classifier_v2.txt.
 
 import json
+import os
 import re
 import time
 from pathlib import Path
@@ -13,7 +14,12 @@ from langchain_groq import ChatGroq
 
 load_dotenv()
 
-SYSTEM_PROMPT_PATH = Path("src/prompts/system_prompts/clause_classifier_v2.txt")
+# which prompt version to run. was hardcoded, so comparing two versions meant
+# editing this file, which is a bad way to run an experiment: the thing you are
+# varying should not live inside the code under test.
+#   CLAUSEGUARD_PROMPT_VERSION=v4 python src/prompts/test_classifier.py
+PROMPT_VERSION = os.environ.get("CLAUSEGUARD_PROMPT_VERSION", "v2")
+SYSTEM_PROMPT_PATH = Path(f"src/prompts/system_prompts/clause_classifier_{PROMPT_VERSION}.txt")
 FEW_SHOT_PATH = Path("src/prompts/few_shot_examples/clause_classification_examples.json")
 
 MODEL_NAME = "openai/gpt-oss-120b"  # picked after comparing 3 models, see docs/02_model_benchmark.md
