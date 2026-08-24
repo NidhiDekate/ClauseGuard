@@ -7,10 +7,15 @@
 
 import json
 import re
+import sys
+from pathlib import Path
 
 from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_groq import ChatGroq
+
+sys.path.append(str(Path(__file__).resolve().parents[1]))
+from parsing import extract_json  # noqa: E402
 
 load_dotenv()
 
@@ -36,13 +41,7 @@ def extract_fee_terms(clause_text):
     chain = prompt | model
 
     response = chain.invoke({"clause": clause_text})
-    # same think-block issue as classify_clause - strip it before parsing
-    content = re.sub(r"<think>.*?</think>", "", response.content.strip(), flags=re.DOTALL).strip()
-
-    try:
-        result = json.loads(content)
-    except json.JSONDecodeError as e:
-        raise ValueError(f"extraction didn't return valid json, got: {content!r}") from e
+    result = extract_json(response.content)
 
     # these numbers go straight into arithmetic and then into a dollar figure the
     # user might actually act on. a string like "$25" is truthy, so it survives

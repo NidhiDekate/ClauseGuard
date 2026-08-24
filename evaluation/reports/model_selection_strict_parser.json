@@ -1,0 +1,2945 @@
+{
+  "prompt_version": "v2",
+  "clauses": 53,
+  "label_counts": {
+    "concerning": 34,
+    "favorable": 9,
+    "neutral": 10
+  },
+  "majority_baseline": 0.6415094339622641,
+  "results": [
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "correct": 45,
+      "total": 53,
+      "answered": 53,
+      "accuracy": 0.8490566037735849,
+      "accuracy_ci": [
+        0.7294549545634046,
+        0.9214767574221834
+      ],
+      "coverage": 1.0,
+      "per_class": {
+        "concerning": {
+          "precision": 0.9642857142857143,
+          "recall": 0.7941176470588235,
+          "f1": 0.8709677419354839,
+          "tp": 27,
+          "fp": 1,
+          "fn": 7
+        },
+        "neutral": {
+          "precision": 0.5625,
+          "recall": 0.9,
+          "f1": 0.6923076923076923,
+          "tp": 9,
+          "fp": 7,
+          "fn": 1
+        },
+        "favorable": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 9,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      "macro_f1": 0.8544251447477254,
+      "missed_concerning": 7,
+      "false_alarms": 1,
+      "avg_latency_seconds": 5.782166033866815,
+      "tokens_in": 65323,
+      "tokens_out": 10753,
+      "cost_usd": 0.01625025,
+      "per_clause": [
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXI",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 1.3864512090221979
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXIII",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.7589487920049578
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXV",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 1.0777735419687815
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XLIV",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 0.8239074579905719
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XL",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 0.7586125830421224
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XLII",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 0.7696972499834374
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXX",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 20.698539083008654
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXVIII",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.7772251670248806
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "5",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 0.7694479589699768
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "7",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 20.864854374958668
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "8",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 0.7649754169979133
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "10",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 0.6903634999762289
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "12",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 20.733224374998827
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "9",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.8539174170000479
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "1",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 1.0077180420048535
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.7.D",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 21.53850299998885
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.1",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.8285243329592049
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.5.B",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.9749345000018366
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.8",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 20.923318209010176
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.12.B",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.6781542500248179
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.12.C",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 21.056166666036006
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.11.B",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 1.1959278750000522
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "4.1",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 0.9793672080268152
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.16",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 21.21675491699716
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.10",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 0.8513854579650797
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.13",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 1.1408803749945946
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_deletion",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.614385291992221
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "moral_rights_waiver",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 21.055215457978193
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "ai_training_use",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.9568705420242622
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "binding_arbitration",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.7777353749843314
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "class_action_waiver",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 20.783310334023554
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "silent_terms_acceptance",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.5971648750128224
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "liability_cap",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 1.1061582090333104
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_licensing_to_third_parties",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.7061126669868827
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "data_access_rights",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 20.915062958956696
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "right_to_leave",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 0.726320083020255
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_ownership",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 0.7408383750007488
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "notified_term_changes",
+          "expected": "neutral",
+          "predicted": "concerning",
+          "latency_seconds": 0.7176005839719437
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "refund_policy",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 0.9201984999817796
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "shadow_profile_data",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 20.702185791975353
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "identity_in_ads",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.7006983750034124
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "message_privacy",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 1.0573245420237072
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "ai_training_use",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.7984699159860611
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "deletion_not_real",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.7440523330005817
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "location_despite_opt_out",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.5926419590250589
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "cross_site_tracking",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.5579030000371858
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "biometric_collection",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 21.739152499998454
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_forced_arbitration",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 0.7253540420206264
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "30_day_change_notice",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 0.8207996659912169
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_data_sale",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 1.0098240000079386
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "content_ownership",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 20.939595957985148
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "ban_evasion_prohibited",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 0.6771957909804769
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_damages_liability",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 0.6530557079822756
+        }
+      ]
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "provider": "groq",
+      "correct": 37,
+      "total": 53,
+      "answered": 53,
+      "accuracy": 0.6981132075471698,
+      "accuracy_ci": [
+        0.5646291313003242,
+        0.8048185971239281
+      ],
+      "coverage": 1.0,
+      "per_class": {
+        "concerning": {
+          "precision": 0.9523809523809523,
+          "recall": 0.5882352941176471,
+          "f1": 0.7272727272727274,
+          "tp": 20,
+          "fp": 1,
+          "fn": 14
+        },
+        "neutral": {
+          "precision": 0.375,
+          "recall": 0.9,
+          "f1": 0.5294117647058825,
+          "tp": 9,
+          "fp": 15,
+          "fn": 1
+        },
+        "favorable": {
+          "precision": 1.0,
+          "recall": 0.8888888888888888,
+          "f1": 0.9411764705882353,
+          "tp": 8,
+          "fp": 0,
+          "fn": 1
+        }
+      },
+      "macro_f1": 0.7326203208556151,
+      "missed_concerning": 14,
+      "false_alarms": 1,
+      "avg_latency_seconds": 7.043178693378204,
+      "tokens_in": 65323,
+      "tokens_out": 12452,
+      "cost_usd": 0.008634824999999999,
+      "per_clause": [
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXI",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 0.647311125008855
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXIII",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 0.6054367079632357
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXV",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.7904595420113765
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XLIV",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 0.48933854198548943
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XL",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 0.5413723340025172
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XLII",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 0.38963116600643843
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXX",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 20.563352582976222
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXVIII",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.7030971249914728
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "5",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 20.53404620900983
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "7",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 0.5667759170173667
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "8",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 20.698983374983072
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "10",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 0.7241544580319896
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "12",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 20.813281000009738
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "9",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.5975035420269705
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "1",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 20.68268149998039
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.7.D",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.7668059580028057
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.1",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.5918350000283681
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.5.B",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 20.761491874989588
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.8",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.56827049999265
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.12.B",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 20.61790541600203
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.12.C",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 0.7495251250220463
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.11.B",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 20.727612083021086
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "4.1",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 0.7746829160023481
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.16",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 20.601810208987445
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.10",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 0.42798958299681544
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.13",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.5853452080045827
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_deletion",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.6030117500340566
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "moral_rights_waiver",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 20.70738220802741
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "ai_training_use",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 0.6035187909728847
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "binding_arbitration",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 0.5026337500312366
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "class_action_waiver",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.5980978750158101
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "silent_terms_acceptance",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 20.87524054199457
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "liability_cap",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 0.6456547499983571
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_licensing_to_third_parties",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 20.61914579203585
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "data_access_rights",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 0.42675920797046274
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "right_to_leave",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 0.4438097499660216
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_ownership",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 20.72094783303328
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "notified_term_changes",
+          "expected": "neutral",
+          "predicted": "concerning",
+          "latency_seconds": 0.6141557499649934
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "refund_policy",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 0.4740880829631351
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "shadow_profile_data",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 1.1599655830068514
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "identity_in_ads",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 20.73394412494963
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "message_privacy",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.526023541984614
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "ai_training_use",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 0.636295375006739
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "deletion_not_real",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.8143221670179628
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "location_despite_opt_out",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 20.69996075000381
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "cross_site_tracking",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.600047749991063
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "biometric_collection",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.5547668340150267
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_forced_arbitration",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 0.4483232499915175
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "30_day_change_notice",
+          "expected": "favorable",
+          "predicted": "neutral",
+          "latency_seconds": 20.83183966699289
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_data_sale",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 0.5261812079697847
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "content_ownership",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 20.545037000032607
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "ban_evasion_prohibited",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 0.41147612500935793
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_damages_liability",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 0.4451422920101322
+        }
+      ]
+    },
+    {
+      "model": "qwen/qwen3.7-flash",
+      "provider": "openrouter",
+      "correct": 41,
+      "total": 53,
+      "answered": 53,
+      "accuracy": 0.7735849056603774,
+      "accuracy_ci": [
+        0.6447347199775757,
+        0.8654550002273447
+      ],
+      "coverage": 1.0,
+      "per_class": {
+        "concerning": {
+          "precision": 0.9629629629629629,
+          "recall": 0.7647058823529411,
+          "f1": 0.8524590163934426,
+          "tp": 26,
+          "fp": 1,
+          "fn": 8
+        },
+        "neutral": {
+          "precision": 0.45,
+          "recall": 0.9,
+          "f1": 0.6,
+          "tp": 9,
+          "fp": 11,
+          "fn": 1
+        },
+        "favorable": {
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "f1": 0.8,
+          "tp": 6,
+          "fp": 0,
+          "fn": 3
+        }
+      },
+      "macro_f1": 0.7508196721311475,
+      "missed_concerning": 8,
+      "false_alarms": 1,
+      "avg_latency_seconds": 6.692698290040013,
+      "tokens_in": 63291,
+      "tokens_out": 61038,
+      "cost_usd": 0.00983367,
+      "per_clause": [
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXI",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 6.030908625049051
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXIII",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.5165044159512036
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXV",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.2658994579687715
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XLIV",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 7.06752016604878
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XL",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 9.68605200003367
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XLII",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 7.755012875015382
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXX",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 6.121074750029948
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXVIII",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 7.952354125038255
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "5",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 9.24596329202177
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "7",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 5.606296874990221
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "8",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 5.786343874991871
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "10",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 4.269713958026841
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "12",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 7.456429999961983
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "9",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.415411708992906
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "1",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 2.591128416999709
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.7.D",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.963956875028089
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.1",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.038056291989051
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.5.B",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.121258958999533
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.8",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.383228958002292
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.12.B",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.338200500002131
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.12.C",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 8.400576499989256
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.11.B",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.200539292010944
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "4.1",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.644694666028954
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.16",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 6.662239375000354
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.10",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 5.241878457949497
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.13",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.986111249949317
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_deletion",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 8.023243082978297
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "moral_rights_waiver",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 10.402043625013903
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "ai_training_use",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.763863041007426
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "binding_arbitration",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.563061083026696
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "class_action_waiver",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 7.120332833030261
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "silent_terms_acceptance",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.149901374999899
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "liability_cap",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 7.284424332960043
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_licensing_to_third_parties",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.4429672920377925
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "data_access_rights",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 6.15009479096625
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "right_to_leave",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 6.966460667026695
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_ownership",
+          "expected": "favorable",
+          "predicted": "neutral",
+          "latency_seconds": 5.71313662501052
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "notified_term_changes",
+          "expected": "neutral",
+          "predicted": "concerning",
+          "latency_seconds": 6.43110920797335
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "refund_policy",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 8.128936332999729
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "shadow_profile_data",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 9.648358209000435
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "identity_in_ads",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.930629458045587
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "message_privacy",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 5.932183917029761
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "ai_training_use",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.1710237500374205
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "deletion_not_real",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.443974790978245
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "location_despite_opt_out",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.223350582993589
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "cross_site_tracking",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 8.106009374954738
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "biometric_collection",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.51198587496765
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_forced_arbitration",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 4.893077166983858
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "30_day_change_notice",
+          "expected": "favorable",
+          "predicted": "neutral",
+          "latency_seconds": 7.714547124982346
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_data_sale",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 5.969520000042394
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "content_ownership",
+          "expected": "favorable",
+          "predicted": "neutral",
+          "latency_seconds": 16.005983582988847
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "ban_evasion_prohibited",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 4.751814834016841
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_damages_liability",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 8.523620749998372
+        }
+      ]
+    },
+    {
+      "model": "deepseek/deepseek-v4-flash-0731",
+      "provider": "openrouter",
+      "correct": 11,
+      "total": 53,
+      "answered": 13,
+      "accuracy": 0.20754716981132076,
+      "accuracy_ci": [
+        0.12004475729322063,
+        0.3345800245566921
+      ],
+      "coverage": 0.24528301886792453,
+      "per_class": {
+        "concerning": {
+          "precision": 0.8333333333333334,
+          "recall": 0.14705882352941177,
+          "f1": 0.25,
+          "tp": 5,
+          "fp": 1,
+          "fn": 29
+        },
+        "neutral": {
+          "precision": 0.5,
+          "recall": 0.1,
+          "f1": 0.16666666666666669,
+          "tp": 1,
+          "fp": 1,
+          "fn": 9
+        },
+        "favorable": {
+          "precision": 1.0,
+          "recall": 0.5555555555555556,
+          "f1": 0.7142857142857143,
+          "tp": 5,
+          "fp": 0,
+          "fn": 4
+        }
+      },
+      "macro_f1": 0.376984126984127,
+      "missed_concerning": 29,
+      "false_alarms": 1,
+      "avg_latency_seconds": 7.138665374932596,
+      "tokens_in": 14788,
+      "tokens_out": 3184,
+      "cost_usd": 0.0029618400000000007,
+      "per_clause": [
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXI",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 5.240220915991813
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXIII",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 9.264529125008266
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXV",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It says: \"Tenant, or any Occupant(s) is arrested, convicted, or given deferred adjudication for a criminal offense involving actual or potential physical harm to a person...regardless of whether arrest or conviction occurs.\" This is likely a lease clause that allows termination or some action based on arrest alone, not just conviction. That is concerning because arrest does not equal guilt, and it\\'s a one-sided risk. Also \"regardless of whether arrest or conviction occurs\" is odd phrasing, but the key is that an arrest alone can trigger consequences. This is unusual and burdensome. So label: concerning. Reason: You could lose your home just for being arrested, even if never convicted, which most people wouldn{\"label\": \"concerning\", \"reason\": \"You could face eviction or other penalties just for being arrested, even if you are never convicted, which is a risk most people would not expect.\"}'"
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XLIV",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.407111083040945
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XL",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 1.8002476670080796
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XLII",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 29.83733900001971
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXX",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 3.410226041043643
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXVIII",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It says if the tenant vacates or abandons the premises for a time period that is the minimum set by state law or seven days, whichever is less, the landlord can terminate immediately. This is about abandonment. Typically, abandonment clauses allow landlord to terminate after a certain period of absence without notice. The clause uses \"whichever is less\" meaning the shorter of state law minimum or 7 days. That could be very short, like if state law says 3 days, then 3 days. This is a short period, and immediate termination is a strong consequence. This seems unusual and burdensome for tenant. Standard abandonment clauses often require a longer period (e.g., 30 days) or require intent to abandon. This is one-sided and could be concerning. So label: concerning. Reason: The lease lets the landlord kick you out after just a few days away, even if you plan to return, which is a risk most people wouldn\\'t expect.{\"label\": \"concerning\", \"reason\": \"The lease lets the landlord end the tenancy after just a few days away, even if you plan to return, which is a risk most people wouldn\\'t expect.\"}'"
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "5",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It imposes a late fee structure: $25 if not received by the 4th, plus $5 per day thereafter. Also states no excuses accepted. Is this unusual? Many leases have late fees, but the daily accumulation and the explicit rejection of excuses might be more stringent. However, typical late fees are common. The daily $5 could add up, but it\\'s not uncapped? It says \"until the rent is paid\" so it\\'s ongoing. But is that unusual? Some leases have a flat late fee, others have daily. The \"neither ill health, loss of job, financial emergency, or other excuses\" is harsh but not necessarily unusual. Overall, this is standard defensive boilerplate? Actually, late fees are standard, but the daily accumulation and the no-excuses clause might be more one-sided. However, the instruction says: \"Standard defensive boilerplate (no warranty, no liability for damages, no interest on deposits, standard refund restrictions) is common across most documents of this type and should usually be classified as \\'neutral,\\' even though the language sounds negative or protective of the other party. Reserve \\'concerning\\' for terms that are unusual, uncapped, one-sided beyond typical practice, or that waive a right a person would not expect to lose.\" Late fees are typical, but the daily $5 is not uncapped? It\\'s capped by the rent amount? Actually, it\\'s not capped, but it\\'s a daily fee. Many leases have a late fee like $50 or $100 flat. Daily fees are less common but not unheard of. The explicit \"neither ill health, loss of job, financial emergency, or other excuses\" is harsh but typical in many leases. I think this is neutral because it\\'s a standard late fee provision, albeit with a daily component. But is it \"unusual\"? Possibly, but not necessarily beyond typical practice. I\\'ll lean neutral. However, the clause says \"neither ill health, loss of job, financial emergency, or other excuses will be accepted\" - that\\'s a waiver of any excuse, but that\\'s typical. I\\'ll go neutral{\"label\": \"neutral\", \"reason\": \"Late fees and strict payment deadlines are standard in most leases, and this daily fee structure, while strict, is not unusually one-sided or uncapped beyond typical practice.\"}'"
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "7",
+          "expected": "neutral",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It\\'s about a deposit (likely security deposit). It says no interest will be paid, and it won\\'t be applied to back or future rent, and held for 30 working days after vacating. This is standard for security deposits in many places. Not unusual. So{\"label\": \"neutral\", \"reason\": \"Standard security deposit terms\u2014no interest and a holding period\u2014are common and expected.\"}'"
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "8",
+          "expected": "neutral",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It says: \"They agree to return the property in the same condition or pay a $200.00 minimum cleaning fee if the Landlord has to have the property professionally cleaned.\" This is about cleaning fee. Is it standard? Typically, leases require the tenant to return the property in the same condition, and if cleaning is needed, the landlord may charge. A $200 minimum cleaning fee is a specific amount. Is that unusual? It might be standard to have a cleaning fee if the property is not cleaned. However, the clause says \"or pay a $200.00 minimum cleaning fee\" - that could be interpreted as if the property is not returned in the same condition, the tenant pays a minimum of $200 for cleaning. That seems like a standard provision. It\\'s not unusually high or one-sided. It\\'s typical for leases to have cleaning fees. So I\\'d say neutral. But let\\'s think: is it concerning? It\\'s a fixed fee, but it\\'s only if the landlord has to professionally clean. That\\'s standard. So neutral. Reason: Standard cleaning fee provision, not unusual{\"label\": \"neutral\", \"reason\": \"A standard cleaning fee for returning the property dirty is common in most leases and not an unexpected burden.\"}'"
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "10",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It\\'s a restriction on number of vehicles. Is that standard? Many leases have parking rules, but a limit of 1 vehicle might be restrictive if typical is 2. However, without context, it\\'s a common rule. It\\'s not unusually burdensome. Probably neutral. But let\\'s think: typical person might expect to park a car, but limit to 1 could be surprising if they have two. However, it\\'s a clear rule, not hidden. It\\'s not waiving a right or imposing a cost. It\\'s a standard house rule. So{\"label\": \"neutral\", \"reason\": \"A one-vehicle limit is a common parking rule in many leases, not an unexpected or one-sided burden.\"}'"
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "12",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It\\'s vague: \"If the tenant does not notify landlord in a prompt matter the tenant may be held financially responsible.\" This is about notification, but what notification? It\\'s ambiguous. The clause references a duty to notify but doesn\\'t specify what event or condition. This is a typical clause that could be concerning because it\\'s vague and could lead to unexpected financial liability. Since it\\'s ambiguous and lacks detail, per instructions, lean toward concerning. Reason: The clause is vague about what must be reported and could lead to unexpected costs{\"label\": \"concerning\", \"reason\": \"The clause is vague about what you must notify the landlord about, so you could be hit with unexpected costs for missing a deadline you didn\\'t know existed.\"}'"
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "9",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It says if anyone removes any property belonging to Landlord without written consent, it constitutes abandonment and surrender of premises. This is unusual and one-sided. It could be triggered by a guest or even a repair person? It\\'s very broad. It\\'s not standard boilerplate. It imposes a severe consequence (abandonment) for an action that might be minor or accidental. So it\\'s concerning. Reason: A single unauthorized removal of landlord\\'s property could be treated as you giving up the lease, which is a harsh and unexpected penalty{\"label\": \"concerning\", \"reason\": \"A single unauthorized removal of the landlord\\'s property could be treated as you abandoning the lease, which is a harsh and unexpected penalty.\"}'"
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "1",
+          "expected": "neutral",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It says that upon expiration, the lease automatically becomes month-to-month unless either party gives 30 days written notice. This is fairly standard in many leases, but it could be seen as neutral because it\\'s a common provision. However, it might be slightly concerning because it could trap a tenant into a month-to-month tenancy if they forget to give notice, but that\\'s typical. It\\'s not unusually one-sided. It applies to both parties equally. So neutral. Reason: Standard automatic renewal clause that applies to both sides, not a hidden burden{\"label\": \"neutral\", \"reason\": \"Automatic month-to-month renewal with notice required by either side is a common, balanced lease term.\"}'"
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.7.D",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It\\'s about automatic renewal with a rent increase, and the right to renew is at landlord\\'s discretion. The tenant must give 120 days notice to avoid renewal, but the landlord can choose not to renew. This seems one-sided: the tenant is locked into a renewal with a rent increase unless they give notice, but the landlord can decide not to renew at all. That\\'s a burden on the tenant. The automatic renewal with a rent increase is not typical? Many leases have automatic renewal, but the 120-day notice is long, and the landlord\\'s discretion to not renew means the tenant might be forced to stay or leave. This is concerning because it\\'s one-sided and could trap the tenant. I\\'ll{\"label\": \"concerning\", \"reason\": \"The lease renews automatically with a rent increase unless you give 120 days\\' notice, but the landlord can still refuse to renew, so you could be stuck paying more or forced out with little control.\"}'"
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.1",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It says if tenant breaks lease, tenant gives up right to \"Notice to Quit\", allowing landlord to go to court without required notice. This is unusual and waives a legal right that a tenant would expect to have. So it\\'s concerning. Reason: Waiving the right to notice before eviction is a significant loss of a{\"label\": \"concerning\", \"reason\": \"You are giving up your right to a required warning before the landlord can take you to court, which is a legal protection most renters expect to keep.\"}'"
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.5.B",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It says: \"If Tenant breaks this lease in any way, the deposit is not refundable.\" This is very broad. \"Breaks this lease in any way\" could include minor violations, not just major ones. Typically, a security deposit is for damages or unpaid rent, and forfeiture for any breach is unusual and one-sided. This is concerning because it waives a right to get deposit back for any minor infraction. So label: concerning. Reason: Losing the entire deposit for any lease violation, even a small one, is a harsh and unexpected{\"label\": \"concerning\", \"reason\": \"Losing the entire deposit for any lease violation, even a minor one, is a harsh and unexpected penalty.\"}'"
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.8",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It says: \"If we continue to attempt to contact you for 3 full days and we do not receive a response from you, you will be charged a $100.00 fee. NO EXCEPTIONS!\" This is from a document, likely a lease or similar. The clause imposes a fee for not responding to contact attempts within 3 days. This is unusual and one-sided. A typical person would not expect to be charged for not responding to contact. It\\'s a hidden cost and a burden. So it\\'s concerning. Reason: Charging a fee just for not replying to messages is unexpected and could be a trap{\"label\": \"concerning\", \"reason\": \"You can be charged $100 simply for not replying to the landlord within three days, which is an unexpected penalty most people would not anticipate.\"}'"
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.12.B",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.1398567920550704
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.12.C",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It requires tenant to purchase personal liability insurance with a specific amount, and failure is an incurable breach leading to termination and eviction. Is this standard? Many leases require renters insurance, but \"incurable breach\" and immediate eviction for not maintaining insurance is harsh. Also, $100,000 is a specific amount. Typically, requiring renters insurance is common, but making it an incurable breach that leads to eviction without cure is unusual and one-sided. So this is concerning. Reason: Losing your home for missing an insurance payment is a harsh penalty most people wouldn\\'t expect.{\"label\": \"concerning\", \"reason\": \"Losing your home for missing an insurance payment is a harsh penalty most people wouldn\\'t expect.\"}'"
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.11.B",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It imposes a significant penalty for animal violations, even if the tenant didn\\'t know. This is unusual and one-sided, so \"concerning\" is appropriate. Reason: You can be charged a large recurring fee for an animal you didn\\'t even know about, which is a hidden{\"label\": \"concerning\", \"reason\": \"You can be hit with a large recurring fee for an animal you didn\\'t even know about, which is a hidden and unexpected risk.\"}'"
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "4.1",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It\\'s about no smoking/vaping, with a $500 fine, and landlord\\'s discretion to determine violation. The fine is specific, but the discretion part is concerning because it\\'s subjective and could be arbitrary. However, is it unusual? Many leases have no-smoking policies and fines. But the discretion part is one-sided: landlord decides based on observed condition, which could be unfair. The clause imposes a burden and a risk of a fine based on subjective judgment. That seems concerning because a typical person might not expect to be fined $500 based on landlord\\'s discretion without clear evidence. Also, the fine is high. So I\\'d lean concerning. But let\\'s compare to standard: no smoking is common, but the fine and discretion are unusual. So concerning. Reason: The landlord can fine you $500 based on their own judgment, which is risky and one{\"label\": \"concerning\", \"reason\": \"The landlord can fine you $500 based on their own subjective judgment, which is a high penalty and gives them unchecked power to decide you violated the rule.\"}'"
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.16",
+          "expected": "neutral",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It says \"Tenant or Landlord may agree to submit any dispute concerning this lease to final and binding mediation/arbitration. Both the Tenant and the landlord choose the mediator.\" This is permissive (\"may agree\") and mutual (both choose mediator). It\\'s not mandatory arbitration, just an option. That seems neutral or even favorable because it\\'s voluntary and mutual. But note: \"final and binding\" arbitration is a waiver of court rights, but only if they agree. Since it\\'s optional, it\\'s not a forced waiver. So neutral. Reason: It\\'s an optional, mutual agreement to arbitrate, not a forced waiver of rights{\"label\": \"neutral\", \"reason\": \"This is an optional, mutual agreement to arbitrate, not a forced waiver of your right to go to court.\"}'"
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.10",
+          "expected": "neutral",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It says the landlord holds the security deposit and can use it to cover any charges related to the tenant\\'s performance of the lease. This is standard boilerplate: security deposits are typically used to cover unpaid rent, damages, etc. The phrase \"any charges related to your performance\" is broad but typical. It doesn\\'t specify unusual deductions. So neutral{\"label\": \"neutral\", \"reason\": \"Standard security deposit language allowing the landlord to use it for unpaid rent or damages, which is typical in most leases.\"}'"
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.13",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: '1.  **Analyze the Request**:\\n    *   Role: Clause-risk classification component inside ClauseGuard.\\n    *   Task: Classify a given clause into exactly one of three categories: concerning, neutral, favorable.\\n    *   Rules: Base only on text. Standard defensive boilerplate is usually neutral. Reserve \"concerning\" for unusual, uncapped, one-sided beyond typical practice, or waiving a right a person would not expect to lose. If referencing another section without enough detail, note ambiguity and lean toward concerning unless minor. Provide a one-sentence reason in plain language. Output only valid JSON.\\n    *   Input Clause: \"Tenant agrees to give up his right of a \\'Notice to Quit\\'...Landlord may report any past rent, damages, utilities or other costs owed by Tenant to a credit reporting agency.\"\\n\\n2.  Analyze the Clause:\\n    *   \"Tenant agrees to give up his right of a \\'Notice to Quit\\'\" - This is a waiver of a significant legal right. A \"Notice to Quit\" is typically a formal notice required before eviction proceedings can start. Giving this up means the landlord can proceed directly to eviction without prior notice, which is highly unusual and one-sided, stripping a tenant of a procedural safeguard.\\n    *   \"...Landlord may report any past rent, damages, utilities or other costs owed by Tenant to a credit reporting agency.\" - Reporting to credit agencies is standard practice for unpaid debts, but combined with the waiver, it\\'s still a burden. However, reporting to credit agencies is common. The waiver of the Notice to Quit is the key concerning element.\\n\\n3.  Evaluate against rules:\\n    *   Is it standard defensive boilerplate? No, waiving the right to a Notice to Quit is not standard boilerplate; it\\'s a specific waiver of a procedural right that protects the tenant from immediate eviction without warning.\\n    *   Is it unusual, uncapped, one-sided beyond typical practice? Yes, waiving the right to a notice to quit is highly one-sided and unusual. It removes a fundamental tenant protection.\\n    *   Does it waive a right a person would not expect to lose? Yes, most tenants expect to get a notice before eviction proceedings start.\\n    *   The credit reporting part is standard, but the waiver of the notice to quit is the dominant and concerning part.\\n\\n4.  Determine the label:\\n    *   concerning.\\n\\n5.  Formulate the reason:\\n    *   Plain language: \"Giving up the right to a \\'Notice to Quit\\' means the landlord can start eviction proceedings without any prior warning, which is a serious and unexpected loss of a basic tenant protection.\" (Mention the credit reporting is standard, but the waiver is the issue). Let\\'s make{\"label\": \"concerning\", \"reason\": \"Giving up the right to a \\'Notice to Quit\\' means the landlord can start eviction proceedings without any prior warning, which is a serious and unexpected loss of a basic tenant protection.\"}'"
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_deletion",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It says \"Specific content can be deleted without reason and may be removed without prior notice.\" This is likely from a terms of service or similar. It gives the service provider broad discretion to delete content without reason or notice. This is typical for many online platforms, but it\\'s also a risk for the user. However, it\\'s common boilerplate. The instruction says: \"Standard defensive boilerplate (no warranty, no liability for damages, no interest on deposits, standard refund restrictions) is common across most documents of this type and should usually be classified as \\'neutral,\\' even though the language sounds negative or protective of the other party. Reserve \\'concerning\\' for terms that are unusual, uncapped, one-sided beyond typical practice, or that waive a right a person would not expect to lose.\" This clause is about content deletion. In many online services, it\\'s standard to allow the platform to remove content for various reasons, often without notice. It\\'s not unusual. But the phrase \"without reason\" is a bit broad, but still common. I\\'d lean neutral. However, the instruction says if it references another section without enough detail, lean concerning. But here it\\'s self-contained. I think it\\'s neutral. Reason: Standard for online platforms to reserve the right to remove content without{\"label\": \"neutral\", \"reason\": \"This is standard boilerplate for online services, which commonly reserve the right to remove content without notice or reason.\"}'"
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "moral_rights_waiver",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause: \"You waive your moral rights.\" This is extremely broad and vague. Moral rights typically refer to rights of attribution and integrity in creative works, but in a general contract context, it could be interpreted broadly. It\\'s a waiver of a right that a person might not expect to lose, and it\\'s very one-sided. It\\'s likely concerning because it\\'s vague and waives a significant right without detail. The rule says if it references another section without enough detail, lean toward concerning. Here it\\'s just a blanket waiver. So label: concerning. Reason: This gives up important personal rights without explaining what they are, which most people would not expect.{\"label\": \"concerning\", \"reason\": \"This vague waiver gives up important personal rights without explaining what they are, which most people would not expect.\"}'"
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "ai_training_use",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It\\'s about personal data usage for automated decision-making, profiling, or AI training. This is from a document, likely a privacy policy or terms of service. The clause is short: \"Your personal data is used for automated decision-making, profiling or AI training.\" This is a disclosure that the data is used for these purposes. Is that concerning? It could be, because automated decision-making and profiling can have significant impacts on individuals, and AI training might involve data use that people don\\'t expect. However, it\\'s a statement of fact, not necessarily a waiver of rights. But it\\'s a broad statement without details. The rule says: \"If the clause references another section without giving enough detail to judge its risk, note that ambiguity in your reasoning, and lean toward \\'concerning\\' unless the missing detail is clearly minor.\" Here, it doesn\\'t reference another section, but it\\'s vague. It says \"used for automated decision-making, profiling or AI training\" without specifying what kind, what impact, or any safeguards. This is a typical clause in privacy policies, but it\\'s also a potential risk because automated decision-making can affect rights. However, is it standard? Many services use data for these purposes, but it\\'s often disclosed. The classification should be based on typical expectations. For a typical person, this might be concerning because they might not expect their data to be used for AI training or profiling. But it\\'s also common in many terms. The rule says: \"Standard defensive boilerplate (no warranty, no liability for damages, no interest on deposits, standard refund restrictions) is common across most documents of this type and should usually be classified as \\'neutral,\\' even though the language sounds negative or protective of the other party. Reserve \\'concerning\\' for terms that are unusual, uncapped, one-sided beyond typical practice, or that waive a right a person would not expect to lose.\" This clause is not defensive boilerplate; it\\'s a disclosure of data use. It\\'s not necessarily one-sided, but it\\'s a broad statement. It could be considered concerning because it\\'s vague and could lead to unexpected uses. However, it\\'s also a standard disclosure in many privacy policies. But the rule says to lean toward concerning if there\\'s ambiguity. Here, there\\'s no detail about what decisions are made, what profiling is done, or what AI training involves. So I think it\\'s concerning. But let\\'s see: the clause is from a document, but we don\\'t know the type. It could be a lease? No, it\\'s about personal data, so it\\'s likely a privacy policy or terms of service. In that context, it\\'s common to have such disclosures. But the rule says \"typical person would not expect\" - many people might not expect their data to be used for AI training. So I\\'ll classify as concerning. Reason: \"This clause allows your personal data to be used for automated decision-making, profiling, or AI training without explaining what that means or how it affects you, which is a hidden risk.\" But we need to be careful: the clause is just a statement, not necessarily a waiver. However, it\\'s a broad permission. I\\'ll go with concerning.{\"label\": \"concerning\", \"reason\": \"This clause allows your personal data to be used for automated decision-making, profiling, or AI training without explaining what that involves or how it could affect you, which is a hidden risk most people wouldn\\'t expect.\"}'"
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "binding_arbitration",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It says \"You are forced into binding arbitration in case of disputes.\" This is a clause that waives the right to go to court and instead requires arbitration. This is common in many contracts, but it can be considered concerning because it takes away the right to a jury trial and may have hidden costs. However, the instruction says: \"Standard defensive boilerplate (no warranty, no liability for damages, no interest on deposits, standard refund restrictions) is common across most documents of this type and should usually be classified as \\'neutral,\\' even though the language sounds negative or protective of the other party. Reserve \\'concerning\\' for terms that are unusual, uncapped, one-sided beyond typical practice, or that waive a right a person would not expect to lose.\" Binding arbitration is a waiver of a right to go to court, which is a significant right. But is it typical? Many consumer contracts include arbitration clauses. However, the phrasing \"forced\" is strong. But the clause is very short and lacks details. It says \"You are forced into binding arbitration\" - that is a clear statement. It might be considered concerning because it waives the right to a court trial, which is a right a person might not expect to lose. But it\\'s also common. The instruction says \"standard defensive boilerplate\" includes things like no warranty, no liability, etc. Arbitration is not listed there. Also, it says \"waive a right a person would not expect to lose\" - many people might not expect to lose the right to sue. So I\\'d lean toward concerning. But let\\'s see: the clause is very short and lacks specifics. It might be part of a larger dispute resolution clause. But we only have this text. I think it\\'s concerning because it forces arbitration, which is a significant limitation on legal recourse. However, some might argue it\\'s neutral because it\\'s standard. But the instruction says \"unusual, uncapped, one-sided beyond typical practice\" - arbitration is typical, but it\\'s still a waiver of a right. I think the key is whether it\\'s beyond typical practice. Many consumer contracts have arbitration, but it\\'s still a burden. I\\'ll classify as concerning.\\n\\nReason: This clause forces you to give up your right to sue in court and go through arbitration instead, which is a significant right you might not expect to lose.{\"label\": \"concerning\", \"reason\": \"This forces you to give up your right to take disputes to court and instead go through arbitration, which is a significant right most people would not expect to lose.\"}'"
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "class_action_waiver",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: '1.  **Analyze the Request**:\\n    *   Role: Clause-risk classification component inside ClauseGuard.\\n    *   Task: Classify a single clause into one of three categories: concerning, neutral, favorable.\\n    *   Rules: Base only on text. Standard defensive boilerplate is usually neutral. Reserve \"concerning\" for unusual, uncapped, one-sided beyond typical practice, or waiving a right a person would not expect to lose. If referencing another section without detail, note ambiguity and lean concerning unless minor. Provide a one-sentence reason in plain language. Output only valid JSON.\\n    *   Input Clause: \"You waive your right to a class action.\"\\n\\n2.  Analyze the Clause:\\n    *   Text: \"You waive your right to a class action.\"\\n    *   Context: This is a common clause in Terms of Service, consumer contracts, and sometimes leases. It forces disputes to be resolved individually (usually via arbitration or individual small claims) rather than as a group.\\n    *   Classification: Is it standard boilerplate? It is very common in consumer contracts (ToS, software, etc.). However, it is a significant waiver of a legal right. The rule says: \"Reserve \\'concerning\\' for terms that are unusual, uncapped, one-sided beyond typical practice, or that waive a right a person would not expect to lose.\" Waiving the right to a class action is a waiver of a right that a typical person might not expect to lose, and it is highly one-sided (benefits the drafter). While it is common in ToS, it is still a significant waiver of a procedural right. The rule says \"Standard defensive boilerplate (no warranty, no liability for damages, no interest on deposits, standard refund restrictions) is common across most documents of this type and should usually be classified as \\'neutral\\'... Reserve \\'concerning\\' for terms that are... waive a right a person would not expect to lose.\" Class action waivers are specifically called out in many legal analyses as a significant consumer risk. It is a waiver of a right. It is not standard defensive boilerplate like a warranty disclaimer; it is a procedural right waiver. Therefore, it should be classified as \"concerning\".\\n\\n3.  Formulate the Reason:\\n    *   Plain language: \"You are giving up the ability to sue as a group, which is a significant legal right most people don\\'t expect to lose when signing a contract.\"\\n\\n4.  Check against rules:\\n    *   Is it standard boilerplate? It is common, but it is a waiver of a right, not just a limitation of liability. The rule explicitly says \"waive a right a person would not expect to lose\" -> concerning.\\n    *   Output format{\"label\": \"concerning\", \"reason\": \"You are giving up your right to sue as a group, which is a significant legal right most people would not expect to lose when signing a contract.\"}'"
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "silent_terms_acceptance",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It says: \"Instead of asking directly, this Service will assume your consent to changes of terms merely from your usage.\" This is about a service (like a website or app) changing its terms and assuming consent from continued use. This is a common practice but can be concerning because it waives the right to explicit notice and consent. However, it\\'s typical for many online services. But the phrasing \"Instead of asking directly\" suggests it\\'s avoiding direct consent. Typically, terms of service changes require notice, but many services do this. Is it unusual? It\\'s common but still a hidden risk because users may not be aware. The rule says: \"Standard defensive boilerplate... should usually be classified as neutral.\" But this is not exactly defensive boilerplate; it\\'s about consent to changes. It\\'s a one-sided term that waives a right to be asked. I\\'d lean toward \"concerning\" because it\\'s a hidden assumption of consent that a typical person might not expect. The rule says \"reserve \\'concerning\\' for terms that are unusual, uncapped, one-sided beyond typical practice, or that waive a right a person would not expect to lose.\" This waives the right to be asked directly, which is a right people might expect. Also, it\\'s one-sided. So I\\'ll classify as concerning. Reason: \"The service can change the terms without asking you, just because you keep using it, which most people would not expect.\"{\"label\": \"concerning\", \"reason\": \"The service can change the terms without asking you, just because you keep using it, which most people would not expect.\"}'"
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "liability_cap",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It\\'s a limitation of liability clause, capping liability at fees paid or $30. This is common in many services, but the cap is very low ($30) and only covers fees paid. For a service, this could be concerning if the service could cause significant harm (e.g., data loss, financial loss). However, standard boilerplate often has such caps. The rule says: \"Standard defensive boilerplate (no warranty, no liability for damages, no interest on deposits, standard refund restrictions) is common across most documents of this type and should usually be classified as \\'neutral,\\' even though the language sounds negative or protective of the other party. Reserve \\'concerning\\' for terms that are unusual, uncapped, one-sided beyond typical practice, or that waive a right a person would not expect to lose.\" This cap is capped, so not uncapped. It\\'s typical for many online services to limit liability to fees paid. The $30 minimum is a bit low, but still within typical range. I\\'d lean neutral. But let\\'s think: is it one-sided beyond typical? Many services cap at fees paid, but some also include a minimum like $100. $30 is low but not extremely unusual. The clause is clear. I\\'ll classify as neutral.\\n\\nReason: Standard limitation of liability capping damages at fees paid or a small amount, common in service{\"label\": \"neutral\", \"reason\": \"This is a standard liability cap found in many service agreements, limiting damages to what you paid or a small fixed amount, which is typical boilerplate.\"}'"
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_licensing_to_third_parties",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause: \"Your content can be licensed to third parties\". This is from a Terms of Service or similar. It\\'s a broad grant of rights to the platform to license user content to third parties. This is typical for many platforms, but it can be concerning if it\\'s broad and without limitations. However, the instruction says: \"Standard defensive boilerplate (no warranty, no liability for damages, no interest on deposits, standard refund restrictions) is common across most documents of this type and should usually be classified as \\'neutral,\\' even though the language sounds negative or protective of the other party. Reserve \\'concerning\\' for terms that are unusual, uncapped, one-sided beyond typical practice, or that waive a right a person would not expect to lose.\"\\n\\nLicensing content to third parties is common in social media and content platforms. It\\'s expected that when you post content, the platform may use it or license it. However, the clause is very short and doesn\\'t specify scope, duration, or compensation. But typical ToS have such clauses. It\\'s not necessarily unusual. But it could be concerning if it\\'s overly broad, but we don\\'t have context. Given the instruction to lean toward \"concerning\" if referencing another section without enough detail, but here it\\'s a standalone clause. It\\'s a standard clause in many ToS. I\\'d say neutral because it\\'s typical for platforms to have such licensing. But the user might not expect their content to be licensed to third parties without their knowledge. However, it\\'s common. I\\'ll classify as neutral with a reason that it\\'s standard for content platforms.\\n\\nBut let\\'s think: The clause says \"Your content can be licensed to third parties\" - that\\'s a broad grant. It doesn\\'t say \"to operate the service\" or \"with limitations.\" It\\'s a blanket permission. That could be concerning because it\\'s one-sided and gives the platform the right to license your content to anyone. But many ToS have similar. The instruction says \"reserve \\'concerning\\' for terms that are unusual, uncapped, one-sided beyond typical practice.\" This is typical practice for many platforms. So neutral.\\n\\nI\\'ll go with neutral{\"label\": \"neutral\", \"reason\": \"This is a standard clause in most online services allowing them to share or license user content, so it is not an unexpected burden.\"}'"
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "data_access_rights",
+          "expected": "favorable",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It\\'s about data privacy rights: \"You can request access, correction and/or deletion of your data\". This is a clause that gives the user rights over their data. In typical terms of service or privacy policies, this is standard and often required by law (like GDPR). It\\'s favorable to the user because it explicitly grants them control over their data. However, is it \"beyond what is typical\"? Many documents include this, but it\\'s still a protection for the user. The instruction says: \"favorable: the clause explicitly protects or benefits the person signing, beyond what is typical.\" But this is typical in many privacy policies. However, the clause is clearly beneficial to the user. The classification should be based on the text alone. It\\'s a straightforward right. I\\'d lean favorable because it explicitly gives the user rights to access, correct, and delete data, which is a benefit. But is it \"beyond typical\"? In many contexts, it\\'s standard. But the instruction says \"beyond what is typical\" for favorable. However, the examples given for favorable include things like \"rent stops when unlivable\" which is also typical in some places but still favorable. The key is that it protects the person signing. I think it\\'s favorable. Alternatively, it could be neutral if it\\'s standard. But the clause is clearly in favor of the user. I\\'ll go with favorable. Reason: It gives you clear rights to control your personal data, which is a benefit.{\"label\": \"favorable\", \"reason\": \"This clause explicitly gives you the right to access, correct, or delete your data, which is a clear benefit and not something every agreement promises.\"}'"
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "right_to_leave",
+          "expected": "favorable",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause: \"You have the right to leave this service at any time\". This is from a service agreement (like Terms of Service). It explicitly states the user can leave at any time. That is favorable to the user because it gives them freedom to terminate without penalty. Typically, many services have restrictions or notice periods, but this is a clear right. So label favorable. Reason: It gives the user an explicit right to cancel anytime, which is better than typical{\"label\": \"favorable\", \"reason\": \"It clearly gives you the right to stop using the service whenever you want, which is more flexible than many standard agreements.\"}'"
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_ownership",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 5.96818487503333
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "notified_term_changes",
+          "expected": "neutral",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It says terms may be changed at any time, but you will receive notification. This is common in many contracts, but the ability to change at any time without consent is one-sided. However, notification is provided. Typically, such clauses are neutral if notification is given, but the \"at any time\" without specifying notice period or consent could be concerning. But it\\'s standard in many service agreements. The instruction says standard defensive boilerplate should be neutral. This is a change-of-terms clause, which is common. However, the lack of detail on how changes are communicated and whether they can be retroactive might be concerning. But the clause says \"you will receive notification\" which is a protection. I\\'d lean neutral because it\\'s standard, but the \"at any time\" is broad. However, the notification requirement mitigates. I\\'ll classify as{\"label\": \"neutral\", \"reason\": \"This is a standard change-of-terms clause that gives notice, which is typical in many agreements.\"}'"
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "refund_policy",
+          "expected": "neutral",
+          "predicted": "concerning",
+          "latency_seconds": 6.451838499982841
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "shadow_profile_data",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It says: \"They store data on you even if you did not interact with the service.\" This is from a privacy policy or terms of service. It\\'s about data collection on non-users. This is unusual and potentially concerning because a typical person would not expect a service to store data on them if they haven\\'t interacted with it. This could be a hidden data collection practice. So it\\'s concerning. Reason: It\\'s surprising and invasive to collect data on people who haven\\'t even{\"label\": \"concerning\", \"reason\": \"It is surprising and invasive to collect data on people who have never even used the service, which most people would not expect.\"}'"
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "identity_in_ads",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause: \"Your identity is used in ads that are shown to other users\". This is from a document, likely a terms of service or privacy policy. The clause states that the user\\'s identity is used in ads shown to other users. This is a potential privacy concern. It\\'s not standard boilerplate; it\\'s a specific use of personal identity for advertising purposes. A typical person might not expect their identity to be used in ads. This could be considered concerning because it involves using personal identity in a way that could be surprising or invasive. It\\'s not neutral because it\\'s not standard defensive boilerplate; it\\'s a specific practice that could be one-sided. It\\'s not favorable because it doesn\\'t protect the user. So label: concerning. Reason: Using your identity in ads for others is an unexpected and potentially invasive use of your personal information.{\"label\": \"concerning\", \"reason\": \"Using your identity in ads shown to other people is an unexpected and potentially invasive use of your personal information that most users would not anticipate.\"}'"
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "message_privacy",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It\\'s a short statement: \"Private messages that are not end-to-end encrypted can be read.\" This seems like a disclosure or warning. It\\'s likely from a terms of service or privacy policy. It informs the user that if messages are not end-to-end encrypted, they can be read (presumably by the service provider or others). This is a risk disclosure. Is it concerning? It\\'s a warning about a potential lack of privacy. But is it unusual? Many messaging services have such disclosures. It\\'s not necessarily one-sided or hidden; it\\'s stating a fact. However, it might be concerning because it reveals that private messages are not fully private. But the rule says: \"Standard defensive boilerplate... should usually be classified as \\'neutral\\'.\" This is more of a disclosure than a defensive clause. It\\'s informing the user of a limitation. It could be seen as favorable because it\\'s transparent, but it\\'s not protecting the user; it\\'s warning them. I think it\\'s neutral because it\\'s a standard disclosure in many services. But let\\'s think: is it unusual? Many people might assume private messages are private, so this could be a hidden risk. But the clause is explicitly stating it, so it\\'s not hidden. It\\'s a fact. I\\'d lean neutral because it\\'s a common disclosure. However, the instruction says \"concerning: the clause imposes an unusual burden, hidden cost, waived right, or risk that a typical person would not expect.\" A typical person might not expect that private messages can be read if not end-to-end encrypted. But the clause is telling them that. So it\\'s not hidden. It\\'s a risk they should be aware of, but it\\'s disclosed. I think it\\'s neutral because it\\'s a standard disclosure in many terms of service. But let\\'s see: The clause is very short and doesn\\'t specify who can read them. It\\'s a general statement. I\\'ll go with neutral. Reason: It\\'s a straightforward disclosure about encryption, common in many services, and doesn\\'t impose an unusual burden{\"label\": \"neutral\", \"reason\": \"This is a standard disclosure about encryption limits, common in messaging services, and it informs rather than hides a risk.\"}'"
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "ai_training_use",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It\\'s about personal data usage for automated decision-making, profiling, or AI training. This is from a document, likely a privacy policy or terms of service. The clause is short: \"Your personal data is used for automated decision-making, profiling or AI training.\" This is a broad statement. It doesn\\'t specify what kind of decisions, what profiling, or what AI training. It could be concerning because it\\'s vague and could lead to unexpected uses. However, in many privacy policies, such disclosures are common, but the lack of detail might be concerning. The rule says: \"If the clause references another section without giving enough detail to judge its risk, note that ambiguity in your reasoning, and lean toward \\'concerning\\' unless the missing detail is clearly minor.\" Here, it doesn\\'t reference another section, but it\\'s vague. It\\'s a standalone statement. It\\'s not standard boilerplate like no warranty. It\\'s a data use clause. Typically, users might not expect their data to be used for AI training or profiling without explicit consent. This could be considered an unusual burden or hidden risk. So I\\'d lean toward \"concerning\" because it\\'s broad and could have significant implications. But is it typical? Many companies do this, but it\\'s still a risk. The classification should be based on typical expectations. For a typical person, this is not something they\\'d expect, especially if it\\'s not detailed. So I\\'ll classify as concerning. Reason: It\\'s vague and could lead to unexpected uses of personal data, which most people would not anticipate{\"label\": \"concerning\", \"reason\": \"This clause is vague and allows broad, unexpected uses of your personal data, which most people would not anticipate when signing.\"}'"
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "deletion_not_real",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify the clause: \"Deleted content is not really deleted\". This is a clause from a document, but it\\'s vague and not typical of a lease or insurance policy. It seems like a statement about data deletion, possibly from a Terms of Service. The user provided a series of clauses, and this is the last one. The instruction says: \"You will be given a single clause extracted from a real document.\" So we treat this as a clause. The clause says \"Deleted content is not really deleted\" - that implies that even if you delete something, it\\'s not actually removed, which could be a hidden risk for the user. That is concerning because it means your data might persist, which is unexpected. So classification: concerning. Reason: It tells you that deleting content doesn\\'t actually remove it, which is a hidden risk most people wouldn{\"label\": \"concerning\", \"reason\": \"It says that deleting content doesn\\'t actually remove it, which is a hidden risk most people would not expect.\"}'"
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "location_despite_opt_out",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.218861832981929
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "cross_site_tracking",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 14.010633249999955
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "biometric_collection",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause: \"Your biometric data is collected\". This is a very short clause, likely from a privacy policy or terms of service. It states that biometric data is collected. This is a disclosure of data collection. Is it concerning, neutral, or favorable? It\\'s a statement of fact, but it\\'s about collection of sensitive data (biometric). Typically, collecting biometric data is a significant privacy concern. However, the clause itself just states that it is collected, without any details about how it\\'s used, stored, or shared. The rule says: \"If the clause references another section without giving enough detail to judge its risk, note that ambiguity in your reasoning, and lean toward \\'concerning\\' unless the missing detail is clearly minor.\" Here, the clause is extremely vague. It doesn\\'t say why, how, or with whom the data is shared. Biometric data is highly sensitive. So this should be concerning. Also, it\\'s a one-sided statement, no consent or opt-out mentioned. So label: concerning. Reason: It tells you your biometric data is collected but gives no details on how it\\'s used or protected, which is a hidden risk.{\"label\": \"concerning\", \"reason\": \"It says your biometric data is collected but gives no details on how it\\'s used, stored, or shared, which is a hidden privacy risk.\"}'"
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_forced_arbitration",
+          "expected": "favorable",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It says \"You aren\\'t forced into binding arbitration in case of disputes.\" This is favorable because it preserves the right to go to court rather than being forced into arbitration, which is a common but often disadvantageous clause. So label favorable. Reason: It keeps your right to sue in court instead of being forced into a private arbitration process{\"label\": \"favorable\", \"reason\": \"It keeps your right to go to court instead of being forced into a private arbitration process, which is a protection many contracts take away.\"}'"
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "30_day_change_notice",
+          "expected": "favorable",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: '1.  **Analyze the Request**:\\n    *   Role: Clause-risk classification component inside ClauseGuard.\\n    *   Task: Classify a single clause into exactly one of three categories: concerning, neutral, favorable.\\n    *   Rules: Base only on text. Standard defensive boilerplate is usually neutral. Reserve \"concerning\" for unusual, uncapped, one-sided beyond typical, or waiving unexpected rights. If referencing another section without detail, note ambiguity and lean concerning unless minor. Provide one-sentence plain-language reason. Output only valid JSON.\\n    *   Input clause: \"When the service wants to make a material change to its terms, you are notified at least 30 days in advance\"\\n\\n2.  **Analyze the Clause**:\\n    *   Text: \"When the service wants to make a material change to its terms, you are notified at least 30 days in advance\"\\n    *   Subject: Terms of Service (implied by \"service\").\\n    *   Action: The service must notify the user 30 days in advance of a material change.\\n    *   Risk assessment: This is a protective clause for the user. It gives the user advance notice of changes, allowing them to review, object, or cancel before the change takes effect. This is generally favorable to the person signing (the user), as it provides transparency and time to react. It is not standard boilerplate that disadvantages the user; it explicitly protects them. It is a benefit beyond typical practice (many ToS allow changes without notice or with less notice). Therefore, it should be classified as \"favorable\".\\n\\n3.  **Check against rules**:\\n    *   Is it standard defensive boilerplate? No, it\\'s a user-protective notice requirement.\\n    *   Is it unusual? Yes, 30 days notice is a good protection.\\n    *   Does it reference another section? No.\\n    *   Conclusion: Favorable.\\n\\n4.  **Draft the reason**:\\n    *   Plain language: \"You get a full month\\'s warning before the rules change, which gives you time to decide if you still want to use the service.\"\\n\\n5.  **Format the output**:\\n    *   JSON: {\"label\": \"favorable\", \"reason\": \"You get a full month\\'s warning before the rules change, which gives you time to decide if you still want to use the{\"label\": \"favorable\", \"reason\": \"You get a full month\\'s warning before the rules change, which gives you time to decide if you still want to use the service.\"}'"
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_data_sale",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 2.628808624984231
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "content_ownership",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 2.42479216697393
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "ban_evasion_prohibited",
+          "expected": "neutral",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It\\'s from a Terms of Service or similar. It says users who are permanently banned cannot re-register under a new account. This is standard practice for online services to prevent banned users from circumventing bans. It\\'s not unusual or hidden; it\\'s expected. So it\\'s neutral{\"label\": \"neutral\", \"reason\": \"Standard rule that banned users can\\'t come back under a new account, common in online services.\"}'"
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_damages_liability",
+          "expected": "neutral",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'We need to classify this clause. It\\'s a standard disclaimer of liability, common in terms of service. It\\'s broad but typical. The rule says standard defensive boilerplate (no liability for damages) should usually be neutral. So neutral{\"label\": \"neutral\", \"reason\": \"Standard disclaimer that the service isn\\'t responsible for user damages, common in most online agreements.\"}'"
+        }
+      ]
+    },
+    {
+      "model": "openai/gpt-5.6-luna",
+      "provider": "openrouter",
+      "correct": 43,
+      "total": 53,
+      "answered": 48,
+      "accuracy": 0.8113207547169812,
+      "accuracy_ci": [
+        0.6864128355267498,
+        0.8941478805685044
+      ],
+      "coverage": 0.9056603773584906,
+      "per_class": {
+        "concerning": {
+          "precision": 0.90625,
+          "recall": 0.8529411764705882,
+          "f1": 0.8787878787878787,
+          "tp": 29,
+          "fp": 3,
+          "fn": 5
+        },
+        "neutral": {
+          "precision": 0.75,
+          "recall": 0.6,
+          "f1": 0.6666666666666665,
+          "tp": 6,
+          "fp": 2,
+          "fn": 4
+        },
+        "favorable": {
+          "precision": 1.0,
+          "recall": 0.8888888888888888,
+          "f1": 0.9411764705882353,
+          "tp": 8,
+          "fp": 0,
+          "fn": 1
+        }
+      },
+      "macro_f1": 0.8288770053475935,
+      "missed_concerning": 5,
+      "false_alarms": 3,
+      "avg_latency_seconds": 2.5646797621496566,
+      "tokens_in": 56128,
+      "tokens_out": 3162,
+      "cost_usd": 0.01502,
+      "per_clause": [
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXI",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: ''"
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXIII",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 1.5837974169990048
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXV",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.993691209005192
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XLIV",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.8141388340154663
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XL",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 1.6546328330296092
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XLII",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 2.081489500007592
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXX",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 2.180405666003935
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXVIII",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.513715624983888
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "5",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.73577720799949
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "7",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 2.044321040972136
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "8",
+          "expected": "neutral",
+          "predicted": "concerning",
+          "latency_seconds": 3.4102875409880653
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "10",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 1.570197792025283
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "12",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.6952879169839434
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "9",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.8606819169945084
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "1",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 3.9607514169765636
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.7.D",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.1452970409882255
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.1",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 1.8749400420347229
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.5.B",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.7316517080180347
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.8",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.2215871249791235
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.12.B",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 1.9546074170502834
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.12.C",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.5996610000147484
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.11.B",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.5266769170411862
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "4.1",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.992148583056405
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.16",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 3.0033896670211107
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.10",
+          "expected": "neutral",
+          "predicted": "concerning",
+          "latency_seconds": 1.8823077080305666
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.13",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.9580013749655336
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_deletion",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.6758974159602076
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "moral_rights_waiver",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.6389538329676725
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "ai_training_use",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.0135625419788994
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "binding_arbitration",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model returned an unexpected label: None"
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "class_action_waiver",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 1.8947288340423256
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "silent_terms_acceptance",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.3725940830190666
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "liability_cap",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.058224125008564
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_licensing_to_third_parties",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 1.8747578340116888
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "data_access_rights",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 1.8472967080306262
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "right_to_leave",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 2.697327875008341
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_ownership",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 3.302862874988932
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "notified_term_changes",
+          "expected": "neutral",
+          "predicted": "concerning",
+          "latency_seconds": 2.0524317499948665
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "refund_policy",
+          "expected": "neutral",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: '{\"analysis \u53d8\u6001\u53e6\u7c7b?}We need need output JSON. Clause standard refund restriction per developer usually neutral, but \"some exceptions\" vague, maybe ambiguity references missing detail, lean concerning unless minor. Is no refund policy concerning? Standard defensive boilerplate common, but unspecified exceptions ambiguity. Need exactly sentence. Label perhaps concerning due to unclear exceptions? Text says service has no refund policy with some exceptions, likely neutral standard refund restrictions. The rule says'"
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "shadow_profile_data",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.7712424999917857
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "identity_in_ads",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: 'geschniegelt\\n{\"label\": \"concerning\", \"reason\": \"Using your identity in advertisements shown to others is a privacy risk and does not say whether you can refuse or withdraw consent.\"}'"
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "message_privacy",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 2.2317685420275666
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "ai_training_use",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.6727758750203066
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "deletion_not_real",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 1.8842789580230601
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "location_despite_opt_out",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.135833124979399
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "cross_site_tracking",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.903669291990809
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "biometric_collection",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.50905175000662
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_forced_arbitration",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 1.8387727499939501
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "30_day_change_notice",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 3.136542374966666
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_data_sale",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 2.6941665000049397
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "content_ownership",
+          "expected": "favorable",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: ''"
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "ban_evasion_prohibited",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 1.6447365829953924
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_damages_liability",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 2.263707957987208
+        }
+      ]
+    },
+    {
+      "model": "google/gemini-3.6-flash",
+      "provider": "openrouter",
+      "correct": 40,
+      "total": 53,
+      "answered": 47,
+      "accuracy": 0.7547169811320755,
+      "accuracy_ci": [
+        0.6243318493782992,
+        0.8506723728814543
+      ],
+      "coverage": 0.8867924528301887,
+      "per_class": {
+        "concerning": {
+          "precision": 0.9629629629629629,
+          "recall": 0.7647058823529411,
+          "f1": 0.8524590163934426,
+          "tp": 26,
+          "fp": 1,
+          "fn": 8
+        },
+        "neutral": {
+          "precision": 0.5833333333333334,
+          "recall": 0.7,
+          "f1": 0.6363636363636365,
+          "tp": 7,
+          "fp": 5,
+          "fn": 3
+        },
+        "favorable": {
+          "precision": 0.875,
+          "recall": 0.7777777777777778,
+          "f1": 0.823529411764706,
+          "tp": 7,
+          "fp": 1,
+          "fn": 2
+        }
+      },
+      "macro_f1": 0.7707840215072617,
+      "missed_concerning": 8,
+      "false_alarms": 1,
+      "avg_latency_seconds": 4.266033501701152,
+      "tokens_in": 51477,
+      "tokens_out": 21167,
+      "cost_usd": 0.117984,
+      "per_clause": [
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXI",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 4.762125916022342
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXIII",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.235988250002265
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXV",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.7898232500301674
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XLIV",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 7.115584207989741
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XL",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 4.047912707959767
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XLII",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 5.282152374973521
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXX",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 3.2076216250425205
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXVIII",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.7734799159807153
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "5",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.3974941250053234
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "7",
+          "expected": "neutral",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: '```json\\n{\"label\": \"neutral\", \"reason\": \"This clause contains standard rules for security deposits, including no interest earned and a routine timeline for returning the funds after move-out.\"}\\n```'"
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "8",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 4.194310709019192
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "10",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 2.526641040982213
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "12",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: '```json\\n{\"label\": \"concerning\", \"reason\": \"This clause imposes broad financial liability for failing to give prompt notice without clearly defining what events require notification.\"}\\n```'"
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "9",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.8844681669725105
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "1",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 4.2552865839679725
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.7.D",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.452110707992688
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.1",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.9459336669533513
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.5.B",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.056907833029982
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.8",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.4006460410309955
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.12.B",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.7381473749992438
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.12.C",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.2646056250086986
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.11.B",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.315784625010565
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "4.1",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: '```json\\n{\"label\": \"concerning\", \"reason\": \"This clause gives the landlord sole, subjective power to decide if you broke the rule and charge a steep $500 fine without requiring objective proof.\"}\\n```'"
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.16",
+          "expected": "neutral",
+          "predicted": "favorable",
+          "latency_seconds": 6.352874749980401
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.10",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 2.9707190829794854
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.13",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.052629457961302
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_deletion",
+          "expected": "concerning",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: '```json\\n{\"label\": \"concerning\", \"reason\": \"The service provider can delete your content at any time without providing a reason or advance notice.\"}\\n```'"
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "moral_rights_waiver",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.077640959003475
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "ai_training_use",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.201411207963247
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "binding_arbitration",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.08550650003599
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "class_action_waiver",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.765008916030638
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "silent_terms_acceptance",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.8221428749966435
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "liability_cap",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 3.9712573750293814
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_licensing_to_third_parties",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.000826916017104
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "data_access_rights",
+          "expected": "favorable",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: '```json\\n{\"label\": \"favorable\", \"reason\": \"This clause gives you clear rights to view, correct, or completely delete your personal information.\"}\\n```'"
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "right_to_leave",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 3.619470708013978
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_ownership",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 3.958755708998069
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "notified_term_changes",
+          "expected": "neutral",
+          "predicted": "concerning",
+          "latency_seconds": 6.335052584006917
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "refund_policy",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 5.571800125006121
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "shadow_profile_data",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.29923174995929
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "identity_in_ads",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.111277457966935
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "message_privacy",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 6.517835500009824
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "ai_training_use",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.295965542027261
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "deletion_not_real",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.311962082982063
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "location_despite_opt_out",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.388136834022589
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "cross_site_tracking",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.13154025003314
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "biometric_collection",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.628500166989397
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_forced_arbitration",
+          "expected": "favorable",
+          "predicted": null,
+          "error": "ValueError: model didn't return valid json, got: '```json\\n{\"label\": \"favorable\", \"reason\": \"This protects your right to settle legal disputes in court rather than forcing you into mandatory arbitration.\"}\\n```'"
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "30_day_change_notice",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 4.128640958981123
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_data_sale",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 4.099782957986463
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "content_ownership",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 3.101107540947851
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "ban_evasion_prohibited",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 4.574824833020102
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_damages_liability",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 3.482646791031584
+        }
+      ]
+    },
+    {
+      "model": "anthropic/claude-opus-5",
+      "provider": "openrouter",
+      "correct": 47,
+      "total": 53,
+      "answered": 53,
+      "accuracy": 0.8867924528301887,
+      "accuracy_ci": [
+        0.7742322969866086,
+        0.9470704108893132
+      ],
+      "coverage": 1.0,
+      "per_class": {
+        "concerning": {
+          "precision": 0.9117647058823529,
+          "recall": 0.9117647058823529,
+          "f1": 0.9117647058823528,
+          "tp": 31,
+          "fp": 3,
+          "fn": 3
+        },
+        "neutral": {
+          "precision": 0.7,
+          "recall": 0.7,
+          "f1": 0.7,
+          "tp": 7,
+          "fp": 3,
+          "fn": 3
+        },
+        "favorable": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 9,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      "macro_f1": 0.8705882352941176,
+      "missed_concerning": 3,
+      "false_alarms": 3,
+      "avg_latency_seconds": 5.427419068342303,
+      "tokens_in": 90095,
+      "tokens_out": 6868,
+      "cost_usd": 0.6221749999999999,
+      "per_clause": [
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXI",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.356289041985292
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXIII",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.136376249953173
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXXV",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.403756042011082
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XLIV",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 3.638441834016703
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XL",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 3.472256542008836
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XLII",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 7.940630750032142
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXX",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 5.627438209019601
+        },
+        {
+          "doc_id": "lease_pa_001",
+          "clause_ref": "XXVIII",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.049957417009864
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "5",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.221672250016127
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "7",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 5.306273417023476
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "8",
+          "expected": "neutral",
+          "predicted": "concerning",
+          "latency_seconds": 8.461581707990263
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "10",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 8.040796625020448
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "12",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.546875
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "9",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.970447917003185
+        },
+        {
+          "doc_id": "lease_ftc_001",
+          "clause_ref": "1",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 4.74567387503339
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.7.D",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.155473832972348
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.1",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.778072291985154
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.5.B",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.1174483329523355
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.8",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.591981500037946
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.12.B",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.171337999985553
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.12.C",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.105448540998623
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.11.B",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.470415207964834
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "4.1",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.036604582972359
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.16",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 8.555915832985193
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "1.10",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 8.510899415996391
+        },
+        {
+          "doc_id": "lease_real_002",
+          "clause_ref": "2.13",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.158781291975174
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_deletion",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.285791790985968
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "moral_rights_waiver",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.309214333014097
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "ai_training_use",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.1608642500359565
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "binding_arbitration",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.9715808749897406
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "class_action_waiver",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.826122333004605
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "silent_terms_acceptance",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.7112971660098992
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "liability_cap",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 6.844529957976192
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_licensing_to_third_parties",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.753494124975987
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "data_access_rights",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 3.541248583002016
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "right_to_leave",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 3.1925866250530817
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "content_ownership",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 8.530665958009195
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "notified_term_changes",
+          "expected": "neutral",
+          "predicted": "concerning",
+          "latency_seconds": 8.502309000003152
+        },
+        {
+          "doc_id": "tos_spotify_001",
+          "clause_ref": "refund_policy",
+          "expected": "neutral",
+          "predicted": "concerning",
+          "latency_seconds": 3.898833333980292
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "shadow_profile_data",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.306942750001326
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "identity_in_ads",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.21455800003605
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "message_privacy",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.425526749982964
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "ai_training_use",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.837626791035291
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "deletion_not_real",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 6.670577541983221
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "location_despite_opt_out",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 3.9385135840275325
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "cross_site_tracking",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.795829250011593
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "biometric_collection",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.20055270800367
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_forced_arbitration",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 4.699653749994468
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "30_day_change_notice",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 5.302188707981259
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_data_sale",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 6.015921041020192
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "content_ownership",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 3.4025361250387505
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "ban_evasion_prohibited",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 5.564226625021547
+        },
+        {
+          "doc_id": "tos_facebook_001",
+          "clause_ref": "no_damages_liability",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 6.179172958014533
+        }
+      ]
+    }
+  ]
+}

@@ -22,10 +22,15 @@
 
 import json
 import re
+import sys
+from pathlib import Path
 
 from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_groq import ChatGroq
+
+sys.path.append(str(Path(__file__).resolve().parents[1]))
+from parsing import extract_json  # noqa: E402
 
 load_dotenv()
 
@@ -69,12 +74,7 @@ def select_best_clause(category, clauses):
     chain = prompt | model
 
     response = chain.invoke({"category": category, "candidates": _format_candidates(clauses)})
-    content = re.sub(r"<think>.*?</think>", "", response.content.strip(), flags=re.DOTALL).strip()
-
-    try:
-        result = json.loads(content)
-    except json.JSONDecodeError as e:
-        raise ValueError(f"clause selection didn't return valid json, got: {content!r}") from e
+    result = extract_json(response.content, required_key="best")
 
     if not isinstance(result, dict):
         raise ValueError(f"clause selection returned {type(result).__name__}, expected an object: {content!r}")

@@ -8,9 +8,15 @@ import json
 import time
 from pathlib import Path
 
-from classify_clause import classify_clause
+from classify_clause import classify_clause, MODEL_NAME, PROMPT_VERSION
 
 TEST_SET_PATH = Path("evaluation/datasets/test_set.json")
+
+# per-clause results, one file per (prompt, model) combination. printing the
+# mismatches and losing them was the same defect as compare_models.py had:
+# without the per-clause record you cannot diff two runs to see which specific
+# clauses moved, only that the total changed.
+RESULTS_DIR = Path("evaluation/reports")
 
 
 def load_real_clauses():
@@ -34,6 +40,7 @@ def run_regression_test():
     total = len(clauses)
     correct = 0
     mismatches = []
+    per_clause = []
 
     print(f"testing {total} real clauses...\n")
 
@@ -44,9 +51,20 @@ def run_regression_test():
             result = classify_clause(item["clause"])
         except ValueError as e:
             print(f"error: {e}")
+            per_clause.append({
+                "doc_id": item["doc_id"], "clause_ref": item["clause_ref"],
+                "expected": item["expected_label"], "predicted": None,
+                "correct": False, "error": str(e),
+            })
             continue
 
         predicted = result.get("label")
+        per_clause.append({
+            "doc_id": item["doc_id"], "clause_ref": item["clause_ref"],
+            "expected": item["expected_label"], "predicted": predicted,
+            "correct": predicted == item["expected_label"],
+        })
+
         if predicted == item["expected_label"]:
             correct += 1
             print(f"correct ({predicted})")
@@ -62,6 +80,19 @@ def run_regression_test():
 
     acc = correct / total if total else 0
     print(f"\naccuracy: {correct}/{total} ({acc:.1%})\n")
+
+    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    slug = f"{PROMPT_VERSION}_{MODEL_NAME.split('/')[-1]}"
+    results_path = RESULTS_DIR / f"classifier_{slug}.json"
+    results_path.write_text(json.dumps({
+        "prompt_version": PROMPT_VERSION,
+        "model": MODEL_NAME,
+        "correct": correct,
+        "total": total,
+        "accuracy": correct / total if total else 0.0,
+        "per_clause": per_clause,
+    }, indent=2), encoding="utf-8")
+    print(f"saved to {results_path}\n")
 
     if mismatches:
         print(f"{len(mismatches)} mismatches:\n")

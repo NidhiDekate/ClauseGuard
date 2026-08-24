@@ -7,3 +7,9 @@ venv/
 data/raw_cuad/
 *.log
 data/processed/
+
+# run transcripts. the JSON reports in evaluation/reports/ are the durable record
+/after_*.txt
+/baseline_*.txt
+/model_selection*.txt
+/notes/
