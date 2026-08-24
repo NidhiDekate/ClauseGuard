@@ -1,16 +1,26 @@
-langchain
-langchain-core
-langchain-groq
-langchain-huggingface
-langchain-chroma
-langchain-pinecone
-langgraph
-sentence-transformers
-chromadb
-pinecone
-fastmcp
-fastapi
-uvicorn
-streamlit
-requests
-python-dotenv
+# pinned deliberately. this file used to be bare package names, which meant a
+# fresh install resolved to whatever was newest that day. streamlit community
+# cloud installs from this file too, so the live demo could have broken on any
+# rebuild without a single line of code changing.
+#
+# pins captured 2026-08-24 from a clean venv on python 3.13. the full transitive
+# set is in requirements.lock.txt if an exact environment is ever needed.
+#
+# to update: bump deliberately, rerun the evaluation, and note what moved.
+
+langchain==1.3.16
+langchain-core==1.6.0
+langchain-groq==1.1.3
+langchain-huggingface==1.2.2
+langchain-chroma==1.1.0
+langchain-pinecone==0.2.13
+langgraph==1.2.11
+sentence-transformers==6.0.0
+chromadb==1.5.9
+pinecone==7.3.0
+fastmcp==3.4.7
+fastapi==0.141.1
+uvicorn==0.52.4
+streamlit==1.62.0
+requests==2.34.2
+python-dotenv==1.2.3
