@@ -24,6 +24,7 @@ sys.path.append(str(Path(__file__).resolve().parent / "src" / "agents"))
 
 from graph import graph
 from guardrails import validate_document, DocumentValidationError, CallBudgetError
+from logging_db import log_request
 
 SAMPLE_DOCS = {
     "PA lease template": "data/sample_docs/pa_lease_sample.txt",
@@ -64,12 +65,20 @@ if "document_text" in st.session_state:
             start = time.monotonic()
             try:
                 result = graph.invoke({"document_text": doc_text, "document_type": "lease"})
-            except CallBudgetError as e:
+            except (DocumentValidationError, CallBudgetError) as e:
                 st.error(str(e))
                 st.stop()
             elapsed = time.monotonic() - start
 
         report = result["decision_report"]
+
+        # this entry point never logged anything. api/main.py did, but this is
+        # the file streamlit community cloud actually runs, so the live app was
+        # recording nothing at all. note the db is ephemeral on streamlit cloud
+        # (fresh filesystem every restart) - this is useful locally and under
+        # docker, where data/ is a volume.
+        log_request("lease", len(doc_text), report, elapsed)
+
         st.caption(f"Analyzed in {elapsed:.1f}s")
 
         concerning = [f for f in report if f.get("label") == "concerning"]

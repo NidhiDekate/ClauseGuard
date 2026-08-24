@@ -52,6 +52,14 @@ TOS_CONCERN_CATEGORIES = [
 
 
 def planner_node(state: ClauseGuardState) -> dict:
+    # validate here, not only in the callers. every entry point used to call
+    # validate_document itself, which meant graph.invoke could be called
+    # unguarded and every new caller had to remember. check_call_budget already
+    # lives inside the graph in retriever_node, so this makes the pair
+    # consistent: the graph guards itself, and a caller validating early is an
+    # optimisation rather than the guarantee.
+    validate_document(state["document_text"])
+
     if state["document_type"] == "lease":
         categories = LEASE_CONCERN_CATEGORIES
     elif state["document_type"] == "terms_of_service":
@@ -198,9 +206,6 @@ graph = graph_builder.compile()
 if __name__ == "__main__":
     with open("data/sample_docs/ftc_lease_sample.txt", encoding="utf-8") as f:
         doc = f.read()
-
-    # guardrail: validate before spending anything on this document at all
-    validate_document(doc)
 
     result = graph.invoke({"document_text": doc, "document_type": "lease"})
 

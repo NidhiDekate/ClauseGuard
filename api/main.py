@@ -38,7 +38,7 @@ def analyze(request: AnalyzeRequest):
         result = graph.invoke(
             {"document_text": request.document_text, "document_type": request.document_type}
         )
-    except CallBudgetError as e:
+    except (DocumentValidationError, CallBudgetError) as e:
         log_request(request.document_type, len(request.document_text), [], time.monotonic() - start, error=str(e))
         raise HTTPException(status_code=400, detail=str(e))
 
