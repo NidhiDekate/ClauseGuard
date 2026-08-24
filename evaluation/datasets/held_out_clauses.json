@@ -1,0 +1,176 @@
+{
+  "doc_id": "lease_bha_001",
+  "source": "Boston Housing Authority Residential Lease, public housing, rev. 1/15/2015",
+  "source_url": "https://www.bostonhousing.org/BHA/media/Documents/Departments/Legal/Lease-public-housing-1-15-2015-revised-6-19-2015-20150619-1730.pdf",
+  "selection": "28 clauses selected for coverage across the document and the eight risk categories. Not a random sample. Long multi-obligation sections (3, 9B, 9F) excluded as they contain several distinct terms.",
+  "clauses": [
+    {
+      "clause_id": "bha_2",
+      "clause_ref": "Section 2",
+      "section_title": "Amount And Due Date Of Rental Payments",
+      "text": "Resident agrees to pay the monthly rent of $ in advance, on or before the fifth calendar day of each month beginning , 201 . Rent for any fraction of a month of occupancy at the beginning or end of the term will be charged on a pro rata basis. This rent will remain in effect until changed in accordance with BHA policy. BHA agrees to accept rental payments without regard to any other charge owed by Resident to BHA, and to seek separate legal remedy for collection of any such charge. BHA agrees to accept monthly rental payments in two (2) installments if Resident shows, in advance and in writing, good cause for the request. Resident agrees that acceptance of payments by BHA shall not constitute a waiver of any claims made. BHA shall pay the full cost of the following utilities: Oil Gas Water Electric Resident shall pay the full cost of the following utilities: ______________________________________ _______________________________________ ______________________________________ _______________________________________ Resident shall pay additional monthly charges for use of resident-supplied major appliances (for example, dryers, freezers) to the extent permitted by applicable BHA policy. The following are the monthly charges for Resident-supplied appliances; the addition of other major appliances will result in additional charges. Appliance _____________________________ Charges _________________________ _____________________________ _________________________"
+    },
+    {
+      "clause_id": "bha_4",
+      "clause_ref": "Section 4",
+      "section_title": "Occupancy Of Apartment",
+      "text": "Resident agrees not to assign this lease, not to sublet or transfer possession of the Apartment, not to take in boarders or lodgers and not to use or permit the use of the Apartment for any purpose other than as a private dwelling solely for Resident and the individuals specifically listed on this lease or listed on a subsequent written Lease Addendum. With the prior written approval of BHA, which may not be unreasonably withheld, members of Resident's household may engage in legal profit- making activities incidental to primary use of the Apartment for residence by the household, so long as suitable general liability insurance is provided, and activities comply with any applicable zoning requirements, as well as federal, state and local licensing requirements, and will not cause or be likely to cause disturbance or inconvenience to neighbors, will not significantly increase BHA's utility bills, and will not cause other additional expense to BHA. Resident shall not permit the Apartment to be occupied by anyone else, except temporary visitors, no one of whom may occupy the apartment for more than a total of forty-five (45) nights (or forty-five (45) days if the visitor regularly sleeps during the day), within any twelve-month period, unless the BHA for good cause otherwise consents to a longer period in writing before the expiration of 45 nights or such longer period as may have been authorized, or unless visitor is first determined to be part of the household according to BHA policy, or unless Resident has submitted an application to add the visitor to Resident's household and approval of such application is pending. Pursuant to BHA policy, and with the prior written consent of BHA, which shall not be unreasonably withheld, Resident may provide care for foster children or allow occupancy by a live- in caretaker (as defined by BHA policy) of a member of Resident's family. Each household member is required to reside in the unit for at least nine (9) months in any twelve-(12) month period unless the BHA shall have found good cause for an absence of longer than three months. \"Good cause\" will include, but not be limited to, hospitalization, employment in another location, or temporary placement in foster care. Household members who are absent from the household due to attendance at an educational institution or due to military service are exempt from this provision upon verification of attendance at such institution or of military service. In the event that Resident vacates the Apartment, a remaining family member who is on the lease as a household member may apply to become a Resident pursuant to BHA's Residual Tenancy Policy, state regulations, and /or any successor plan, policy or regulation then in effect."
+    },
+    {
+      "clause_id": "bha_5",
+      "clause_ref": "Section 5",
+      "section_title": "Transfers",
+      "text": "Resident may transfer from the Apartment subject to the requirements and procedures of BHA policy. When required by, and in accordance with, BHA policy, BHA is authorized to transfer Resident, subject to the provisions of Section 7.H of this Lease. Transfer will be to an appropriate size apartment based on household composition, upon appropriate notice by BHA that such an apartment is available; or, if Resident, or any member of Resident's household, is not a qualified individual with a handicap, BHA is authorized to transfer Resident to an appropriate size apartment if Resident's current apartment is needed by the BHA as a reasonable accommodation for another BHA resident who is a qualified individual with a handicap. In accordance with BHA policy, BHA is authorized to transfer Resident to another apartment if BHA determines that a transfer is necessary to protect Resident's health or safety, or if BHA determines to close Resident's building or Apartment."
+    },
+    {
+      "clause_id": "bha_6_b",
+      "clause_ref": "Section 6(B)",
+      "section_title": "Defects Hazardous To Life, Health, Or Safety; Rent Abatement",
+      "text": "BHA shall be responsible for repair of the Apartment within a reasonable time; provided that, if the damage was caused by Resident, a member of Resident's household or a guest, the reasonable cost of the repairs shall be charged to and paid by Resident;"
+    },
+    {
+      "clause_id": "bha_6_d",
+      "clause_ref": "Section 6(D)",
+      "section_title": "Defects Hazardous To Life, Health, Or Safety; Rent Abatement",
+      "text": "BHA shall abate Resident's rent for the Apartment in proportion to the seriousness of the damage and loss in value as a dwelling if repairs are not made within a reasonable time, except that no abatement of rent shall occur if Resident rejects an alternative accommodation or if the damage was caused by Resident, a member of Resident's household or a guest."
+    },
+    {
+      "clause_id": "bha_7_c",
+      "clause_ref": "Section 7(C)",
+      "section_title": "Bha Obligations",
+      "text": "Not unreasonably deny Resident's request either for a rent extension for a reasonable period of time, or to establish a reasonable written payment plan for overdue rent, provided that Resident shows good cause for failing to make timely rent payments, is otherwise a tenant in good standing, and has not previously requested a rent extension or payment plan. If Resident fails to adhere to the terms of said rent extension or written payment plan, the BHA will proceed with summary process action against the Resident;"
+    },
+    {
+      "clause_id": "bha_7_d",
+      "clause_ref": "Section 7(D)",
+      "section_title": "Bha Obligations",
+      "text": "Deliver the apartment at initial occupancy in decent, safe and sanitary condition in conformity with the requirements of Chapter II of the State Sanitary Code and other local, state and/or federal laws and regulations: (1) To provide and maintain in good condition the facilities capable of supplying heat in compliance with the State Sanitary Code, and to supply such heat unless and to the extent the Resident is required to supply the fuel; (2) To provide and maintain in good condition the facilities capable of heating water to a temperature compliant with the State Sanitary Code, and to supply a sufficient quantity and pressure of water for ordinary use unless and to the extent the Resident is required to supply the fuel; (3) To provide extermination of the entire development at regular intervals and more often as needed;"
+    },
+    {
+      "clause_id": "bha_7_h",
+      "clause_ref": "Section 7(H)",
+      "section_title": "Bha Obligations",
+      "text": "Notify Resident, in writing, of the specific grounds for any proposed adverse action against Resident by BHA, and notify Resident of Resident's right to request a hearing and the time period in which to make such a hearing request if BHA's grievance procedure requires the BHA to afford Resident the opportunity for a hearing;"
+    },
+    {
+      "clause_id": "bha_7_n",
+      "clause_ref": "Section 7(N)",
+      "section_title": "Bha Obligations",
+      "text": "Re-key locks promptly upon request of household members who have domestic violence restraining orders against another household member, and waive charges where applicable."
+    },
+    {
+      "clause_id": "bha_8_a",
+      "clause_ref": "Section 8(A)",
+      "section_title": "Resident Obligations",
+      "text": "Conduct himself/herself, and cause other household members and any persons who are on or about the premises with his or her consent to conduct themselves in a manner which will not disturb any other resident's or neighbor's peaceful enjoyment of their accommodations, will not harass, injure, endanger, threaten or unreasonably disturb any other resident, any BHA employee, or any other person lawfully in the unit or on the BHA's property or residing in the immediate vicinity of the BHA's property, will not cause damage, and which will be conducive to maintaining the development in a decent, safe and sanitary condition;"
+    },
+    {
+      "clause_id": "bha_8_g",
+      "clause_ref": "Section 8(G)",
+      "section_title": "Resident Obligations",
+      "text": "Pay promptly, upon receipt of a bill, for lock replacements and for the cost of all materials and /or labor for repair of any damage to BHA property caused by the negligence or intentional act of Resident, a member of Resident's household or a guest; the bill shall clearly state the items of damage, the repairs made, and the cost of labor and materials; the bill shall not become due and payable before the first day of the second month following the month in which the charge is incurred; BHA will post in each management office a list of the hourly rate charged for labor;"
+    },
+    {
+      "clause_id": "bha_8_i",
+      "clause_ref": "Section 8(I)",
+      "section_title": "Resident Obligations",
+      "text": "Leave the Apartment, appliances and exclusive use areas furnished by BHA, upon termination of the lease, in as good condition as they were upon the commencement date of the lease, or as of the date of installation by BHA, normal wear and tear and loss by fire or other casualty not caused by Resident excepted;"
+    },
+    {
+      "clause_id": "bha_8_k",
+      "clause_ref": "Section 8(K)",
+      "section_title": "Resident Obligations",
+      "text": "Install no lock and make no alteration or addition to the interior or exterior of the Apartment or any building without the prior written approval of BHA, which approval may not be unreasonably withheld. Any alteration or addition which is affixed to the Apartment and which cannot be removed without permanent damage to the Apartment will become the property of BHA without compensation to the Resident. However, with the written approval of BHA, which approval may not be unreasonably withheld, Resident shall have the right to remove alterations or additions to the extent that no permanent damage results and provided that Resident fully restores the Apartment to its original condition;"
+    },
+    {
+      "clause_id": "bha_8_n",
+      "clause_ref": "Section 8(N)",
+      "section_title": "Resident Obligations",
+      "text": "Abide by all reasonable policies promulgated by BHA for the benefit and well-being of the housing development and all the residents;"
+    },
+    {
+      "clause_id": "bha_8_t",
+      "clause_ref": "Section 8(T)",
+      "section_title": "Resident Obligations",
+      "text": "Provide Social Security number, or other identifying number, and cause each household member to disclose Social Security number or other identifying number, to BHA upon request, as permitted by State and Federal law;"
+    },
+    {
+      "clause_id": "bha_8_u",
+      "clause_ref": "Section 8(U)",
+      "section_title": "Resident Obligations",
+      "text": "For non-exempt adult Residents of federal developments, comply with, and cause all non-exempt adult household members to contribute eight hours per month of community service (not including political activity) and to otherwise comply with all applicable provisions of BHA's Community Service Policy;"
+    },
+    {
+      "clause_id": "bha_9_c",
+      "clause_ref": "Section 9(C)",
+      "section_title": "Termination / Non-Renewal Of Lease",
+      "text": "The BHA shall give written notice of lease termination in all cases. The notice shall be given the following periods in advance of termination: (1) Fourteen (14) days in the case of failure to pay rent; (2) A reasonable time considering the seriousness of the grounds for termination (but not to exceed thirty (30) days when the health or safety of other tenant(s), BHA employee(s), or person(s) residing in the immediate vicinity of the premises is threatened; or in the event of any drug-related or violent criminal activity or any felony conviction; and (3) Thirty (30) days in any other case."
+    },
+    {
+      "clause_id": "bha_9_d",
+      "clause_ref": "Section 9(D)",
+      "section_title": "Termination / Non-Renewal Of Lease",
+      "text": "The written notice of lease termination shall state specific grounds for termination, shall inform Resident of Resident's rights to make such reply as Resident shall wish, to examine relevant BHA documents in Resident's file concerning the termination, and to request a hearing in accordance with BHA's grievance procedure if BHA's grievance procedure requires the BHA to afford Resident the opportunity. In cases where the BHA annuls and makes void this lease as authorized by M.G.L. c. 139, §19, the notice shall state the specific grounds for the termination, shall specify that eviction shall proceed in court under M.G.L. c. 239, or by commencing action for declaratory judgment as provided in M.G.L. c. 139, §19, and that HUD has determined that these eviction procedures contain the elements of basic due process."
+    },
+    {
+      "clause_id": "bha_11_c",
+      "clause_ref": "Section 11(C)",
+      "section_title": "Property Left Upon Vacating; Abandonment",
+      "text": "C. If it appears to BHA that Resident and all members of his/her household have abandoned the Apartment without notice, BHA shall send notice to Resident in accordance with this lease and the grievance procedure, terminating the lease based on apparent abandonment of the Apartment. Should Resident not respond to such notice prior to the termination date, BHA may treat personal property left in the apartment as abandoned and dispose of it;"
+    },
+    {
+      "clause_id": "bha_12",
+      "clause_ref": "Section 12",
+      "section_title": "Legal Costs",
+      "text": "All legal costs, fees and charges authorized by law and actually incurred by BHA in connection with any court action brought against Resident will be charged to Resident, and Resident hereby agrees to pay the same if the BHA prevails in court. Legal costs, fees, and charges shall include all court costs, and other expenses incident to the court action."
+    },
+    {
+      "clause_id": "bha_14_a",
+      "clause_ref": "Section 14(A)",
+      "section_title": "Bha Entry Of Premises During Tenancy",
+      "text": "BHA may enter the Premises during reasonable hours, with the permission of the Resident, or forty -eight (48) hours after providing written notice to Resident, to perform routine inspections, scheduled maintenance or modernization work, extermination of pests or insects, routine maintenance in response to non-emergency work-orders, or for the purpose of showing the Premises. BHA must leave at the Apartment a written statement of the date, time, and purpose of entry, including repairs made, prior to leaving the premises. Such statement must be signed by the person making entry."
+    },
+    {
+      "clause_id": "bha_14_b",
+      "clause_ref": "Section 14(B)",
+      "section_title": "Bha Entry Of Premises During Tenancy",
+      "text": "BHA may enter the Apartment at any time without advance notice when there is reasonable cause to believe that an emergency exists. An emergency is a condition which poses an immediate danger to the life, health or safety of a person, or which presents a risk of significant damage to property, such as leaking gas, leaking water (particularly into areas adjacent to an apartment), open flame, smoke, odor emanating from Apartment, medical illness of a resident who may not be able to call for help, evidence that a child or children under the age of ten (10) have been left alone, or cases of emergency work orders. Whenever possible, BHA will make a reasonable effort to contact Resident prior to an emergency entry. In all such emergency cases, BHA must leave at the Apartment a written statement of the date, time, and purpose of entry, including repairs made, prior to leaving the premises. Such statement must be signed by the person making entry."
+    },
+    {
+      "clause_id": "bha_15",
+      "clause_ref": "Section 15",
+      "section_title": "Grievance Procedure",
+      "text": "All grievances arising under this lease may be resolved in accordance with BHA's then applicable Grievance Procedures and Policy."
+    },
+    {
+      "clause_id": "bha_16",
+      "clause_ref": "Section 16",
+      "section_title": "Bha Policy",
+      "text": "All BHA written policies duly promulgated for the benefit and well-being of the housing development and the residents, which are not inconsistent with the provisions of this lease, are specifically incorporated into this lease by reference as if fully set forth. Such policies shall be available for review promptly upon request, at a central location and at local development offices."
+    },
+    {
+      "clause_id": "bha_17",
+      "clause_ref": "Section 17",
+      "section_title": "Changes",
+      "text": "No changes or additions to this lease shall be made except by written agreement of Management and Resident, or where Resident is given written notice, thirty (30) days in advance of the effective date, that such changes or additions are required to comply with Federal or State statutes, regulations or waivers granted by Federal or State authorities pursuant to such regulations."
+    },
+    {
+      "clause_id": "bha_18_f",
+      "clause_ref": "Section 18(F)",
+      "section_title": "Non-Smoking Policy",
+      "text": "Landlord Not a Guarantor of Smoke-Free Environment. Resident acknowledges that Landlord's adoption of a non-smoking living environment does not make the Landlord or any of its managing agents the guarantor of Resident's health or of the non- smoking condition of the Resident's unit and the common areas. However, Landlord shall take reasonable steps to enforce the non-smoking terms of this leases and to make the Non-Smoking Area as smoke-free as is reasonably possible. Landlord is not required to take steps in response to smoking unless Landlord knows of said smoking or has been given written notice of said smoking."
+    },
+    {
+      "clause_id": "bha_18_h",
+      "clause_ref": "Section 18(H)",
+      "section_title": "Non-Smoking Policy",
+      "text": "Disclaimer by Landlord. Resident acknowledges that Landlord’s adoption of a non-smoking living environment, does not in any way change the standard of care that the Landlord or managing agent would have to a resident household to render buildings and premises designated as non-smoking any safer, more habitable, or improved in terms of air quality standards than any other rental premises. Landlord specifically disclaims any implied or express warranties that the building, common areas, or Resident's premises will have any higher or improved air quality standards than any other rental property. Landlord cannot and does not warrant or promise that the rental premises or common areas will be free from secondhand smoke. Resident acknowledges that Landlord's ability to police, monitor, or enforce the provisions of this Section is dependent in significant part on voluntary compliance by Resident and Resident's guests, as well as by other residents and guests in other parts of the Non- Smoking Area. Residents with respiratory ailments, allergies, or any other physical or mental condition relating to smoke are put on notice that Landlord does not assume any higher duty of care to enforce this Section than any other landlord obligation under the Lease."
+    },
+    {
+      "clause_id": "bha_20",
+      "clause_ref": "Section 20",
+      "section_title": "Authorized Family Members",
+      "text": "Except as otherwise provided by a written Lease Addendum, the individuals listed below shall be the only persons authorized to occupy the Apartment with Resident and shall comprise the Resident's household. If more than one party signs this lease as Resident, the agreements of Resident shall be the joint and several obligations of all such parties, and references to Resident shall include all such parties. IN WITNESS WHEREOF, the parties have executed this lease agreement this ___________ day of _______________ , 201__, at Boston, Massachusetts. ____________________________________ ____________________________________ (Resident) (Housing Authority) Title: ________________________________ ___________________________________ (Resident) (Resident)"
+    }
+  ]
+}

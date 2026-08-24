@@ -1,0 +1,149 @@
+{
+  "annotator": "claude",
+  "doc_id": "lease_bha_001",
+  "labelled_before_seeing_model_output": true,
+  "labelled_before_seeing_other_annotator": true,
+  "rubric": "clause_classifier_v2.txt, the same definitions the model is given",
+  "labels": [
+    {
+      "clause_id": "bha_2",
+      "label": "neutral",
+      "note": "Standard rent, due date and utility allocation. The two-installment accommodation and separating rent from other charges lean tenant-friendly, but the clause as a whole is an ordinary rent term."
+    },
+    {
+      "clause_id": "bha_4",
+      "label": "concerning",
+      "note": "A 45-night annual cap on any visitor plus a requirement that each household member physically reside in the unit nine months of twelve. Most renters would not expect their own absence to put the tenancy at risk."
+    },
+    {
+      "clause_id": "bha_5",
+      "label": "concerning",
+      "note": "BHA can move the resident to a different apartment on its own determination, including to free the unit for another resident or because it decides to close the building."
+    },
+    {
+      "clause_id": "bha_6_b",
+      "label": "neutral",
+      "note": "Landlord repairs in reasonable time, resident pays for damage they caused. Ordinary allocation."
+    },
+    {
+      "clause_id": "bha_6_d",
+      "label": "favorable",
+      "note": "Rent is abated in proportion to loss of value if repairs are not made in reasonable time. An affirmative remedy most leases do not give."
+    },
+    {
+      "clause_id": "bha_7_c",
+      "label": "favorable",
+      "note": "Landlord may not unreasonably refuse a payment plan or rent extension on good cause. Limited to one request, but an obligation few leases accept at all."
+    },
+    {
+      "clause_id": "bha_7_d",
+      "label": "neutral",
+      "note": "Heat, hot water, extermination and sanitary code compliance at initial occupancy. Statutory baseline rather than an extra benefit."
+    },
+    {
+      "clause_id": "bha_7_h",
+      "label": "favorable",
+      "note": "Written notice of the specific grounds for any adverse action plus notice of the right to a hearing. Due process spelled out in the lease itself."
+    },
+    {
+      "clause_id": "bha_7_n",
+      "label": "favorable",
+      "note": "Locks re-keyed promptly and charges waived for household members with a domestic violence restraining order. Specific protection well beyond typical."
+    },
+    {
+      "clause_id": "bha_8_a",
+      "label": "neutral",
+      "note": "Standard quiet enjoyment and nuisance clause. The wording is broad but this is expected in nearly every lease."
+    },
+    {
+      "clause_id": "bha_8_g",
+      "label": "neutral",
+      "note": "Resident pays for damage they or their guests caused, and the bill must itemize labour and materials and is not due until the first of the second month. Ordinary, with safeguards attached."
+    },
+    {
+      "clause_id": "bha_8_i",
+      "label": "neutral",
+      "note": "Return the unit in the condition received, normal wear and tear excepted. Standard."
+    },
+    {
+      "clause_id": "bha_8_k",
+      "label": "neutral",
+      "note": "Approval needed for locks and alterations, and it may not be unreasonably withheld. Affixed alterations passing to the landlord is typical fixture treatment."
+    },
+    {
+      "clause_id": "bha_8_n",
+      "label": "concerning",
+      "note": "Binds the resident to any policy BHA writes, with no detail in the lease about what those policies say or how they change. Judged on the reference-without-detail rule."
+    },
+    {
+      "clause_id": "bha_8_t",
+      "label": "neutral",
+      "note": "Social security numbers for all household members, as permitted by law. Expected in federally subsidised housing."
+    },
+    {
+      "clause_id": "bha_8_u",
+      "label": "concerning",
+      "note": "Eight hours of unpaid community service per month, per non-exempt adult, enforced through the lease. A statutory requirement for this programme, but not an obligation a person would expect a tenancy to carry. Close call and I could be argued out of it."
+    },
+    {
+      "clause_id": "bha_9_c",
+      "label": "neutral",
+      "note": "Fourteen days notice for non-payment, thirty otherwise. Standard statutory notice periods."
+    },
+    {
+      "clause_id": "bha_9_d",
+      "label": "favorable",
+      "note": "The termination notice must state specific grounds, and the resident may reply, examine their own file, and request a hearing."
+    },
+    {
+      "clause_id": "bha_11_c",
+      "label": "neutral",
+      "note": "Abandonment handled with written notice and the grievance procedure before property is disposed of. Losing possessions is serious, but the process here is the ordinary one."
+    },
+    {
+      "clause_id": "bha_12",
+      "label": "concerning",
+      "note": "One-way fee shifting. The resident pays BHA's full legal costs when BHA wins, and the clause says nothing about the resident winning."
+    },
+    {
+      "clause_id": "bha_14_a",
+      "label": "neutral",
+      "note": "Entry with permission or forty-eight hours written notice, and a signed written statement left behind every time. Standard entry terms with above-average record keeping."
+    },
+    {
+      "clause_id": "bha_14_b",
+      "label": "neutral",
+      "note": "Emergency entry without notice, with the emergency conditions actually enumerated and a written statement required afterwards. Tighter than most leases that allow emergency entry."
+    },
+    {
+      "clause_id": "bha_15",
+      "label": "concerning",
+      "note": "Grievances 'may' be resolved under a policy BHA sets and can change, with no detail in the lease. Ambiguity in the one clause that governs how disputes get heard."
+    },
+    {
+      "clause_id": "bha_16",
+      "label": "concerning",
+      "note": "Every BHA policy is incorporated into the lease by reference as if fully written into it. The resident is bound to documents they have not seen and which the landlord alone writes."
+    },
+    {
+      "clause_id": "bha_17",
+      "label": "neutral",
+      "note": "Standard amendment clause. Changes need written agreement, or thirty days notice when law requires them."
+    },
+    {
+      "clause_id": "bha_18_f",
+      "label": "neutral",
+      "note": "Defensive boilerplate disclaiming a guarantee, and it still commits the landlord to reasonable enforcement steps."
+    },
+    {
+      "clause_id": "bha_18_h",
+      "label": "neutral",
+      "note": "No-warranty and standard-of-care disclaimer. Reads badly and is the common form of this clause. Labelled on the boilerplate rule, and this is exactly the family the old eval set disputes."
+    },
+    {
+      "clause_id": "bha_20",
+      "label": "concerning",
+      "note": "Joint and several liability. Any one signer can be pursued for the whole obligation, which is not what most people assume when several adults sign together."
+    }
+  ]
+}
