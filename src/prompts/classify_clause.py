@@ -16,7 +16,11 @@ load_dotenv()
 SYSTEM_PROMPT_PATH = Path("src/prompts/system_prompts/clause_classifier_v2.txt")
 FEW_SHOT_PATH = Path("src/prompts/few_shot_examples/clause_classification_examples.json")
 
-MODEL_NAME = "openai/gpt-oss-120b"  # picked after comparing 3 models, see docs/experiments/02_model_benchmark.md
+MODEL_NAME = "openai/gpt-oss-120b"  # picked after comparing 3 models, see docs/02_model_benchmark.md
+
+# the only three labels this system understands. anything else is a bad response,
+# not a new category.
+VALID_LABELS = {"concerning", "neutral", "favorable"}
 
 
 def _load_system_prompt():
@@ -78,9 +82,22 @@ def classify_clause(clause_text, model_name=MODEL_NAME):
     content = re.sub(r"<think>.*?</think>", "", content, flags=re.DOTALL).strip()
 
     try:
-        return json.loads(content)
+        result = json.loads(content)
     except json.JSONDecodeError as e:
         raise ValueError(f"model didn't return valid json, got: {content!r}") from e
+
+    # parseable json is not the same as correct json. an unexpected label used to
+    # travel all the way to the streamlit ui, which indexes a dict with it, so a
+    # stray label crashed the page with a KeyError after the user had already
+    # waited a full minute. rejecting it here means report_node's existing
+    # ValueError handling turns it into a finding without a label instead.
+    label = result.get("label")
+    if label not in VALID_LABELS:
+        raise ValueError(f"model returned an unexpected label: {label!r}")
+    if not result.get("reason"):
+        raise ValueError(f"model returned no reason for label {label!r}")
+
+    return result
 
 
 if __name__ == "__main__":

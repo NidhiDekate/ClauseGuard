@@ -71,7 +71,7 @@ if "document_text" in st.session_state:
                     continue
 
                 label = finding["label"]
-                icon = {"concerning": "🔴", "neutral": "⚪", "favorable": "🟢"}[label]
+                icon = {"concerning": "🔴", "neutral": "⚪", "favorable": "🟢"}.get(label, "⚫")
                 with st.expander(f"{icon} {finding['category']} — {label.upper()}"):
                     st.write(finding["reason"])
                     if "fee_exposure_10_days_late" in finding:
