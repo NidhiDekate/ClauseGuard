@@ -1,0 +1,331 @@
+{
+  "strategy": "by_clause",
+  "k": 10,
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "cases_scored": 12,
+  "recall": {
+    "1": 0.75,
+    "2": 0.8333333333333334,
+    "3": 1.0,
+    "5": 1.0,
+    "10": 1.0
+  },
+  "per_case": [
+    {
+      "doc_id": "lease_pa_001",
+      "category": "late fees and rent payment terms",
+      "expected": "present",
+      "must_find_ref": "X",
+      "rank": 1,
+      "matched_by": "ref",
+      "retrieved_refs": [
+        "X",
+        "IX",
+        "VIII",
+        "XII",
+        "XXXV",
+        "XI",
+        "XIX",
+        "XVI",
+        "XIV",
+        "XIII"
+      ]
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "category": "early termination and lease-breaking fees",
+      "expected": "present",
+      "must_find_ref": "XIX",
+      "rank": 1,
+      "matched_by": "ref",
+      "retrieved_refs": [
+        "XIX",
+        "X",
+        "XII",
+        "IX",
+        "XI",
+        null,
+        "VIII",
+        "XVI",
+        "XXXV",
+        "II"
+      ]
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "category": "security deposit terms",
+      "expected": "present",
+      "must_find_ref": "XIV",
+      "rank": 1,
+      "matched_by": "ref",
+      "retrieved_refs": [
+        "XIV",
+        "XXVI",
+        "XXV",
+        "IX",
+        "XVI",
+        "L",
+        "I",
+        "VIII",
+        "XXXVI",
+        "XI"
+      ]
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "category": "landlord right of entry and notice period",
+      "expected": "present",
+      "must_find_ref": "XXX",
+      "rank": 1,
+      "matched_by": "ref",
+      "retrieved_refs": [
+        "XXX",
+        "XXXV",
+        "XXIII",
+        "XIX",
+        "XXXVI",
+        "XXVI",
+        "XI",
+        "XIV",
+        "IV",
+        "VIII"
+      ]
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "category": "guest and occupancy restrictions",
+      "expected": "present",
+      "must_find_ref": "XXXIII",
+      "rank": 3,
+      "matched_by": "ref",
+      "retrieved_refs": [
+        "III",
+        "V",
+        "XXXIII",
+        "XXXVI",
+        "XXVI",
+        "XXII",
+        "XXXIV",
+        "XXX",
+        "XLII",
+        "VI"
+      ]
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "category": "maintenance and repair responsibilities",
+      "expected": "present",
+      "must_find_ref": "XXXI",
+      "rank": 1,
+      "matched_by": "ref",
+      "retrieved_refs": [
+        "XXXI",
+        "XXIV",
+        "XVIII",
+        "XV",
+        "VII",
+        "XVII",
+        "XLVI",
+        "XXXVI",
+        "XXXIV",
+        "XLII"
+      ]
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "category": "liability and indemnification",
+      "expected": "present",
+      "must_find_ref": "XLIV",
+      "rank": 1,
+      "matched_by": "ref",
+      "retrieved_refs": [
+        "XLIV",
+        "XXXVI",
+        "XLVI",
+        "XXI",
+        "XLIII",
+        "XVIII",
+        "XXXVIII",
+        "IX",
+        "XLVIII",
+        "XIII"
+      ]
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "category": "automatic renewal and rent increases",
+      "expected": "present",
+      "must_find_ref": "II",
+      "rank": 1,
+      "matched_by": "ref",
+      "retrieved_refs": [
+        "II",
+        "VIII",
+        "XII",
+        "X",
+        "XXXI",
+        "XI",
+        "XXXV",
+        "XLII",
+        "IX",
+        "XXVI"
+      ]
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "category": "late fees and rent payment terms",
+      "expected": "present",
+      "must_find_ref": "5",
+      "rank": 1,
+      "matched_by": "ref",
+      "retrieved_refs": [
+        "5",
+        "6",
+        "3",
+        "2",
+        "4",
+        "7",
+        "11",
+        "8",
+        "1",
+        null
+      ]
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "category": "early termination and lease-breaking fees",
+      "expected": "absent",
+      "rank": null,
+      "matched_by": null,
+      "retrieved_refs": [
+        "5",
+        "2",
+        "6",
+        "8",
+        "1",
+        "7",
+        "4",
+        "3",
+        "13",
+        "14"
+      ]
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "category": "security deposit terms",
+      "expected": "present",
+      "must_find_ref": "7",
+      "rank": 1,
+      "matched_by": "ref",
+      "retrieved_refs": [
+        "7",
+        "3",
+        "14",
+        "1",
+        "13",
+        "6",
+        null,
+        "2",
+        "4",
+        "10"
+      ]
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "category": "landlord right of entry and notice period",
+      "expected": "absent",
+      "rank": null,
+      "matched_by": null,
+      "retrieved_refs": [
+        null,
+        "12",
+        "5",
+        "7",
+        "13",
+        "2",
+        "14",
+        "4",
+        "3",
+        "1"
+      ]
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "category": "guest and occupancy restrictions",
+      "expected": "absent",
+      "rank": null,
+      "matched_by": null,
+      "retrieved_refs": [
+        "10",
+        "13",
+        null,
+        "2",
+        "3",
+        "14",
+        "9",
+        "4",
+        "1",
+        "11"
+      ]
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "category": "maintenance and repair responsibilities",
+      "expected": "present",
+      "must_find_ref": "12",
+      "rank": 2,
+      "matched_by": "ref",
+      "retrieved_refs": [
+        "11",
+        "12",
+        "14",
+        "8",
+        "10",
+        "7",
+        "6",
+        "4",
+        "3",
+        "1"
+      ]
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "category": "liability and indemnification",
+      "expected": "absent",
+      "rank": null,
+      "matched_by": null,
+      "retrieved_refs": [
+        "14",
+        "11",
+        "13",
+        "9",
+        "10",
+        "12",
+        "6",
+        "7",
+        "5",
+        "3"
+      ]
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "category": "automatic renewal and rent increases",
+      "expected": "present",
+      "must_find_ref": "1",
+      "rank": 3,
+      "matched_by": "ref",
+      "retrieved_refs": [
+        "2",
+        "5",
+        "1",
+        "4",
+        "3",
+        null,
+        "10",
+        "11",
+        "13",
+        "12"
+      ]
+    }
+  ]
+}

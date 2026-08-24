@@ -1,0 +1,168 @@
+{
+  "_notes": "Golden set for retrieval evaluation. Answers one question per row: for this concern category, in this document, which clause should retrieval return? This is a different labelling job from test_set.json, which judges clause risk. Here nothing is judged, only located. DRAFT - every mapping below needs confirming by hand against the source document before any number from it is reported.",
+  "_scope": "Only two of the five real documents in test_set.json have full text in the repo. lease_real_002 has no document, and the two ToS entries are tosdr point titles rather than documents. So this covers 2 documents x 8 categories = 16 cases, 12 where an answer exists and 4 where it genuinely does not.",
+  "_absent_cases": "Retrieval always returns k chunks, so a case with no correct answer cannot be scored on recall. Those rows are carried anyway, marked expected=absent, because they are exactly the inputs the Reviewer has to reject. They get scored in E2, not here.",
+  "cases": [
+    {
+      "doc_id": "lease_pa_001",
+      "document_path": "data/sample_docs/pa_lease_sample.txt",
+      "category": "late fees and rent payment terms",
+      "expected": "present",
+      "must_find_ref": "X",
+      "must_find_snippet": "There shall be a penalty of $____ due as One (1) Time Payment / Every Day Rent is Late",
+      "also_relevant_refs": ["VIII", "IX"],
+      "note": "X is the late fee itself. VIII is the rent amount and due date, IX is the NSF charge. Both on topic, neither is the answer."
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "document_path": "data/sample_docs/pa_lease_sample.txt",
+      "category": "early termination and lease-breaking fees",
+      "expected": "present",
+      "must_find_ref": "XIX",
+      "must_find_snippet": "Shall have the right to terminate this Agreement at any time by providing at least ___ days' written notice to the Landlord along with an early termination fee",
+      "also_relevant_refs": [],
+      "note": ""
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "document_path": "data/sample_docs/pa_lease_sample.txt",
+      "category": "security deposit terms",
+      "expected": "present",
+      "must_find_ref": "XIV",
+      "must_find_snippet": "The Landlord requires a payment in the amount of $________________ (\"Security Deposit\") for the faithful performance of the Tenant",
+      "also_relevant_refs": [],
+      "note": ""
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "document_path": "data/sample_docs/pa_lease_sample.txt",
+      "category": "landlord right of entry and notice period",
+      "expected": "present",
+      "must_find_ref": "XXX",
+      "must_find_snippet": "The Landlord shall have the right to enter the Premises during normal working hours by providing at least twenty-four (24) hours notice",
+      "also_relevant_refs": ["XXVI"],
+      "note": "XXVI ACCESS is about keys and entry means, not the right to enter or the notice period."
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "document_path": "data/sample_docs/pa_lease_sample.txt",
+      "category": "guest and occupancy restrictions",
+      "expected": "present",
+      "must_find_ref": "XXXIII",
+      "must_find_snippet": "Guests of the Tenant are allowed for periods not lasting for more than 48 hours unless otherwise approved by the Landlord in writing",
+      "also_relevant_refs": ["III", "XXXVI"],
+      "note": "This is the live failure. The system returned III OCCUPANT(S) and the Reviewer approved it, because III genuinely is about occupancy. But III is a blank template field and XXXIII is the 48 hour limit that actually restricts the tenant. On topic is not the same as the answer, which is why also_relevant exists as a separate field."
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "document_path": "data/sample_docs/pa_lease_sample.txt",
+      "category": "maintenance and repair responsibilities",
+      "expected": "present",
+      "must_find_ref": "XXXI",
+      "must_find_snippet": "the Landlord makes no warranty as to the repair or replacement of units if one or all shall fail to operate",
+      "also_relevant_refs": ["VII", "XXV"],
+      "note": "VII APPLIANCES and XXV POSSESSION touch condition but do not assign repair responsibility."
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "document_path": "data/sample_docs/pa_lease_sample.txt",
+      "category": "liability and indemnification",
+      "expected": "present",
+      "must_find_ref": "XLIV",
+      "must_find_snippet": "The Landlord shall not be liable for any damage or injury to the Tenant, or any other person, or to any property",
+      "also_relevant_refs": ["XLIII"],
+      "note": ""
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "document_path": "data/sample_docs/pa_lease_sample.txt",
+      "category": "automatic renewal and rent increases",
+      "expected": "present",
+      "must_find_ref": "II",
+      "must_find_snippet": "At the end of the Lease Term and no renewal is made, the Tenant",
+      "also_relevant_refs": ["VIII"],
+      "note": "II offers month-to-month continuation at the end of the term. The live run reported this category as not addressed, which is a third confirmed miss. Weaker than the FTC clause, which says AUTOMATICALLY, but it is still the renewal provision and it is what a user asking about renewal needs."
+    },
+
+    {
+      "doc_id": "lease_ftc_001",
+      "document_path": "data/sample_docs/ftc_lease_sample.txt",
+      "category": "late fees and rent payment terms",
+      "expected": "present",
+      "must_find_ref": "5",
+      "must_find_snippet": "Tenant agrees to pay a $25 late fee, plus an additional $5 per day for every day thereafter until the rent is paid",
+      "also_relevant_refs": ["2", "4", "6"],
+      "note": "The live run got this one right."
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "document_path": "data/sample_docs/ftc_lease_sample.txt",
+      "category": "early termination and lease-breaking fees",
+      "expected": "absent",
+      "must_find_ref": null,
+      "must_find_snippet": null,
+      "also_relevant_refs": ["9"],
+      "note": "No early termination clause. 9 covers abandonment through removal of landlord property, which is a different thing. The live run correctly said not addressed."
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "document_path": "data/sample_docs/ftc_lease_sample.txt",
+      "category": "security deposit terms",
+      "expected": "present",
+      "must_find_ref": "7",
+      "must_find_snippet": "Tenants hereby agree to pay a security deposit of $685 to be refunded upon vacating",
+      "also_relevant_refs": ["11"],
+      "note": "The live run got this one right."
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "document_path": "data/sample_docs/ftc_lease_sample.txt",
+      "category": "landlord right of entry and notice period",
+      "expected": "absent",
+      "must_find_ref": null,
+      "must_find_snippet": null,
+      "also_relevant_refs": [],
+      "note": "No right of entry clause during the tenancy. 7 mentions the landlord inspecting after the tenant has vacated, which is not the same. The live run correctly said not addressed."
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "document_path": "data/sample_docs/ftc_lease_sample.txt",
+      "category": "guest and occupancy restrictions",
+      "expected": "absent",
+      "must_find_ref": null,
+      "must_find_snippet": null,
+      "also_relevant_refs": [],
+      "note": "No guest or occupancy clause. 13 PETS is about animals. The live run correctly said not addressed."
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "document_path": "data/sample_docs/ftc_lease_sample.txt",
+      "category": "maintenance and repair responsibilities",
+      "expected": "present",
+      "must_find_ref": "12",
+      "must_find_snippet": "If the tenant does not notify landlord in a prompt matter the tenant may be held financially responsible",
+      "also_relevant_refs": ["8"],
+      "note": "Arguable. 12 is framed as a duty to report rather than a duty to repair, but it is where repair responsibility lands on the tenant, and it is labelled concerning in test_set.json. The live run reported this category as not addressed. Flag for review: if you decide 12 does not count, change this row to absent and the live run becomes correct."
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "document_path": "data/sample_docs/ftc_lease_sample.txt",
+      "category": "liability and indemnification",
+      "expected": "absent",
+      "must_find_ref": null,
+      "must_find_snippet": null,
+      "also_relevant_refs": ["14"],
+      "note": "No indemnity or liability limitation clause. 14 FULL DISCLOSURE mentions legal and financial consequences but does not shift or limit liability. The live run correctly said not addressed."
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "document_path": "data/sample_docs/ftc_lease_sample.txt",
+      "category": "automatic renewal and rent increases",
+      "expected": "present",
+      "must_find_ref": "1",
+      "must_find_snippet": "Upon expiration, this Agreement shall become a month-to-month agreement AUTOMATICALLY, UNLESS either Tenants or Owners notify the other party in writing at least 30 days prior to expiration",
+      "also_relevant_refs": ["2"],
+      "note": "The confirmed miss. Correct clause sat at rank 3 while four rent clauses ranked above it, because the query carries a rent-increase half that this document has no answer for at all."
+    }
+  ]
+}
