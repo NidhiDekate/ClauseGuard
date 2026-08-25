@@ -33,7 +33,16 @@ FEW_SHOT_PATH = Path("src/prompts/few_shot_examples/clause_classification_exampl
 # same reasoning as the prompt version above: the thing being varied should not
 # live inside the code under test.
 #   CLAUSEGUARD_MODEL=openai/gpt-oss-20b python src/prompts/test_classifier.py
-MODEL_NAME = os.environ.get("CLAUSEGUARD_MODEL", "openai/gpt-oss-120b")
+MODEL_NAME = os.environ.get("CLAUSEGUARD_MODEL", "google/gemini-3.6-flash")
+MODEL_PROVIDER = os.environ.get("CLAUSEGUARD_PROVIDER", "openrouter")
+
+# When the primary provider fails, fall back rather than failing the request.
+# gemini-3.6-flash scored best on the held-out set (docs/07) but runs on paid
+# credit with auto top-up deliberately off, so the balance can run out. Groq's
+# free tier then keeps the demo alive on the second-best model instead of
+# returning an error. Set CLAUSEGUARD_FALLBACK="" to disable.
+FALLBACK_MODEL = os.environ.get("CLAUSEGUARD_FALLBACK", "openai/gpt-oss-120b")
+FALLBACK_PROVIDER = "groq"
 
 # E8: few-shot examples were assumed from the start and never tested against
 # zero-shot. They are not free. Nine examples ride on every single call, which
@@ -52,10 +61,20 @@ USE_FEW_SHOT = os.environ.get("CLAUSEGUARD_FEW_SHOT", "0") not in ("0", "false",
 # not a new category.
 VALID_LABELS = {"concerning", "neutral", "favorable"}
 
-# Output budget per call. Generous, because the visible JSON is small but
-# reasoning tokens share the same budget on gpt-oss models. The real defence
-# against truncation is the length cap in the prompt; this is the backstop.
-MAX_OUTPUT_TOKENS = 512
+# Output budget per call.
+#
+# This is a runaway guard, NOT a cost control: providers bill for tokens actually
+# generated, so a high cap costs nothing when it is not reached.
+#
+# It has to be high because reasoning and thinking tokens are drawn from the same
+# budget as the visible answer, and how many a model spends is not knowable in
+# advance. 512 was enough for gpt-oss-120b and starved gemini-3.6-flash, which
+# thinks first and had about ten words left for the JSON. Setting this too low
+# looks exactly like a parser bug: valid output, cut off mid-string.
+#
+# The real defence against long output is the 30-word cap in prompt v6. This is
+# the backstop behind it.
+MAX_OUTPUT_TOKENS = 2048
 
 
 def _load_system_prompt():
@@ -75,7 +94,7 @@ def _load_few_shot_examples():
     return json.loads(FEW_SHOT_PATH.read_text(encoding="utf-8"))
 
 
-def _build_model(model_name):
+def _build_model(model_name, provider=None):
     """Chat model for the given id, on whichever provider is selected.
 
     Groq is the default and what the deployed app uses. OpenRouter exists so
@@ -89,7 +108,7 @@ def _build_model(model_name):
     silently with a sleep, which just looks like the script froze. Handled
     explicitly in classify_clause instead so there is a message.
     """
-    provider = os.environ.get("CLAUSEGUARD_PROVIDER", "groq")
+    provider = provider or MODEL_PROVIDER
 
     if provider == "openrouter":
         from langchain_openai import ChatOpenAI
@@ -115,7 +134,7 @@ def _build_model(model_name):
                     max_tokens=MAX_OUTPUT_TOKENS)
 
 
-def build_classifier_chain(model_name, use_few_shot=None):
+def build_classifier_chain(model_name, use_few_shot=None, provider=None):
     system_prompt = _load_system_prompt()
     if use_few_shot is None:
         use_few_shot = USE_FEW_SHOT
@@ -134,13 +153,25 @@ def build_classifier_chain(model_name, use_few_shot=None):
 
     messages.append(("human", "Clause: {clause}"))
 
-    return ChatPromptTemplate.from_messages(messages) | _build_model(model_name)
+    return ChatPromptTemplate.from_messages(messages) | _build_model(model_name, provider)
 
 
 def classify_clause(clause_text, model_name=MODEL_NAME, with_usage=False, use_few_shot=None):
     chain = build_classifier_chain(model_name, use_few_shot=use_few_shot)
 
     try:
+        response = chain.invoke({"clause": clause_text})
+    except Exception as e:
+        # Provider-level failure: out of credit, provider outage, auth. Fall back
+        # to the free model rather than failing the user's request. Deliberately
+        # broad, because the point is that ANY provider failure degrades instead
+        # of breaking, and the exception types differ by SDK.
+        if not FALLBACK_MODEL or model_name == FALLBACK_MODEL:
+            raise
+        print(f"\n  [{model_name} failed ({type(e).__name__}), "
+              f"falling back to {FALLBACK_MODEL}]", end=" ", flush=True)
+        chain = build_classifier_chain(FALLBACK_MODEL, use_few_shot=use_few_shot,
+                                       provider=FALLBACK_PROVIDER)
         response = chain.invoke({"clause": clause_text})
     except RateLimitError as e:
         if "tokens per day" in str(e) or "TPD" in str(e):

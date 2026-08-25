@@ -37,10 +37,17 @@ Zero-shot is better on coverage, better on recall of `concerning` which is the s
 this product, misses one fewer concerning clause, uses **55% fewer input tokens**, and costs 36%
 less.
 
-It is worse on macro-F1, 0.660 against 0.697. That gap is entirely the neutral class: recall 27%
-against 18%. Both of those are broken, and they are broken because of v5's known overcorrection
-toward `concerning`, which few-shot examples do not fix. Choosing between two failing numbers is
-not a reason to keep 40,000 tokens per run.
+It is worse on macro-F1, 0.660 against 0.697.
+
+**That gap is noise, and it was measured later.** Running `gpt-oss-120b` three times on identical
+inputs at temperature 0 produced macro-F1 of 0.573, 0.573 and 0.707, a spread of 0.13. The
+few-shot advantage of 0.037 is roughly a quarter of the model's own run-to-run swing against
+itself.
+
+At the time I dismissed the macro-F1 argument for a different reason, that the gap is entirely
+the neutral class where both arms are broken, recall 27% against 18%. That reasoning was sound
+but incidental. The real answer is that a single-run macro-F1 difference of this size at n=53
+carries no information at all.
 
 **Decision: delete the few-shot examples.** Same accuracy, cheaper, marginally safer, and D1
 becomes structurally impossible rather than guarded.
@@ -121,8 +128,15 @@ few-shot surface.
 
 ## What this does not establish
 
-n=53. One run per arm, so no variance estimate, and this project has already seen the same model
-score 45 and 46 on identical inputs an hour apart.
+n=53, and **one run per arm, which is the central weakness of this experiment.** Measured
+afterwards with `--repeat 3`, `gpt-oss-120b` scores 41, 41 and 44 on identical inputs at
+temperature 0. A 3-clause spread is wider than the entire few-shot versus zero-shot difference
+this document reports.
+
+The accuracy conclusion survives, because it was a tie and the decision was made on tokens, cost
+and eliminating the leakage surface rather than on accuracy. But **if either arm had "won" by one
+or two clauses, that result would have been meaningless**, and this experiment was one lucky pair
+of runs away from producing a confident wrong answer. Every ablation from here uses `--repeat`.
 
 Both arms were scored against labels derived by one annotator applying the rubric, with a second
 reviewing. Weaker than the two blind passes used for the held-out set.

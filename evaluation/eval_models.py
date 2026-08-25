@@ -41,6 +41,9 @@ TEST_SET_PATH = Path("evaluation/datasets/test_set.json")
 # two strategies writing to one filename, each run silently destroying the last.
 # the v2 run is committed evidence of a decision, so a v5 run must not land on top
 # of it.
+# Any variable that changes what a report MEANS belongs in its filename.
+# Learned three times: two chunking strategies shared a file, a failed run
+# overwrote a good one, and two models shared a slot.
 REPORT_PATH = Path(f"evaluation/reports/model_selection_{cc.PROMPT_VERSION}{'' if cc.USE_FEW_SHOT else '_zeroshot'}.json")
 
 LABELS = ("concerning", "neutral", "favorable")
@@ -202,6 +205,11 @@ def main():
                         help="override the provider in CANDIDATES. Groq's free tier is 200k "
                              "tokens per day and one full run of 53 clauses with few-shot "
                              "examples costs about 72k, so three runs exhaust it.")
+    parser.add_argument("--repeat", type=int, default=1, metavar="N",
+                        help="run each model N times and report the spread. Single runs of this "
+                             "eval are unstable: gpt-oss-120b scored 45, 46, 43 and 41 on "
+                             "identical inputs at temperature 0. A number without a spread is "
+                             "not a result.")
     parser.add_argument("--held-out", metavar="GOLD",
                         help="score against the held-out set instead of test_set.json, "
                              "e.g. evaluation/datasets/held_out_gold.json")
@@ -226,15 +234,41 @@ def main():
 
     results = []
     for model_id, provider, price_in, price_out in candidates:
-        try:
-            results.append(evaluate(model_id, provider, price_in, price_out, clauses, args.pause))
-        except Exception as e:
-            print(f"\n[{model_id} failed entirely] {type(e).__name__}: {e}")
-            results.append({"model": model_id, "provider": provider, "error": str(e)})
+        runs = []
+        for attempt in range(args.repeat):
+            if args.repeat > 1:
+                print(f"\n--- run {attempt + 1} of {args.repeat} ---")
+            try:
+                runs.append(evaluate(model_id, provider, price_in, price_out,
+                                     clauses, args.pause))
+            except Exception as e:
+                print(f"\n[{model_id} failed entirely] {type(e).__name__}: {e}")
+                runs.append({"model": model_id, "provider": provider, "error": str(e)})
+        scored_runs = [r for r in runs if "accuracy" in r]
+        if len(scored_runs) > 1:
+            # Report the median run, and carry the spread alongside it. The median
+            # rather than the mean because with 3 runs one bad run should not drag
+            # the headline; the spread is what tells you how much to trust it.
+            scored_runs.sort(key=lambda r: r["correct"])
+            headline = dict(scored_runs[len(scored_runs) // 2])
+            correct = [r["correct"] for r in scored_runs]
+            headline["runs"] = len(scored_runs)
+            headline["correct_per_run"] = correct
+            headline["correct_min"] = min(correct)
+            headline["correct_max"] = max(correct)
+            headline["missed_per_run"] = [r["missed_concerning"] for r in scored_runs]
+            headline["all_runs"] = [{k: v for k, v in r.items() if k != "per_clause"}
+                                    for r in scored_runs]
+            results.append(headline)
+        else:
+            results.extend(runs)
 
     scored = [r for r in results if "accuracy" in r]
 
     print("\n\n=== comparison ===\n")
+    if args.repeat > 1:
+        print("accuracy shows the MEDIAN run, with the observed range over all runs\n"
+              "in brackets. missed shows a range only when it varied.\n")
     header = (f"{'model':<34}{'accuracy':<20}{'cover':<8}{'recall':<9}"
               f"{'macroF1':<9}{'missed':<8}{'alarms':<8}{'latency':<10}{'cost'}")
     print(header)
@@ -242,13 +276,24 @@ def main():
     print("-" * len(header))
     for r in scored:
         lo, hi = r["accuracy_ci"]
+        # With repeats, show the observed spread across runs rather than the Wilson
+        # interval. The interval answers "how uncertain is one measurement"; the
+        # range answers "does this number move when I run it again", and this eval
+        # moves by up to 3 clauses at temperature 0.
+        if r.get("runs", 1) > 1:
+            acc_cell = (f"{r['correct']}/{r['total']} "
+                        f"[{r['correct_min']}-{r['correct_max']} over {r['runs']}]")
+        else:
+            acc_cell = f"{r['correct']}/{r['total']} {r['accuracy']:.0%} [{lo:.0%}-{hi:.0%}]"
         print(
             f"{r['model']:<34}"
-            + f"{r['correct']}/{r['total']} {r['accuracy']:.0%} [{lo:.0%}-{hi:.0%}]".ljust(20)
+            + acc_cell.ljust(20)
             + f"{r['coverage']:.0%}".ljust(8)
             + f"{r['per_class']['concerning']['recall']:.0%}".ljust(9)
             + f"{r['macro_f1']:.2f}".ljust(9)
-            + f"{r['missed_concerning']}".ljust(8)
+            + (f"{min(r['missed_per_run'])}-{max(r['missed_per_run'])}"
+               if r.get("runs", 1) > 1 and len(set(r['missed_per_run'])) > 1
+               else f"{r['missed_concerning']}").ljust(8)
             + f"{r['false_alarms']}".ljust(8)
             + (f"{r['avg_latency_seconds']:.2f}s".ljust(10) if r["avg_latency_seconds"] else "n/a".ljust(10))
             + f"${r['cost_usd']:.4f}"

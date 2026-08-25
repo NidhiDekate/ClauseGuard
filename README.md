@@ -1,147 +1,130 @@
 # ClauseGuard
 
-> **Understand a lease, insurance policy, or Terms of Service in under a minute — with every recommendation backed by the exact clause that produced it.**
+> Read a lease, insurance policy, or Terms of Service and get back the clauses that could cost you, each one linked to the exact text it came from.
 
-ClauseGuard is an AI decision-intelligence system that reads legal-style documents, identifies clauses worth attention, explains them in plain English, and links every conclusion to the specific text it came from.
+ClauseGuard reads legal-style documents, finds the clauses that matter across eight risk categories, labels each one, and explains it in a sentence a non-lawyer can act on.
 
-## Live Demo
+## Live demo
 
-🌐 **Try ClauseGuard:** https://clauseguard-ai.streamlit.app/
+https://clauseguard-ai.streamlit.app/
 
-Upload a lease, insurance policy, or Terms of Service document to generate an evidence-backed analysis with clause-level citations.
+## What this project is for
 
-## Why this project
+This is an AI engineering case study. The application works, but the point of the repository is the set of questions behind it: how should a contract be chunked, does the retrieval actually find the right clause, which model should classify it, do few-shot examples earn their place, and how do you know any of the answers are real.
 
-This is built as an AI engineering case study, not just a document-processing application. The system is structured around a set of real engineering questions — chunking strategy, retrieval quality, model selection, whether a reviewer step actually reduces unsupported claims — each tested with real data and documented, not assumed. See `ROADMAP.md` for the full list of questions and `ENGINEERING_JOURNAL.md` for the reasoning and real bugs behind every completed decision.
+Every one of those was measured rather than assumed, and the write-ups include the experiments that failed and the numbers that turned out to be wrong.
 
-## Core features
-
-- Evidence-backed clause analysis, not summarization
-- Retrieval-augmented generation over uploaded documents
-- LangGraph multi-step workflow: Planner → Retriever → Reviewer → Calculator → Decision report
-- Custom-built MCP server for clause retrieval
-- Multi-model benchmarking to select the most accurate and practical model for production use
-- Reviewer step gating unsupported claims before they reach the output
-- LangSmith observability and structured SQLite request logging
-- FastAPI backend, Streamlit frontend, Docker deployment
+In August 2026 the whole project was re-audited from scratch. That audit found 67 defects in my own work, including a data leak that invalidated every accuracy number I had published. Those numbers are corrected below. The story of the audit is in `docs/10_what_i_learned.md`.
 
 ## Results
 
-Real numbers from the actual experiments — not aspirational claims.
+All figures are scored on 53 hand-labelled clauses from 5 real documents. The test set also holds 10 clauses from 3 synthetic documents; those are used only to check the pipeline runs end to end and are never scored.
 
-**Clause classifier:**
-| Prompt version | Accuracy (real, hand-labeled clauses) | Notes |
+**Always state the baseline.** The label distribution is 36 concerning, 11 neutral, 6 favorable, so a classifier that answers "concerning" every time scores 67.9%. Any number near that line has learned nothing.
+
+**Clause classifier, prompt v6 zero-shot, three runs per model at temperature 0:**
+
+| | `gemini-3.6-flash` (default) | `gpt-oss-120b` (fallback) |
 |---|---|---|
-| v1 (baseline) | 86.8% (46/53) | All errors were one-directional — boilerplate wrongly flagged as concerning |
-| v2 (in use) | **88.7% (47/53)** | Fixed the bias; one correction generalized to an unseen clause |
-| v3 (rejected) | 86.8% (46/53) | Same score, but introduced false negatives on genuinely concerning clauses — reverted |
+| Correct, per run | 43, 44, 44 | 41, 41, 44 |
+| Missed concerning clauses | **0, 0, 0** | 1, 1, 1 |
+| Coverage | 100% | 100% |
+| Cost per 53 clauses | $0.14 | $0.014 |
+| Majority-class baseline | 67.9% | 67.9% |
 
-**A note on the numbers below.** `evaluation/datasets/test_set.json` holds 63 labeled clauses across 8 documents. Ten of those come from 3 synthetic documents that I keep only for checking the pipeline runs end to end — they are too clean to be a fair test. Every accuracy figure here is scored on the 53 real clauses from the 5 real documents. Where a denominator is lower than 53, a model failed to return a usable answer on the remaining clauses, and that is noted in the row.
+**On accuracy these two models are not distinguishable.** Both reach 44 of 53 and their ranges
+overlap. Quoting a 3-point gap from any single pair of runs would be quoting noise.
 
-**Model comparison:**
-| Model | Accuracy | Avg latency | Notes |
-|---|---|---|---|
-| `gpt-oss-20b` | 79.2% (42/53) | 2.15s | Fastest, least accurate |
-| **`gpt-oss-120b`** | **88.5% (46/52)** | 1.79s | **Selected** — best balance of accuracy, speed, and reliability |
-| `qwen/qwen3.6-27b` | 89.4% (42/47) | 11.84s | Highest raw score, but hit its free-tier daily token limit mid-test — incomplete, not practically usable |
+**On the safety metric they separate cleanly.** Gemini missed zero concerning clauses in all
+three runs; the fallback missed exactly one in all three. No overlap, and both perfectly
+consistent. Recall on `concerning` is the metric that matters here: a missed one-sided clause
+reaches a person who trusted the tool to catch it, while a false alarm costs a few seconds of
+reading.
 
-**Chunking strategy:** clause-boundary-aware chunking beat fixed-size chunking on every real retrieval test — fixed-size cut clauses mid-sentence and, in one case, returned a chunk dominated by an unrelated clause instead of the correct one.
+**Single runs of this evaluation are unstable.** The same model on identical inputs at
+temperature 0 has scored 41, 43, 44, 45 and 46 across the project's history. Every number above
+is reported as a range for that reason, and `evaluation/eval_models.py --repeat N` is how they
+were produced.
 
-**Full pipeline validation:** the end-to-end system's decision report matched the original hand-labeled ground truth on a real test document, including correctly identifying which clauses the document simply didn't address rather than guessing.
+**Held-out evaluation.** 28 clauses from a Boston Housing Authority lease used in no other part of this project, labelled independently by two annotators and adjudicated in writing. `gemini-3.6-flash` scored 21/28, 75%, against a 50% baseline, with **zero missed concerning clauses**. Full write-up in `docs/07_held_out_evaluation.md`. Those figures were measured under prompt v5 and were not re-measured under v6, because a held-out set only works once.
 
-Full experiment write-ups: `docs/01_prompt_engineering.md`, `docs/02_model_benchmark.md`, `docs/03_chunking_and_vector_store.md`. Full reasoning and real bugs hit along the way: `ENGINEERING_JOURNAL.md`.
+**Latency is not a stable number.** LangSmith traces show per-call latency ranging from 0.6s to 21.6s on clauses of near-identical length and token count. The averages reported in the experiment write-ups hide a distribution with a 30x spread, most of it provider variance rather than model behaviour. Treat every latency comparison in this repository as weak.
+
+**Retrieval.** Every correct clause is within the top 3 retrieved chunks. Recall@1 75%, recall@2 83%, recall@3 100%, over 12 cases where an answer exists. The pipeline fetches 3.
+
+**Chunking.** Clause-boundary chunking finds every answer at k=3. Against recursive character splitting, which is what most production RAG uses, it is better on 4 of 12 cases and worse on none, which at n=12 is suggestive and not conclusive. It beats naive fixed-size slicing by a wide margin, but that is a weak baseline and the earlier version of this README oversold it.
+
+**Few-shot examples.** Removed. They tied with zero-shot on accuracy, cost 55% more input tokens, and were the surface that leaked the test set into the prompt in the first place.
+
+Write-ups: `docs/05_model_selection.md`, `docs/06_annotation_guidelines.md`, `docs/07_held_out_evaluation.md`, `docs/08_chunking_comparison.md`, `docs/09_few_shot_ablation.md`. Earlier experiments in `docs/01` to `docs/03`, each carrying a banner where its numbers have been superseded.
+
+## The finding this project is actually about
+
+Two annotators labelled a held-out set independently and agreed on 15 of 28 clauses. Cohen's kappa 0.32.
+
+The disagreement was not carelessness. One annotator was labelling on **harm**, meaning what could cost this person money. The prompt was classifying on **typicality**, meaning what is unusual for a document of this kind. Nobody had written down which one the project meant, and the conflict was invisible in aggregate accuracy for months because both rubrics agree on most clauses.
+
+That single finding invalidated every number in the project and produced `docs/06_annotation_guidelines.md`, the annotation rubric that should have existed from the start.
 
 ## Architecture
 
 ```
-Document → Chunking → Embeddings → Vector Store
-                                        ↓
-                Planner → Retriever (custom MCP) → Reviewer → Calculator → Decision Report
+Document → Chunking → Embeddings → Chroma
+                                     ↓
+        Planner → Retriever → Reviewer → Calculator → Report
 ```
 
-Reviewer runs before Calculator specifically because of a real bug found during development: an earlier version ran Calculator first, which produced a confident, specific dollar figure using a clause the Reviewer went on to reject as irrelevant moments later. Reordering the graph — not changing either node's internal logic — fixed it. Full story in `ENGINEERING_JOURNAL.md`.
+The Reviewer runs before the Calculator because of a real bug: an earlier version ran the Calculator first and produced a confident dollar figure from a clause the Reviewer rejected as irrelevant moments later. Reordering the graph fixed it without changing either node.
 
-## Engineering experiments
+The Reviewer is an LLM-as-a-judge. It has never been evaluated as one, which is the largest gap in this repository and is listed below.
 
-This repository documents measurable comparisons across:
-- Chunking strategies (fixed-size vs. clause-boundary-aware) — clause-boundary won
-- Embedding models
-- Vector stores (Chroma vs. Pinecone) — identical retrieval quality, Chroma chosen for local development speed
-- Prompt versions — three real iterations, with the reasoning for reverting one documented, not hidden
-- LLM providers — three models benchmarked head to head
-- Reviewer step enabled vs. disabled — confirmed it catches both obvious and subtle irrelevant matches
+## Core features
 
-Write-ups: `docs/01_prompt_engineering.md`, `docs/02_model_benchmark.md`, `docs/03_chunking_and_vector_store.md`. Reasoning behind completed decisions: `ENGINEERING_JOURNAL.md`.
+- Clause-level analysis with the source text attached to every finding
+- Retrieval-augmented generation over an uploaded document
+- LangGraph workflow: Planner, Retriever, Reviewer, Calculator, Report
+- Structure-aware chunking with a fallback chain for documents that are not numbered
+- Model selection across seven candidates from four vendors
+- LangSmith tracing, enabled through environment variables with no application code
+- Structured SQLite request logging
+- FastAPI backend, Streamlit frontend, Docker
+
+## What this does not do
+
+Listed because a project that names its own limits is easier to trust than one that does not.
+
+- **The Reviewer is not evaluated.** It is an LLM judge with no measured precision or recall.
+- **Generation is not evaluated.** Nothing checks whether the `reason` written for a clause actually follows from that clause. Retrieval and classification are measured; faithfulness is not.
+- **Coverage is bounded by eight fixed categories.** This is a checklist, not a full document sweep. A clause outside those categories is never examined.
+- **The MCP server is not finished.** It exists and has never been run as a real process end to end.
+- **Observability is tracing only.** LangSmith records every call, but no evaluator or alert runs on top of it, and nothing is measured from live traffic.
+- **Sample sizes are small.** 53 clauses, 28 held-out, 12 retrieval cases. One case in the retrieval set is 8 percentage points. Most results here are suggestive.
+- **The deployed app runs `gpt-oss-120b`**, not `gemini-3.6-flash` which scored better, because switching means an API key in Streamlit secrets and about two cents per analysis on a public demo with no rate limiting.
 
 ## Tech stack
 
-LangGraph, LangChain, MCP (FastMCP), FastAPI, Streamlit, Docker, LangSmith, SQLite, Chroma, Pinecone, HuggingFace (sentence-transformers), Groq.
+LangGraph, LangChain, MCP (FastMCP), FastAPI, Streamlit, Docker, SQLite, Chroma, Pinecone, sentence-transformers (all-MiniLM-L6-v2), Groq, OpenRouter.
 
-## Repository structure
+## Running it
 
+```bash
+pip install -r requirements.txt
+cp .env.example .env          # add GROQ_API_KEY
+streamlit run streamlit_app.py
 ```
-clauseguard/
-├── README.md
-├── README_hf_space.md            # short version for the HuggingFace Space
-├── ROADMAP.md                     # phase status
-├── ENGINEERING_JOURNAL.md          # why each decision was made, and the bugs behind them
-├── LICENSE
-├── .gitignore
-├── .env.example
-├── requirements.txt
-├── Dockerfile
-├── docker-compose.yml
-├── start.sh
-├── streamlit_app.py                 # entry point for the deployed Streamlit app
-│
-├── src/
-│   ├── agents/                       # LangGraph nodes, the graph, MCP server, guardrails, logging
-│   │   ├── graph.py                   # planner → retriever → reviewer → calculator → report
-│   │   ├── reviewer.py
-│   │   ├── calculator.py
-│   │   ├── guardrails.py
-│   │   ├── clause_search_server.py     # custom FastMCP server for clause retrieval
-│   │   ├── test_mcp_client.py
-│   │   └── logging_db.py
-│   ├── rag/
-│   │   ├── chunking.py                  # clause-boundary-aware chunking
-│   │   ├── retriever.py
-│   │   ├── vector_store.py               # Chroma
-│   │   └── vector_store_pinecone.py
-│   ├── prompts/
-│   │   ├── classify_clause.py
-│   │   ├── system_prompts/                # clause_classifier v1, v2, v3
-│   │   ├── few_shot_examples/
-│   │   └── test_classifier.py
-│   └── models/
-│       └── compare_models.py               # the model benchmark
-│
-├── api/main.py                              # FastAPI backend
-├── frontend/app.py                           # Streamlit UI
-│
-├── evaluation/
-│   ├── datasets/test_set.json                 # hand-labeled ground truth
-│   └── reports/model_comparison.json
-│
-├── data/sample_docs/                           # used by the "try a sample" option in the UI
-│
-└── docs/
-    ├── ARCHITECTURE.md
-    ├── 01_prompt_engineering.md                 # one write-up per experiment actually run
-    ├── 02_model_benchmark.md
-    └── 03_chunking_and_vector_store.md
+
+Evaluations, none of which need the app running:
+
+```bash
+python -m pytest tests/ -q                      # chunker regression tests, no network needed
+python evaluation/eval_retrieval.py             # retrieval, no API calls
+python evaluation/eval_models.py --only openai/gpt-oss-120b
+python evaluation/eval_models.py --held-out evaluation/datasets/held_out_gold.json --only ...
 ```
 
 ## Roadmap
 
-See `ROADMAP.md` for current status and `ENGINEERING_JOURNAL.md` for the decisions behind it.
-
-## Future work
-
-- RAGAS-based evaluation, replacing the current hand-scored benchmark
-- Automated regression testing and CI/CD
-- LLMOps dashboards for cost and latency over time
-- Advanced model routing based on measured per-request performance, not a single fixed model
+`ROADMAP.md` for status. `ENGINEERING_JOURNAL.md` for the decisions and the bugs behind them.
 
 ## Disclaimer
 
