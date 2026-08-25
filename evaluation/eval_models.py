@@ -37,7 +37,11 @@ sys.path.append(str(Path(__file__).resolve().parents[1] / "src" / "prompts"))
 import classify_clause as cc  # noqa: E402
 
 TEST_SET_PATH = Path("evaluation/datasets/test_set.json")
-REPORT_PATH = Path("evaluation/reports/model_selection.json")
+# report path carries the prompt version. the retrieval eval had this exact bug:
+# two strategies writing to one filename, each run silently destroying the last.
+# the v2 run is committed evidence of a decision, so a v5 run must not land on top
+# of it.
+REPORT_PATH = Path(f"evaluation/reports/model_selection_{cc.PROMPT_VERSION}.json")
 
 LABELS = ("concerning", "neutral", "favorable")
 
