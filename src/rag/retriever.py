@@ -9,7 +9,7 @@ import uuid
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 
-from chunking import chunk_by_clause
+from chunking import chunk_document
 
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 
@@ -22,7 +22,19 @@ def build_retriever(document_text, collection_name=None):
     if collection_name is None:
         collection_name = f"clauseguard_{uuid.uuid4().hex[:8]}"
 
-    chunks = chunk_by_clause(document_text)
+    chunks, strategy = chunk_document(document_text)
+
+    # D39: the chunker used to match only "I." / "1." at line start, so a
+    # Terms of Service written with headings or paragraphs became one chunk
+    # and every query returned it. There was no error and no warning, just a
+    # confident report built on a single piece of text. chunk_document now
+    # falls back through several shapes, and the strategy it landed on is
+    # printed so the failure is never silent again.
+    print(f"  [chunking: {len(chunks)} chunks via {strategy}]")
+    if strategy == "fixed_size_fallback":
+        print("  [warning: no clause structure recognised, retrieval quality "
+              "will be worse than the numbers in docs/04]")
+
     embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
 
     return Chroma.from_texts(
