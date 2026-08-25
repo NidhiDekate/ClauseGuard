@@ -101,15 +101,17 @@
         },
         {
           "clause_ref": "XXXV",
-          "text": "Tenant, or any Occupant(s) is arrested, convicted, or given deferred adjudication for a criminal offense involving actual or potential physical harm to a person...regardless of whether arrest or conviction occurs.",
+          "text": "XXXV. DEFAULT. If the Tenant fails to comply with any of the financial or material provisions of this Agreement, or of any present rules and regulations or any that may be hereafter prescribed by the Landlord, or materially fails to comply with any duties imposed on the Tenant by statute or State laws, within the time period after delivery of written notice by the Landlord specifying the non-compliance and indicating the intention of the Landlord to terminate the Agreement by reason thereof, the Landlord may terminate this Agreement. If the Tenant fails to pay rent when due and the default continues for the time-period specified in the written notice thereafter, the Landlord may, at their option, declare the entire balance (compiling all months applicable to this Agreement) of rent payable hereunder to be immediately due and payable and may exercise any and all rights and remedies available to the Landlord at law or in equity and may immediately terminate this Agreement. The Tenant will be in default if: (a) Tenant does not pay rent or other amounts that are owed; (b) Tenant, their guests, or the Occupant(s) violate this Agreement, rules, or fire, safety, health, or criminal laws, regardless of whether arrest or conviction occurs; (c) Tenant abandons the Premises; (d) Tenant gives incorrect or false information in the rental application; (e) Tenant, or any Occupant(s) is arrested, convicted, or given deferred adjudication for a criminal offense involving actual or potential physical harm to a person, or involving possession, manufacture, or delivery of a controlled substance, marijuana, or drug paraphernalia under state statute; (f) any illegal drugs or paraphernalia are found in the Premises or on the person of the Tenant, guests, or Occupant(s) while on the Premises and/or; (g) as otherwise allowed by law.",
           "label": "concerning",
-          "reason": "Default can be triggered by arrest alone, without any conviction — an unusually low bar that most tenants wouldn't expect"
+          "reason": "Default can be triggered by arrest alone, without any conviction — an unusually low bar that most tenants wouldn't expect",
+          "text_restored": "full clause text restored from data/sample_docs/pa_lease_sample.txt"
         },
         {
           "clause_ref": "XLIV",
-          "text": "The Landlord shall not be liable for any damage or injury to the Tenant...unless caused solely by the Landlord's negligence.",
+          "text": "XLIV. INDEMNIFICATION. The Landlord shall not be liable for any damage or injury to the Tenant, or any other person, or to any property, occurring on the Premises, or any part thereof, or in common areas thereof, and the Tenant agrees to hold the Landlord harmless from any claims or damages unless caused solely by the Landlord's negligence. It is recommended that renter's insurance be purchased at the Tenant's expense.",
           "label": "concerning",
-          "reason": "Shifts nearly all liability risk onto the tenant; 'solely' is a high bar that's hard for a tenant to prove"
+          "reason": "Shifts nearly all liability risk onto the tenant; 'solely' is a high bar that's hard for a tenant to prove",
+          "text_restored": "full clause text restored from data/sample_docs/pa_lease_sample.txt"
         },
         {
           "clause_ref": "XL",
@@ -195,9 +197,10 @@
       "clauses": [
         {
           "clause_ref": "1.7.D",
-          "text": "This lease automatically renews under the same terms...with a $100.00 per month rental increase unless another lease, an addendum and/or a lease extension is executed, or written notice of non-renewal is given 120 days before expiration. The right to renew this lease is entirely at the discretion of the Landlord.",
+          "text": "This lease automatically renews under the same terms defined in Section 1.2 Lease Specifications with a $100.00 per month rental increase unless another lease, an addendum and/or a lease extension is executed, or written notice of non-renewal is given 120 days before expiration. The right to renew this lease is entirely at the discretion of the Landlord. It is tenant(s) responsibility to ask Landlord if lease is being renewed or not.",
           "label": "concerning",
-          "reason": "Automatic renewal with a guaranteed rent increase, a 120-day notice window most tenants wouldn't track, and renewal being entirely the landlord's discretion despite the tenant carrying the notice burden"
+          "reason": "Automatic renewal with a guaranteed rent increase, a 120-day notice window most tenants wouldn't track, and renewal being entirely the landlord's discretion despite the tenant carrying the notice burden",
+          "text_restored": "full clause text restored from the source lease"
         },
         {
           "clause_ref": "2.1",
@@ -219,9 +222,10 @@
         },
         {
           "clause_ref": "2.12.B",
-          "text": "Landlord has the right to enter the leased property at any time without advance notice. Landlord...has the right to inspect, show, make repairs, and do maintenance even if the Tenant is not at home.",
+          "text": "Landlord has the right to enter the leased property at any time without advance notice. Landlord, or authorized person chosen by Landlord, has the right to inspect, show, make repairs, and do maintenance even if the Tenant is not at home.",
           "label": "concerning",
-          "reason": "No-notice entry for routine (non-emergency) purposes is well outside the typical 24-hour notice standard"
+          "reason": "No-notice entry for routine (non-emergency) purposes is well outside the typical 24-hour notice standard",
+          "text_restored": "full clause text restored from the source lease"
         },
         {
           "clause_ref": "1.12.C",
@@ -237,9 +241,10 @@
         },
         {
           "clause_ref": "4.1",
-          "text": "No smoking or vaping inside the property. If you are found in violation of this rule, you will be charged a $500.00 fine...Landlord will use own discretion based off of observed condition of property to determine if smoking or vaping has occurred.",
+          "text": "No smoking or vaping inside the property. If you are found in violation of this rule, you will be charged a $500.00 fine and Landlord has the right to terminate the lease immediately. Landlord will use own discretion based off of observed condition of property to determine if smoking or vaping has occurred in property ie. smell of smoke, color of walls, etc.",
           "label": "concerning",
-          "reason": "The fine is triggered by the landlord's own subjective discretion, with no independent verification standard"
+          "reason": "The fine is triggered by the landlord's own subjective discretion, with no independent verification standard",
+          "text_restored": "full clause text restored from the source lease"
         },
         {
           "clause_ref": "2.16",
@@ -249,16 +254,18 @@
         },
         {
           "clause_ref": "1.10",
-          "text": "We will hold the security deposit for the term of the tenancy and, upon termination of the tenancy, reserve the right to use the security deposit...to cover any charges related to your performance of this Lease Contract.",
+          "text": "The total security deposit at the time of execution of this Lease Contract for all residents in the house or apartment is defined in Section 1.2, due on or before the date this Lease Contract is signed. We will hold the security deposit for the term of the tenancy and, upon termination of the tenancy, reserve the right to use the security deposit, or portions thereof, to cover any charges related to your performance of this Lease Contract, including, but not limited to, cleaning, repair of damages, unpaid rent, late fees, and returned check fees.",
           "label": "concerning",
           "reason": "Fairly standard security deposit usage language",
-          "relabel_note": "rule 4. The deposit may be used for 'any charges related to your performance of this Lease Contract'. Open discretion over the tenant's money, with no list of what qualifies."
+          "relabel_note": "rule 4. The deposit may be used for 'any charges related to your performance of this Lease Contract'. Open discretion over the tenant's money, with no list of what qualifies.",
+          "text_restored": "full clause text restored from the source lease"
         },
         {
-          "clause_ref": "2.13",
-          "text": "Tenant agrees to give up his right of a \"Notice to Quit\"...Landlord may report any past rent, damages, utilities or other costs owed by Tenant to a credit reporting agency.",
+          "clause_ref": "2.21",
+          "text": "Tenant is aware that Landlord may report any past rent, damages, utilities or other costs owed by Tenant to a credit reporting agency. Tenant understands this reporting could affect Tenant's ability to obtain credit or future housing.",
           "label": "concerning",
-          "reason": "Credit reporting exposure disclosed, but combined with other clauses here it adds another real financial consequence tenants may not register while signing"
+          "reason": "Credit reporting exposure disclosed, but combined with other clauses here it adds another real financial consequence tenants may not register while signing",
+          "text_restored": "was a splice of 2.1 (Notice to Quit) and 2.21 (Reporting of Past Rent Owed) filed under 2.13 (Lead Based Paint). 2.1 is already in this set separately, so the Notice to Quit waiver was counted twice. Replaced with the real 2.21."
         }
       ]
     },
@@ -487,6 +494,20 @@
         "to": "concerning",
         "reason": "rule 2. A blanket disclaimer of liability for any damages cannot be less concerning than the capped version in spotify/liability_cap, which was already labelled concerning. This pair was the internal inconsistency that prompted the rubric."
       }
-    ]
+    ],
+    "clause_text_corrected": {
+      "date": "2026-08-25",
+      "found_by": "E3 faithfulness eval: the judge marked an explanation unsupported because the consequence it described had been removed from the stored clause by an ellipsis",
+      "note": "Source lease contains personal information and is deliberately not in this repository. Only the five clause texts below were taken from it, all boilerplate policy language.",
+      "changes": [
+        "  1.7.D: 314 -> 437 chars",
+        "  2.12.B: 198 -> 238 chars",
+        "  4.1: 247 -> 360 chars",
+        "  1.10: 220 -> 552 chars",
+        "  2.13 -> 2.21: fabricated splice replaced",
+        "  XXXV: 213 -> 1839 chars",
+        "  XLIV: 124 -> 422 chars"
+      ]
+    }
   }
 }

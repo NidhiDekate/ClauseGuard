@@ -41,8 +41,12 @@ choice = st.radio("Source", ["Try a sample", "Upload my own"])
 
 if choice == "Try a sample":
     sample_name = st.selectbox("Pick a sample", list(SAMPLE_DOCS.keys()))
-    if st.button("Load sample"):
+    # load on selection change, not only on the button. changing the dropdown and
+    # pressing Analyze used to silently re-analyse whichever document was loaded
+    # last, which produced two identical reports for two different leases.
+    if st.session_state.get("loaded_sample") != sample_name or st.button("Load sample"):
         st.session_state["document_text"] = Path(SAMPLE_DOCS[sample_name]).read_text(encoding="utf-8")
+        st.session_state["loaded_sample"] = sample_name
 else:
     uploaded = st.file_uploader("Upload a .txt lease document", type=["txt"])
     if uploaded is not None:
@@ -92,8 +96,20 @@ if "document_text" in st.session_state:
         col2.metric("Neutral", len(neutral))
         col3.metric("Favorable", len(favorable))
         col4.metric("Not addressed", len(not_addressed))
+        errors = [f for f in report if f["status"] == "error"]
+        if errors:
+            st.error(f"{len(errors)} of {len(report)} categories could not be analysed. "
+                     f"Those are not findings about your document.")
 
         for finding in report:
+            if finding["status"] == "error":
+                st.warning(
+                    f"**{finding['category']}** — analysis failed, so nothing can be said "
+                    f"about this either way")
+                with st.expander("What went wrong"):
+                    st.code(finding.get("detail", "unknown"))
+                continue
+
             if finding["status"] == "not_addressed":
                 st.info(f"**{finding['category']}** — not addressed in this document")
                 continue

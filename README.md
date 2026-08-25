@@ -14,7 +14,7 @@ This is an AI engineering case study. The application works, but the point of th
 
 Every one of those was measured rather than assumed, and the write-ups include the experiments that failed and the numbers that turned out to be wrong.
 
-In August 2026 the whole project was re-audited from scratch. That audit found 67 defects in my own work, including a data leak that invalidated every accuracy number I had published. Those numbers are corrected below. The story of the audit is in `docs/11_what_i_learned.md`.
+In August 2026 the whole project was re-audited from scratch. That audit found 67 defects in my own work, including a data leak that invalidated every accuracy number I had published. Those numbers are corrected below. The story of the audit is in `docs/12_what_i_learned.md`.
 
 ## Results
 
@@ -59,7 +59,7 @@ different model from a different vendor. **Six carry the right label and a claim
 not support**, which every accuracy figure above scores as a win. Three of those six are the same
 failure: the model states that a protection is absent when the clause is simply silent on it, for
 example "without paying you" on a clause that never mentions payment. Full write-up in
-`docs/10_faithfulness_evaluation.md`.
+`docs/10_faithfulness_evaluation.md`, `docs/11_reviewer_as_judge.md`.
 
 **Retrieval.** Every correct clause is within the top 3 retrieved chunks. Recall@1 75%, recall@2 83%, recall@3 100%, over 12 cases where an answer exists. The pipeline fetches 3.
 
@@ -67,7 +67,7 @@ example "without paying you" on a clause that never mentions payment. Full write
 
 **Few-shot examples.** Removed. They tied with zero-shot on accuracy, cost 55% more input tokens, and were the surface that leaked the test set into the prompt in the first place.
 
-Write-ups: `docs/05_model_selection.md`, `docs/06_annotation_guidelines.md`, `docs/07_held_out_evaluation.md`, `docs/08_chunking_comparison.md`, `docs/09_few_shot_ablation.md`, `docs/10_faithfulness_evaluation.md`. Earlier experiments in `docs/01` to `docs/03`, each carrying a banner where its numbers have been superseded.
+Write-ups: `docs/05_model_selection.md`, `docs/06_annotation_guidelines.md`, `docs/07_held_out_evaluation.md`, `docs/08_chunking_comparison.md`, `docs/09_few_shot_ablation.md`, `docs/10_faithfulness_evaluation.md`, `docs/11_reviewer_as_judge.md`. Earlier experiments in `docs/01` to `docs/03`, each carrying a banner where its numbers have been superseded.
 
 ## The finding this project is actually about
 
@@ -104,7 +104,7 @@ The Reviewer is an LLM-as-a-judge. It has never been evaluated as one, which is 
 
 Listed because a project that names its own limits is easier to trust than one that does not.
 
-- **The Reviewer is not evaluated.** It is an LLM judge with no measured precision or recall.
+- **The Reviewer is measured but thin.** 11/12 recall and 3/4 on absent categories, n=16. One false positive on a document with no liability clause. See `docs/11_reviewer_as_judge.md`.
 - **Faithfulness is measured but not fixed.** 86.8% of explanations are grounded. The six that are not have a named pattern and no remedy yet, because fixing it means a prompt change and the held-out set that would validate it is spent.
 - **Coverage is bounded by eight fixed categories.** This is a checklist, not a full document sweep. A clause outside those categories is never examined.
 - **The MCP server is not finished.** It exists and has never been run as a real process end to end.

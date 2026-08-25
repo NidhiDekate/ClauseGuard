@@ -5,6 +5,7 @@
 # usage: python src/agents/graph.py
 
 import asyncio
+from concurrent.futures import ThreadPoolExecutor
 import sys
 from pathlib import Path
 from typing import TypedDict
@@ -38,6 +39,12 @@ class ClauseGuardState(TypedDict):
 # and free, and the reviewer still makes one call per category regardless of
 # how many candidates are in it, so this costs nothing.
 RETRIEVAL_K = 3
+
+# The Reviewer and the classifier each make one call per concern category, and
+# every one is independent. Running them in sequence made a full analysis about
+# 77 seconds. 6 rather than 8 because the fallback provider is a free tier with
+# per-minute limits, and tripping one just serialises the work again on retries.
+MAX_CONCURRENT_CALLS = 6
 
 LEASE_CONCERN_CATEGORIES = [
     "late fees and rent payment terms",
@@ -101,35 +108,43 @@ def retriever_node(state: ClauseGuardState) -> dict:
     return {"retrieved_clauses": retrieved}
 
 
+def _review_one(category, clauses):
+    """Review a single category. Split out of reviewer_node so the categories can
+    run concurrently. The logic is unchanged."""
+    if not clauses:
+        return {"verified": False, "clause": None,
+                "failure": "retrieval returned nothing",
+                "reason": "nothing retrieved"}
+
+    try:
+        result = select_best_clause(category, clauses)
+    except Exception as e:
+        # was `except ValueError`, which let a rate limit or provider outage
+        # escape and kill the whole analysis. Now any failure is recorded
+        # against this category and the other seven still complete.
+        return {"verified": False, "clause": None,
+                "failure": f"{type(e).__name__}: {e}",
+                "reason": "clause selection failed"}
+
+    if result["index"] is None:
+        return {"verified": False, "clause": None, "reason": result["reason"]}
+
+    return {
+        "verified": True,
+        "clause": clauses[result["index"]],
+        "reason": result["reason"],
+    }
+
+
 def reviewer_node(state: ClauseGuardState) -> dict:
     # this used to check only clauses[0] and answer yes or no. the retrieval eval
     # showed a quarter of the correct clauses arrive below rank 1, so they were
     # being fetched and then thrown away unread. it now sees every candidate and
     # picks the best one, or none. still one model call per category.
-    reviewed = {}
-
-    for category, clauses in state["retrieved_clauses"].items():
-        if not clauses:
-            reviewed[category] = {"verified": False, "clause": None, "reason": "nothing retrieved"}
-            continue
-
-        try:
-            result = select_best_clause(category, clauses)
-        except ValueError:
-            reviewed[category] = {"verified": False, "clause": None, "reason": "clause selection failed"}
-            continue
-
-        if result["index"] is None:
-            reviewed[category] = {"verified": False, "clause": None, "reason": result["reason"]}
-            continue
-
-        reviewed[category] = {
-            "verified": True,
-            "clause": clauses[result["index"]],
-            "reason": result["reason"],
-        }
-
-    return {"reviewed_findings": reviewed}
+    items = list(state["retrieved_clauses"].items())
+    with ThreadPoolExecutor(max_workers=MAX_CONCURRENT_CALLS) as pool:
+        outcomes = list(pool.map(lambda kv: _review_one(kv[0], kv[1]), items))
+    return {"reviewed_findings": dict(zip((c for c, _ in items), outcomes))}
 
 
 def calculator_node(state: ClauseGuardState) -> dict:
@@ -155,51 +170,65 @@ def calculator_node(state: ClauseGuardState) -> dict:
     return {"fee_computations": computations}
 
 
-def report_node(state: ClauseGuardState) -> dict:
-    # the final piece - turns everything the pipeline found into what a
-    # user actually sees. verified clauses get classified (reusing the
-    # phase 2 classifier, not reinventing it here). unverified categories
-    # get reported honestly as not addressed, not silently dropped.
-    findings = []
-
-    for category, review in state["reviewed_findings"].items():
-        if not review["verified"]:
-            findings.append(
-                {
-                    "category": category,
-                    "status": "not_addressed",
-                    "note": "This document does not clearly address this.",
-                }
-            )
-            continue
-
-        clause = review["clause"]
-        try:
-            classification = classify_clause(clause)
-        except ValueError:
-            # classifier failed - still report the finding, just without a label
-            findings.append(
-                {
-                    "category": category,
-                    "status": "found_unclassified",
-                    "clause": clause,
-                }
-            )
-            continue
-
-        entry = {
+def _classify_one(category, review, fee_computations):
+    """Build one finding. Split out so the classifier calls can run concurrently."""
+    if not review["verified"]:
+        # "the document does not address this" is a claim about the user's
+        # contract. "retrieval returned nothing" and "the reviewer crashed" are
+        # claims about our system. All three used to render identically, so a
+        # rate limit told the user their lease has no late fee clause. It has
+        # one. Never state an absence we did not establish.
+        if review.get("failure"):
+            return {
+                "category": category,
+                "status": "error",
+                "note": "Analysis failed for this category, so nothing can be said "
+                        "about it either way.",
+                "detail": review["failure"],
+            }
+        return {
             "category": category,
-            "status": "found",
-            "label": classification["label"],
-            "reason": classification["reason"],
-            "clause": clause,
+            "status": "not_addressed",
+            "note": "This document does not clearly address this.",
+            "reason": review.get("reason"),
         }
 
-        if category in state["fee_computations"]:
-            entry["fee_exposure_10_days_late"] = state["fee_computations"][category]["exposure_10_days_late"]
+    clause = review["clause"]
+    try:
+        classification = classify_clause(clause)
+    except Exception as e:
+        # classifier failed - still report the finding, just without a label.
+        # broadened from ValueError for the same reason as the Reviewer: a
+        # provider failure should cost one category, not the whole report.
+        return {
+            "category": category,
+            "status": "found_unclassified",
+            "clause": clause,
+            "detail": f"{type(e).__name__}: {e}",
+        }
 
-        findings.append(entry)
+    entry = {
+        "category": category,
+        "status": "found",
+        "label": classification["label"],
+        "reason": classification["reason"],
+        "clause": clause,
+    }
+    if category in fee_computations:
+        entry["fee_exposure_10_days_late"] = fee_computations[category]["exposure_10_days_late"]
+    return entry
 
+
+def report_node(state: ClauseGuardState) -> dict:
+    # the final piece - turns everything the pipeline found into what a user
+    # actually sees. verified clauses get classified (reusing the phase 2
+    # classifier, not reinventing it here). unverified categories are reported
+    # honestly, and a category we failed to analyse is reported as a failure
+    # rather than as an absence in the document.
+    items = list(state["reviewed_findings"].items())
+    fees = state["fee_computations"]
+    with ThreadPoolExecutor(max_workers=MAX_CONCURRENT_CALLS) as pool:
+        findings = list(pool.map(lambda kv: _classify_one(kv[0], kv[1], fees), items))
     return {"decision_report": findings}
 
 

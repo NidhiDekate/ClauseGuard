@@ -134,7 +134,145 @@ Real decisions made while building ClauseGuard — what happened, what the numbe
 - HuggingFace's Docker Spaces tier changed to paid mid-project (a genuine, undocumented platform change, confirmed via HF's own community forums) - pivoted to Streamlit Community Cloud instead, which is purpose-built for single-process Python apps and remains genuinely free.
 - Deployed `streamlit_app.py` (a standalone entry point calling the LangGraph pipeline directly, since Streamlit Cloud runs one process, not a multi-container setup) with real secrets configured.
 - First live analysis showed the security deposit clause flip from NEUTRAL to CONCERNING between two runs of the identical document. Re-ran immediately - back to NEUTRAL. Confirms this is the same model non-determinism already documented in Phase 3, not a deployment-specific bug. Good real-world confirmation that a documented limitation actually behaves the way it was documented to behave.
-- Live app: https://clauseguard.streamlit.app
+- Live app: https://clauseguard-ai.streamlit.app
+
+---
+
+## Entry 16 — Reopening the project, and finding 67 defects in it
+
+- Reopened ClauseGuard to add proper LLM evaluation. Expected to bolt eval scripts onto finished work.
+- Audited all ten phases against the code instead of against my own summaries. Result: 67 defects.
+- Takeaway: auditing your own work against your own notes finds nothing. The notes are where the mistakes came from.
+
+---
+
+## Entry 17 — The leakage that voided every published number (D1)
+
+- Diffed `clause_classification_examples.json` against `test_set.json`, two files nobody had ever compared.
+- **Eight of the nine few-shot examples were verbatim clauses from the 53-clause test set.** Every accuracy figure I had published was measured on data whose answers were sitting in the prompt.
+- Fix: nine replacements from HUD model lease 90105a, public domain. Verified zero exact matches, highest word overlap 0.256 against 1.0 for eight of the originals.
+- Added `check_leakage.py` matching on word overlap rather than exact strings, since a reworded near-duplicate leaks just as badly.
+- Takeaway: the two files that must never overlap are the two nobody thinks to compare.
+
+---
+
+## Entry 18 — Retrieval measured for the first time (E1)
+
+- Built a 16-case golden set: 2 documents by 8 categories, 12 answerable, 4 genuinely absent. Zero API calls, deterministic text matching.
+- Keyed it on clause reference plus snippet, **not chunk IDs**, because chunk IDs mean nothing once chunking changes and comparing chunking strategies was the point.
+- Result: recall@1 75%, recall@2 83.3%, recall@3 100%. The pipeline read rank 1 and fetched k=2, so a quarter of the answers were being retrieved and never looked at.
+- Fix: k=3, and the Reviewer changed from a yes/no gate on the top result to choosing the best of three. Zero extra API calls, since it was already one call per category.
+- Both misses had the same cause: compound category names like "guest **and** occupancy restrictions" split the query and the wrong half won.
+- Takeaway: a gate can reject noise. It cannot do anything about a miss.
+
+---
+
+## Entry 19 — A parser bug that looked like a model being bad
+
+- Seven-model comparison. `deepseek-v4-flash` scored 11/53 with 25% coverage.
+- It was not the model. It narrates its reasoning before emitting JSON, and the parser only accepted a response that was JSON and nothing else.
+- Wrote `src/parsing.py`: strips think-blocks and code fences, then walks the text for balanced `{...}` spans using brace counting rather than a regex, because JSON nests and a regex cannot count.
+- Rerun on the same responses: deepseek 11 to 37, **gemini 40 to 49, moving it from fifth place to first.** Nothing about any model changed.
+- Takeaway: an evaluation measures the whole path. A model that answers correctly and formats differently scores the same as a model that answers wrong.
+
+---
+
+## Entry 20 — Two annotators, and the definition the project was arguing with itself about
+
+- Built a held-out set: 28 clauses from a Boston Housing Authority lease used nowhere else. Two annotators labelled independently and blind.
+- **Agreement 15 of 28. Cohen's kappa 0.32.**
+- Ten of the thirteen disagreements ran one direction. I label on **harm**; prompt v2 classified on **typicality**. Nobody had written down which the project meant, and both rubrics agree on most clauses, so aggregate accuracy could never have shown it.
+- This explained the six clauses no prompt could fix. Four model families all called `pa XLIV` and `spotify liability_cap` neutral and all disagreed with my gold set. They were correctly applying a definition my labels did not use.
+- Decision: harm wins, because the user has not read the document and does not know what typical looks like. Wrote `docs/06_annotation_guidelines.md`, nine standing decisions, and re-derived both gold sets from it.
+- Takeaway: an annotation rubric is not documentation. It is the definition, and without it two artifacts can disagree for months in silence.
+
+---
+
+## Entry 21 — The chunker collapsed on anything without numbers (D39, D28, D29)
+
+- `chunk_by_clause` matched only `I.` or `1.` at line start. Any Terms of Service written with headings, letters or plain paragraphs became **one chunk**, and every query on that document returned it. No error. The README claimed ToS support throughout.
+- Fix: a fallback chain, numbered then decimal then lettered then headings then paragraphs, using the first that genuinely splits. "Genuinely" matters: a pattern matching once near the top gives a fragment plus a chunk holding the whole document, which is the same failure in disguise.
+- Also filtered preambles and signature blocks (the FTC preamble is the false match that motivated the Reviewer, so a chunking problem was being fixed downstream by an LLM judge), and split oversized chunks against the embedding model's real 256-token limit.
+- Verified byte-identical output on both E1 documents first, so E1 did not need rerunning.
+- Takeaway: silent failures need a loud default. The retriever now prints which strategy fired.
+
+---
+
+## Entry 22 — Deleting the few-shot examples (E8)
+
+- Few-shot had been assumed from the start and never tested. Nine examples rode on every call, which is where the Phase 3 cost estimate went 3.5x wrong.
+- Result: tied at 42/53 with zero-shot. Zero-shot used 55% fewer input tokens, cost 36% less, and missed one fewer concerning clause.
+- Deleted them, and `check_leakage.py` with them. The leakage in Entry 17 is now **structurally impossible** rather than guarded.
+- Takeaway: an ablation you never run is a design decision you never made.
+
+---
+
+## Entry 23 — Faithfulness, and a clause in my gold set that does not exist (E3)
+
+- Nothing checked whether the sentence written about a clause follows from that clause. Accuracy scores a right label with an invented reason as a win.
+- Judge is `claude-opus-5`, chosen because it is **not** the model under test. The script refuses to run if judge and system are the same model.
+- Result: 46 of 53 grounded, 86.8%. Six have the right label and an unsupported claim. Three are the same failure: the model states a protection is **absent** where the clause is silent. "Without paying you" on a clause that never mentions payment.
+- The judge flagged one explanation as invented and **it was our dataset that was wrong.** Seven gold clauses were stored abridged with an ellipsis. One, `2.13`, was two unrelated clauses spliced under a third clause's number, and half of it duplicated a clause already in the set.
+- Takeaway: the judge was right, the model was right, and the ground truth was wrong. Nothing else in this project could have caught that.
+
+---
+
+## Entry 24 — Measuring the Reviewer, which had never been measured (E2)
+
+- The Reviewer is an LLM-as-a-judge that every finding passes through. The ROADMAP claimed its value was proven; it was a spot check.
+- Built on E1's golden set, which already had the answer, the on-topic-but-wrong distractors, and four absent categories. Retrieval recall@3 is 100%, so the answer is always available and any miss is the Reviewer's.
+- Result: recall 11/12, absent rejected 3/4, precision 92%, identical across two runs.
+- One genuine error: on a document with no indemnity clause it picked FULL DISCLOSURE, because that clause mentions legal and financial consequences. Consequences for breach are not liability allocation.
+- One probable golden-set error, on a mapping flagged as arguable before this ran. Recorded as disputed, not relabelled.
+- Takeaway: it did not move at all across 32 calls, where the classifier moves by up to three clauses. Nobody had looked at that either.
+
+---
+
+## Entry 25 — Numbers move more than I thought
+
+- The same model, same prompt, same clauses, temperature 0, has scored **41, 43, 44, 45 and 46** across this project.
+- Almost every comparison I had made was one run against one run. The few-shot experiment came down to a single clause, which is well inside that spread.
+- Added `--repeat N` to the eval. Reports now carry the range, not a single figure.
+- One thing only per-case output shows: gemini scores 44 in all three runs, and two clauses still flip between runs in opposite directions. **A stable total is not a stable system.** The errors cancel.
+- Takeaway: a number without a spread is not a result.
+
+---
+
+## Entry 26 — One rate limit took down the whole app
+
+- Groq's daily limit hit mid-run. The Reviewer had no fallback, so the exception propagated and the entire analysis crashed. The classifier had a fallback and survived; the Reviewer did not, and nobody had noticed because nothing had ever measured the Reviewer until E2.
+- First fix was wrong. I pinned the Reviewer to `gpt-oss-120b` and left the fallback at the module default, which was also `gpt-oss-120b`. A model cannot be its own fallback.
+- Pulled the fallback logic out of `classify_clause.py` into `src/llm.py` so both nodes share one `invoke_with_fallback`, with `fallback_model` and `fallback_provider` as parameters instead of module constants.
+- Config is now mirrored on purpose: classifier gemini then gpt-oss, Reviewer gpt-oss then gemini. Different vendor on each side.
+- Takeaway: a fallback you never exercised is a guess. This one was worse than a guess, it was a no-op.
+
+---
+
+## Entry 27 — The report told the user their lease has no late fee clause
+
+- `report_node` mapped every unverified category to "not addressed in this document". The only reason a category could be unverified was that the model found nothing **or** the call failed, and both rendered identically.
+- So on a rate limit the app printed a confident negative about a document it had never read. The test lease has a late fee clause: $25 plus $5 per day, uncapped.
+- Split the states. `error` now carries "Analysis failed for this category, so nothing can be said about it either way" plus the underlying exception, renders amber with a red banner, and is excluded from the not-addressed count.
+- Takeaway: **never state an absence you did not establish.** For a tool whose whole purpose is that the user does not read the document, silently converting a failure into a clean bill of health is the worst possible failure mode.
+
+---
+
+## Entry 28 — 77 seconds to 19
+
+- A single run took over a minute. Every per-category Reviewer call and every classifier call ran in sequence, and they are independent of each other.
+- Rewrote `reviewer_node` and `report_node` around `_review_one(category, clauses)` and `_classify_one(category, review, fee_computations)`, both dispatched through a `ThreadPoolExecutor` with `MAX_CONCURRENT_CALLS = 6`.
+- 77s to 19s. No change to output.
+- Six workers is a guess bounded by provider rate limits, not by anything measured. Three FTC categories failed in one run and concurrency is the first suspect, so this number may come down.
+- Takeaway: latency here was never the model, it was doing nine independent calls one after another.
+
+---
+
+## Entry 29 — Circuit breaker
+
+- Once gemini started rejecting calls, every remaining call in the run still tried gemini first, waited for the failure, then fell back. Nine categories, nine wasted timeouts.
+- Added a module-level `_DEAD` set in `src/llm.py`. First failure marks the model dead for the rest of the process and later calls go straight to the fallback. `reset_circuit_breaker()` clears it.
+- It does not persist across runs on purpose. A daily quota and a one-off blip look the same at the call site, and the run boundary is the only place I can honestly retry.
+- Takeaway: the retry is cheap once and expensive nine times.
 
 ---
 

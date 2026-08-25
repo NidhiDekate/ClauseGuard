@@ -13,3 +13,6 @@ data/processed/
 /baseline_*.txt
 /model_selection*.txt
 /notes/
+
+# helper scripts, not part of the codebase
+_*.py

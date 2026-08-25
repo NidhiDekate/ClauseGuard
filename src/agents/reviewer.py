@@ -21,20 +21,47 @@
 # usage: python src/agents/reviewer.py
 
 import json
+import os
 import re
 import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_groq import ChatGroq
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 from parsing import extract_json  # noqa: E402
+from llm import invoke_with_fallback  # noqa: E402
 
 load_dotenv()
 
-MODEL_NAME = "openai/gpt-oss-120b"
+# The Reviewer runs a DIFFERENT model from the classifier, on purpose.
+#
+# evaluation/eval_reviewer.py, n=16:
+#   gpt-oss-120b     recall 11/12, absent 3/4, precision  92%
+#   gemini-3.6-flash recall 10/12, absent 4/4, precision 100%
+#
+# Tied on total correct, 14/16 each, differing only in which error they make.
+# gemini is more conservative: no false positives, two false negatives.
+#
+# gpt-oss wins here for the same reason recall beats precision in the
+# classifier. A Reviewer false negative reaches the user as "not addressed in
+# this document", which is a false statement about their contract: the PA lease
+# does have a late fee clause, $25 plus $5 a day uncapped. A false positive
+# shows them a real clause under the wrong heading, which they can read and
+# dismiss. The miss is also a lie; the false alarm is only noise.
+#
+# At n=16 this is one case each way and inside noise. Recorded as a decision
+# made on which error costs more, not on a measured difference.
+REVIEWER_MODEL = os.environ.get("CLAUSEGUARD_REVIEWER_MODEL", "openai/gpt-oss-120b")
+REVIEWER_PROVIDER = os.environ.get("CLAUSEGUARD_REVIEWER_PROVIDER", "groq")
+
+# The Reviewer's fallback is the OPPOSITE of the classifier's. gpt-oss-120b is
+# the global fallback, so a Reviewer pinned to it would have no fallback and a
+# Groq daily limit would take the whole analysis down, which is exactly what
+# happened before. gemini is second best here, 10/12 against 11/12.
+REVIEWER_FALLBACK = os.environ.get("CLAUSEGUARD_REVIEWER_FALLBACK", "google/gemini-3.6-flash")
+REVIEWER_FALLBACK_PROVIDER = "openrouter"
 
 SELECTION_PROMPT = """You are choosing which retrieved clause, if any, actually addresses a specific concern category.
 
@@ -70,14 +97,19 @@ def select_best_clause(category, clauses):
         raise ValueError("no candidate clauses given")
 
     prompt = ChatPromptTemplate.from_messages([("human", SELECTION_PROMPT)])
-    model = ChatGroq(model=MODEL_NAME, temperature=0)
-    chain = prompt | model
-
-    response = chain.invoke({"category": category, "candidates": _format_candidates(clauses)})
+    response = invoke_with_fallback(
+        lambda model: prompt | model,
+        {"category": category, "candidates": _format_candidates(clauses)},
+        model_name=REVIEWER_MODEL,
+        provider=REVIEWER_PROVIDER,
+        fallback_model=REVIEWER_FALLBACK,
+        fallback_provider=REVIEWER_FALLBACK_PROVIDER,
+        label="reviewer",
+    )
     result = extract_json(response.content, required_key="best")
 
     if not isinstance(result, dict):
-        raise ValueError(f"clause selection returned {type(result).__name__}, expected an object: {content!r}")
+        raise ValueError(f"clause selection returned {type(result).__name__}, expected an object: {result!r}")
 
     if not result.get("reason"):
         raise ValueError("clause selection returned no reason")

@@ -52,6 +52,34 @@ distinction is subtle and it is the right one. This is a false positive on preci
 node exists to do, and it is the same shape as the original failure: something on topic, mistaken
 for the answer.
 
+## Which model should judge
+
+The Reviewer was later run on `gemini-3.6-flash`, the model the classifier uses, to see whether
+the better classifier is also the better judge.
+
+```
+                    recall    absent    precision   total correct
+gpt-oss-120b        11/12      3/4         92%         14/16
+gemini-3.6-flash    10/12      4/4        100%         14/16
+```
+
+**Tied on total correct, differing only in which error they make.** gemini is more conservative:
+no false positives, two false negatives. gpt-oss catches one more real clause and wrongly flags a
+category the document does not address.
+
+**Decision: `gpt-oss-120b`**, on the same principle that makes recall the classifier's safety
+metric. A Reviewer false negative reaches the user as "not addressed in this document", which is a
+false statement about their contract: the PA lease does have a late fee clause, $25 plus $5 a day
+uncapped. A false positive shows them a real clause under the wrong heading, which they can read
+and dismiss. **The miss is also a lie; the false alarm is only noise.**
+
+At n=16 this is one case each way and inside noise. It is a decision about which error costs more,
+not a measured difference, and the code says so.
+
+The two nodes now run different models and fall back to each other: classifier on gemini falling
+back to gpt-oss, Reviewer on gpt-oss falling back to gemini. Neither can end up as its own
+fallback, which had already taken the app down once.
+
 ## The one where the golden set is probably wrong
 
 **PA, "automatic renewal and rent increases".** The Reviewer said none of the candidates address
@@ -62,13 +90,18 @@ own note admits the weakness: *"Weaker than the FTC clause, which says AUTOMATIC
 still the renewal provision."*
 
 **This mapping was flagged as one of the two most arguable in the set before any of this ran**, and
-never reviewed. That prior flagging is what makes revisiting it legitimate. The label has not been
-changed on the strength of this result, because changing ground truth to match a prediction is the
-failure this project has spent two days undoing. It is recorded as disputed, and it needs a second
-annotator, not a rerun.
+never reviewed. The label has not been changed on the strength of this result.
 
-If that mapping is wrong, the Reviewer is 12/12 on answerable cases. That number is not being
-claimed.
+**Withdrawn, later the same day.** Running the Reviewer on `gemini-3.6-flash` gave the opposite
+answer: gemini accepts clause II and agrees with the golden set. So the better explanation is that
+`gpt-oss-120b` has a bias toward "none of these" on borderline renewal language, not that the label
+is wrong.
+
+That is worth recording as its own mistake. Twice this week, every model disagreeing with a gold
+label meant the label was wrong, and I generalised from that to "a model disagreeing means look at
+the label." **Two vendors agreeing is evidence. One model repeating itself is one observation
+repeated.** The mapping stays as disputed-but-probably-fine, and it still wants a second annotator
+rather than another model.
 
 ## Two reporting bugs found in this eval, both of which flattered the result
 

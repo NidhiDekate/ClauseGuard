@@ -1,5 +1,14 @@
 # Experiment: Model Comparison (Phase 3)
 
+> **Status, Aug 25 2026: superseded by `docs/05_model_selection.md`.** Three problems. The
+> accuracy denominator excluded clauses the model failed to answer, which flattered whichever
+> model failed most. The few-shot examples were leaking the test set into the prompt (D1). And
+> all three candidates were Groq free tier, which is not a shortlist.
+>
+> Replaced by a seven-model comparison across four vendors with confidence intervals, coverage,
+> per-class recall and measured cost. The current default is `gemini-3.6-flash` with
+> `gpt-oss-120b` as an automatic fallback.
+
 **Question:** does the classification bias found in Phase 2 come from the prompt, or from the model? And which of the free-tier candidates is actually usable in practice, not just accurate on paper?
 
 ## Setup

@@ -1,5 +1,14 @@
 # Experiment: Prompt Iteration on the Clause Classifier (Phase 2)
 
+> **Status, Aug 25 2026: the numbers below are void.** Eight of the nine few-shot examples in
+> the prompt were verbatim clauses from this same 53-clause test set (D1). Every version was
+> scored on data whose answers were in its own prompt. The model used here,
+> `llama-3.1-8b-instant`, has also been deprecated by Groq.
+>
+> The bias-fixing conclusion may still hold; the accuracy figures do not. Prompt v2 was later
+> replaced entirely after the harm-vs-typicality finding in `docs/06`, and the current prompt is
+> v6 zero-shot with no examples at all. See `docs/09`.
+
 **Question:** can few-shot examples and explicit rules fix a systematic classification bias without introducing a worse one?
 
 ## Setup

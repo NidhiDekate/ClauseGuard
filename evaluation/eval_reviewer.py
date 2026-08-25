@@ -159,8 +159,13 @@ def summarise(all_runs, args):
         # as 0/0 and 0% puts a row of zeros next to real results and reads like
         # a catastrophic score rather than an absent one.
         errored = [r for r in rows if "error" in r]
-        if len(errored) == len(rows):
-            per_run.append({"failed": True, "error_count": len(errored)})
+        # An earlier version only bailed when EVERY row errored. A run where 15
+        # of 16 failed still printed "recall 0/1", a summary computed from one
+        # surviving case, sitting in the table looking like a result. Any run
+        # that lost more than a quarter of its cases is not scoreable.
+        if errored and len(errored) > 0.25 * len(rows):
+            per_run.append({"failed": True, "error_count": len(errored),
+                            "total": len(rows)})
             continue
         scored = [r for r in rows if r.get("correct") is not None]
         present = [r for r in scored if r["expected"] == "present"]
@@ -185,7 +190,8 @@ def summarise(all_runs, args):
     for i, s in enumerate(per_run, start=1):
         tag = f"run {i}: " if len(per_run) > 1 else ""
         if s.get("failed"):
-            print(f"  {tag}NOT RUN, all {s['error_count']} calls failed. excluded, not scored.\n")
+            print(f"  {tag}NOT SCOREABLE: {s['error_count']} of {s['total']} calls failed. "
+                  f"excluded.\n")
             continue
         print(f"  {tag}recall on answerable   {s['present_correct']}/{s['present_total']}")
         print(f"  {tag}absent rejected        {s['absent_correct']}/{s['absent_total']}")

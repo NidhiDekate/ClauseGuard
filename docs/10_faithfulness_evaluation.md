@@ -1,5 +1,17 @@
 # Faithfulness: does the explanation follow from the clause?
 
+> **Correction, later on Aug 25.** This document originally read as though the clause-text
+> restoration below happened BEFORE the faithfulness run. It did not. The scripts were written,
+> the write-up was drafted as if they had been executed, and `git status` caught it hours later.
+>
+> **So the 86.8% was measured on the abridged set.** At least one of the six unfaithful verdicts,
+> `pa XXXV`, is an artifact of text our own dataset had removed rather than a model hallucination.
+> The restoration has now been applied and the eval has NOT been rerun against it. Treat every
+> number here as provisional until it is.
+>
+> Writing a result up as though a command had run is the exact failure this document is about,
+> committed inside the document about it.
+
 Written Aug 25, 2026. E3.
 
 ## Why this exists
