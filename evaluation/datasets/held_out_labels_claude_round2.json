@@ -1,0 +1,151 @@
+{
+  "annotator": "claude",
+  "doc_id": "lease_bha_001",
+  "round": 2,
+  "rubric": "docs/06_annotation_guidelines.md",
+  "labelled_before_seeing_model_output": true,
+  "labelled_without_reopening_round_1": false,
+  "provenance_note": "Round 1 labels were in my own context, so this pass is not blind to them in the way the other annotator's is. Where the rubric changed my answer I have said so in the note. Treat my round-2 pass as rubric-applied rather than independent.",
+  "labels": [
+    {
+      "clause_id": "bha_2",
+      "label": "concerning",
+      "note": "Rent and utilities are ordinary, but the appliance charges are set 'to the extent permitted by applicable BHA policy' with the amounts left blank. Rule 1 and rule 4: an unstated charge fixed by a document not in the lease. Borderline, and it is the sub-clause driving this, not the rent."
+    },
+    {
+      "clause_id": "bha_4",
+      "label": "concerning",
+      "note": "Rule 5. A 45-night annual visitor cap and a nine-month residency requirement per household member would change whether some people sign, even though they cost nothing to others."
+    },
+    {
+      "clause_id": "bha_5",
+      "label": "concerning",
+      "note": "Rules 4 and 5. BHA can relocate you on its own determination, including to free your unit for someone else or because it decides to close the building."
+    },
+    {
+      "clause_id": "bha_6_b",
+      "label": "neutral",
+      "note": "Repairs in reasonable time, resident pays for damage they caused. Reciprocal and bounded."
+    },
+    {
+      "clause_id": "bha_6_d",
+      "label": "favorable",
+      "note": "Proportional rent abatement when repairs are not made. An affirmative remedy above the floor."
+    },
+    {
+      "clause_id": "bha_7_c",
+      "label": "favorable",
+      "note": "An obligation not to unreasonably refuse a payment plan on good cause. Above the floor, though limited to one request."
+    },
+    {
+      "clause_id": "bha_7_d",
+      "label": "neutral",
+      "note": "Rule 3. Heat, hot water, extermination and sanitary code compliance are the statutory floor, not a benefit."
+    },
+    {
+      "clause_id": "bha_7_h",
+      "label": "favorable",
+      "note": "Written grounds and notice of hearing rights for ANY proposed adverse action, which is broader than the statutory termination notice. Above the floor on scope."
+    },
+    {
+      "clause_id": "bha_7_n",
+      "label": "favorable",
+      "note": "Rule 3 would make lock changes for domestic violence neutral since state law requires them, but waiving the charge is above the floor. Favorable on the waiver."
+    },
+    {
+      "clause_id": "bha_8_a",
+      "label": "neutral",
+      "note": "Ordinary conduct and quiet enjoyment terms. Costs nothing to a person not already in breach."
+    },
+    {
+      "clause_id": "bha_8_g",
+      "label": "neutral",
+      "note": "Damage costs are reciprocal, the bill must itemise labour and materials, and it is not due until the first of the second month. Bounded with safeguards."
+    },
+    {
+      "clause_id": "bha_8_i",
+      "label": "neutral",
+      "note": "Return in the condition received, normal wear and tear excepted. Reciprocal, rule 9."
+    },
+    {
+      "clause_id": "bha_8_k",
+      "label": "neutral",
+      "note": "Approval may not be unreasonably withheld and there is a removal right. Affixed alterations passing to BHA is ordinary fixture treatment and fails the decision test."
+    },
+    {
+      "clause_id": "bha_8_n",
+      "label": "concerning",
+      "note": "Rule 1. Bound to any policy BHA writes, with nothing in the lease saying what those policies contain or how they change."
+    },
+    {
+      "clause_id": "bha_8_t",
+      "label": "neutral",
+      "note": "Rule 3. Social security numbers for household members are a federal requirement for subsidised housing, and the clause is expressly limited to what law permits."
+    },
+    {
+      "clause_id": "bha_8_u",
+      "label": "concerning",
+      "note": "Rule 5. Eight unpaid hours a month per non-exempt adult, enforced through the lease. Clearly capable of changing whether someone signs."
+    },
+    {
+      "clause_id": "bha_9_c",
+      "label": "neutral",
+      "note": "Rule 3. Fourteen and thirty day notice periods are the statutory minimums described."
+    },
+    {
+      "clause_id": "bha_9_d",
+      "label": "neutral",
+      "note": "Rule 3. Specific grounds, right to reply and a hearing are HUD-required due process. Arguable: the right to examine your own file is above what many authorities spell out, so this is the weakest of my neutrals."
+    },
+    {
+      "clause_id": "bha_11_c",
+      "label": "neutral",
+      "note": "Disposal only follows written notice and the grievance procedure, and only if the resident does not respond. Severe in outcome, ordinary in process."
+    },
+    {
+      "clause_id": "bha_12",
+      "label": "concerning",
+      "note": "One-way fee shifting with no cap. The resident pays BHA's full costs when BHA wins; the clause is silent on the resident winning."
+    },
+    {
+      "clause_id": "bha_14_a",
+      "label": "neutral",
+      "note": "Permission or forty-eight hours written notice, plus a signed written record left behind. Ordinary entry terms."
+    },
+    {
+      "clause_id": "bha_14_b",
+      "label": "neutral",
+      "note": "Emergency entry with the emergency conditions actually enumerated and a written record required. Tighter than most leases that permit it."
+    },
+    {
+      "clause_id": "bha_15",
+      "label": "neutral",
+      "note": "Rule 3, access to a grievance process that exists by regulation. RULE CONFLICT: rule 1 also fires, because the procedure is a document not in the lease that BHA sets and can change, and the clause says grievances 'may' be resolved under it rather than 'shall'. Rules 1 and 3 give opposite answers here and the rubric does not say which wins. Flagging as a gap."
+    },
+    {
+      "clause_id": "bha_16",
+      "label": "concerning",
+      "note": "Rule 1. Every BHA policy incorporated as if fully written into the lease. Same mechanism as 8(N) and labelled the same way, which is the inconsistency this rubric exists to fix."
+    },
+    {
+      "clause_id": "bha_17",
+      "label": "neutral",
+      "note": "Ordinary amendment clause. Changes need written agreement or thirty days notice when law requires them."
+    },
+    {
+      "clause_id": "bha_18_f",
+      "label": "concerning",
+      "note": "Rule 2. Limits the landlord's duty to act on smoking to cases where it already knows or has been given written notice. That is a limitation on the obligation, and rule 2 does not let typicality rescue it. Changed from neutral in round 1."
+    },
+    {
+      "clause_id": "bha_18_h",
+      "label": "concerning",
+      "note": "Rule 2. Disclaims any warranty of air quality and expressly refuses any higher duty of care, including to residents with respiratory conditions. Changed from neutral in round 1."
+    },
+    {
+      "clause_id": "bha_20",
+      "label": "concerning",
+      "note": "Rule 8. Joint and several liability means any one signer can be pursued for the whole obligation, which most people signing with a partner or housemate do not know."
+    }
+  ]
+}

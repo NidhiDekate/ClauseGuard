@@ -1,0 +1,500 @@
+{
+  "prompt_version": "v5",
+  "clauses": 28,
+  "label_counts": {
+    "neutral": 14,
+    "concerning": 8,
+    "favorable": 6
+  },
+  "majority_baseline": 0.5,
+  "results": [
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "correct": 19,
+      "total": 28,
+      "answered": 28,
+      "accuracy": 0.6785714285714286,
+      "accuracy_ci": [
+        0.4933850455563118,
+        0.8206695245657927
+      ],
+      "coverage": 1.0,
+      "per_class": {
+        "concerning": {
+          "precision": 0.5833333333333334,
+          "recall": 0.875,
+          "f1": 0.7000000000000001,
+          "tp": 7,
+          "fp": 5,
+          "fn": 1
+        },
+        "neutral": {
+          "precision": 0.7777777777777778,
+          "recall": 0.5,
+          "f1": 0.6086956521739131,
+          "tp": 7,
+          "fp": 2,
+          "fn": 7
+        },
+        "favorable": {
+          "precision": 0.7142857142857143,
+          "recall": 0.8333333333333334,
+          "f1": 0.7692307692307692,
+          "tp": 5,
+          "fp": 2,
+          "fn": 1
+        }
+      },
+      "macro_f1": 0.6926421404682275,
+      "missed_concerning": 1,
+      "false_alarms": 5,
+      "avg_latency_seconds": 8.399926130965468,
+      "tokens_in": 41779,
+      "tokens_out": 8706,
+      "cost_usd": 0.01149045,
+      "per_clause": [
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 2",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 1.5097062910208479
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 4",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 1.181297417031601
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 5",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 0.952093124971725
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 6(B)",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 0.9267295419704169
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 6(D)",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 1.0818982499768026
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 7(C)",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 21.2303792090388
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 7(D)",
+          "expected": "neutral",
+          "predicted": "favorable",
+          "latency_seconds": 20.84658266697079
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 7(H)",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 1.0284685420338064
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 7(N)",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 21.424827667011414
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 8(A)",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 0.8546383339562453
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 8(G)",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 21.545560250000563
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 8(I)",
+          "expected": "neutral",
+          "predicted": "concerning",
+          "latency_seconds": 1.3262550409999676
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 8(K)",
+          "expected": "neutral",
+          "predicted": "concerning",
+          "latency_seconds": 21.33315770799527
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 8(N)",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 1.601138541009277
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 8(T)",
+          "expected": "neutral",
+          "predicted": "concerning",
+          "latency_seconds": 21.72406208398752
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 8(U)",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 1.7819291669875383
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 9(C)",
+          "expected": "neutral",
+          "predicted": "favorable",
+          "latency_seconds": 1.0629998330259696
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 9(D)",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 21.226767499989364
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 11(C)",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 1.1569464579806663
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 12",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 1.6734011670341715
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 14(A)",
+          "expected": "favorable",
+          "predicted": "neutral",
+          "latency_seconds": 1.2584208329790272
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 14(B)",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 21.434264458017424
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 15",
+          "expected": "neutral",
+          "predicted": "concerning",
+          "latency_seconds": 1.3102071250323206
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 16",
+          "expected": "neutral",
+          "predicted": "concerning",
+          "latency_seconds": 21.386541499989107
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 17",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 1.0543729580240324
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 18(F)",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 1.0965369169716723
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 18(H)",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 1.1177393330144696
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 20",
+          "expected": "concerning",
+          "predicted": "neutral",
+          "latency_seconds": 21.07100975001231
+        }
+      ]
+    },
+    {
+      "model": "google/gemini-3.6-flash",
+      "provider": "openrouter",
+      "correct": 21,
+      "total": 28,
+      "answered": 28,
+      "accuracy": 0.75,
+      "accuracy_ci": [
+        0.566439747592954,
+        0.8732366505779922
+      ],
+      "coverage": 1.0,
+      "per_class": {
+        "concerning": {
+          "precision": 0.7272727272727273,
+          "recall": 1.0,
+          "f1": 0.8421052631578948,
+          "tp": 8,
+          "fp": 3,
+          "fn": 0
+        },
+        "neutral": {
+          "precision": 0.8888888888888888,
+          "recall": 0.5714285714285714,
+          "f1": 0.6956521739130435,
+          "tp": 8,
+          "fp": 1,
+          "fn": 6
+        },
+        "favorable": {
+          "precision": 0.625,
+          "recall": 0.8333333333333334,
+          "f1": 0.7142857142857143,
+          "tp": 5,
+          "fp": 3,
+          "fn": 1
+        }
+      },
+      "macro_f1": 0.7506810504522176,
+      "missed_concerning": 0,
+      "false_alarms": 3,
+      "avg_latency_seconds": 5.131594504537394,
+      "tokens_in": 38150,
+      "tokens_out": 21479,
+      "cost_usd": 0.10915875,
+      "per_clause": [
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 2",
+          "expected": "neutral",
+          "predicted": "favorable",
+          "latency_seconds": 7.774637583002914
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 4",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.837446582969278
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 5",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.0169360840227455
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 6(B)",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 4.801576750003733
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 6(D)",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 3.876265666971449
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 7(C)",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 5.361807416018564
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 7(D)",
+          "expected": "neutral",
+          "predicted": "favorable",
+          "latency_seconds": 9.451804250013083
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 7(H)",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 3.923690874944441
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 7(N)",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 3.206613542046398
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 8(A)",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 4.128729916003067
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 8(G)",
+          "expected": "neutral",
+          "predicted": "favorable",
+          "latency_seconds": 5.25277466699481
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 8(I)",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 3.5749508750159293
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 8(K)",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 7.9793771670083515
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 8(N)",
+          "expected": "neutral",
+          "predicted": "concerning",
+          "latency_seconds": 4.73184083297383
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 8(T)",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 5.450920499977656
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 8(U)",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.908807000028901
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 9(C)",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 8.02761966601247
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 9(D)",
+          "expected": "favorable",
+          "predicted": "favorable",
+          "latency_seconds": 5.605984667025041
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 11(C)",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.55626070901053
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 12",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 2.9284305420005694
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 14(A)",
+          "expected": "favorable",
+          "predicted": "neutral",
+          "latency_seconds": 5.2418753749807365
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 14(B)",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 3.840009542007465
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 15",
+          "expected": "neutral",
+          "predicted": "concerning",
+          "latency_seconds": 3.5346644169767387
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 16",
+          "expected": "neutral",
+          "predicted": "concerning",
+          "latency_seconds": 4.21725891699316
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 17",
+          "expected": "neutral",
+          "predicted": "neutral",
+          "latency_seconds": 7.084257000009529
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 18(F)",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.650174459035043
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 18(H)",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 5.006543249997776
+        },
+        {
+          "doc_id": "lease_bha_001",
+          "clause_ref": "Section 20",
+          "expected": "concerning",
+          "predicted": "concerning",
+          "latency_seconds": 4.713387875002809
+        }
+      ]
+    }
+  ]
+}

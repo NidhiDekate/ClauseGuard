@@ -66,6 +66,24 @@ CANDIDATES = [
 ]
 
 
+def load_held_out(gold_path, clauses_path=Path("evaluation/datasets/held_out_clauses.json")):
+    """The held-out set is stored as two files, clause text and adjudicated labels,
+    because the labels were written by two annotators independently and the text had
+    to exist before either of them could label it. Joined on clause_id here."""
+    gold = json.loads(Path(gold_path).read_text(encoding="utf-8"))
+    text = {c["clause_id"]: c for c in json.loads(clauses_path.read_text(encoding="utf-8"))["clauses"]}
+    out = []
+    for row in gold["clauses"]:
+        c = text[row["clause_id"]]
+        out.append({
+            "clause": c["text"],
+            "expected_label": row["label"],
+            "doc_id": gold["doc_id"],
+            "clause_ref": c["clause_ref"],
+        })
+    return out
+
+
 def load_real_clauses():
     data = json.loads(TEST_SET_PATH.read_text(encoding="utf-8"))
     clauses = []
@@ -177,9 +195,15 @@ def main():
     parser.add_argument("--only", action="append", help="run just this model id, repeatable")
     parser.add_argument("--limit", type=int, help="only the first N clauses, for a cheap smoke test")
     parser.add_argument("--pause", type=float, default=1.5, help="seconds between calls")
+    parser.add_argument("--held-out", metavar="GOLD",
+                        help="score against the held-out set instead of test_set.json, "
+                             "e.g. evaluation/datasets/held_out_gold.json")
     args = parser.parse_args()
 
-    clauses = load_real_clauses()
+    clauses = load_held_out(args.held_out) if args.held_out else load_real_clauses()
+    if args.held_out:
+        globals()["REPORT_PATH"] = Path(
+            f"evaluation/reports/held_out_{cc.PROMPT_VERSION}.json")
     if args.limit:
         clauses = clauses[:args.limit]
 

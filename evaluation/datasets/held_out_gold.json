@@ -1,0 +1,192 @@
+{
+  "doc_id": "lease_bha_001",
+  "rubric": "docs/06_annotation_guidelines.md",
+  "annotators": [
+    "nidhi",
+    "claude"
+  ],
+  "round2_agreement": "18/28 = 64.3%, kappa 0.462 (round 1: 15/28, kappa 0.320)",
+  "caveat": "Neither round-2 pass was blind to round 1, so the agreement improvement cannot be attributed to the rubric alone. Recorded rather than claimed.",
+  "clauses": [
+    {
+      "clause_id": "bha_2",
+      "label": "neutral",
+      "source": "adjudicated",
+      "won_by": "neither",
+      "nidhi": "favorable",
+      "claude": "concerning",
+      "reason": "Bundled clause. She read the installment option and BHA-paid utilities as a benefit; I read the unstated appliance charges as risk. Both are sub-clauses of a rent term full of blanks, and neither clears its bar. Neutral. This clause should have been split at extraction."
+    },
+    {
+      "clause_id": "bha_4",
+      "label": "concerning",
+      "source": "both_annotators_agreed"
+    },
+    {
+      "clause_id": "bha_5",
+      "label": "concerning",
+      "source": "both_annotators_agreed"
+    },
+    {
+      "clause_id": "bha_6_b",
+      "label": "neutral",
+      "source": "both_annotators_agreed"
+    },
+    {
+      "clause_id": "bha_6_d",
+      "label": "favorable",
+      "source": "both_annotators_agreed"
+    },
+    {
+      "clause_id": "bha_7_c",
+      "label": "favorable",
+      "source": "both_annotators_agreed"
+    },
+    {
+      "clause_id": "bha_7_d",
+      "label": "neutral",
+      "source": "adjudicated",
+      "won_by": "claude",
+      "nidhi": "favorable",
+      "claude": "neutral",
+      "reason": "Rule 3. Heat, hot water and sanitary code compliance are the Massachusetts statutory floor. A landlord meeting a legal duty is not conferring a benefit. Dissent recorded: she reads guaranteed habitability as protective."
+    },
+    {
+      "clause_id": "bha_7_h",
+      "label": "favorable",
+      "source": "both_annotators_agreed"
+    },
+    {
+      "clause_id": "bha_7_n",
+      "label": "favorable",
+      "source": "both_annotators_agreed"
+    },
+    {
+      "clause_id": "bha_8_a",
+      "label": "neutral",
+      "source": "both_annotators_agreed"
+    },
+    {
+      "clause_id": "bha_8_g",
+      "label": "neutral",
+      "source": "adjudicated",
+      "won_by": "claude",
+      "nidhi": "favorable",
+      "claude": "neutral",
+      "reason": "The operative content is 'you pay for damage you caused'. Itemised bills and a delayed due date are safeguards attached to an obligation, and a safeguard on a burden does not turn the burden into a benefit. Dissent recorded."
+    },
+    {
+      "clause_id": "bha_8_i",
+      "label": "neutral",
+      "source": "both_annotators_agreed"
+    },
+    {
+      "clause_id": "bha_8_k",
+      "label": "neutral",
+      "source": "both_annotators_agreed"
+    },
+    {
+      "clause_id": "bha_8_n",
+      "label": "neutral",
+      "source": "adjudicated",
+      "won_by": "nidhi",
+      "nidhi": "neutral",
+      "claude": "concerning",
+      "reason": "Conceded. Rule 1 as written was too broad. 'All REASONABLE policies' is a bounded standard, not an open one, and the policies are made available for review under Section 16. Rule 1 narrowed accordingly."
+    },
+    {
+      "clause_id": "bha_8_t",
+      "label": "neutral",
+      "source": "both_annotators_agreed"
+    },
+    {
+      "clause_id": "bha_8_u",
+      "label": "concerning",
+      "source": "both_annotators_agreed"
+    },
+    {
+      "clause_id": "bha_9_c",
+      "label": "neutral",
+      "source": "both_annotators_agreed"
+    },
+    {
+      "clause_id": "bha_9_d",
+      "label": "favorable",
+      "source": "adjudicated",
+      "won_by": "nidhi",
+      "nidhi": "favorable",
+      "claude": "neutral",
+      "reason": "Conceded. I labelled this neutral under rule 3 and flagged it as my weakest neutral in the same note. The right to examine your own file before a termination hearing is above the floor, and she landed there independently."
+    },
+    {
+      "clause_id": "bha_11_c",
+      "label": "concerning",
+      "source": "adjudicated",
+      "won_by": "nidhi",
+      "nidhi": "concerning",
+      "claude": "neutral",
+      "reason": "Conceded. Disposal of everything you own, triggered by BHA's own belief that you have gone. The process protections are real but the exposure is total and the trigger is the other party's judgment."
+    },
+    {
+      "clause_id": "bha_12",
+      "label": "concerning",
+      "source": "both_annotators_agreed"
+    },
+    {
+      "clause_id": "bha_14_a",
+      "label": "favorable",
+      "source": "adjudicated",
+      "won_by": "nidhi",
+      "nidhi": "favorable",
+      "claude": "neutral",
+      "reason": "Conceded. Forty-eight hours written notice is above the common twenty-four, and a signed written record of every entry left in the unit is genuinely unusual. I undervalued both."
+    },
+    {
+      "clause_id": "bha_14_b",
+      "label": "neutral",
+      "source": "both_annotators_agreed"
+    },
+    {
+      "clause_id": "bha_15",
+      "label": "neutral",
+      "source": "both_annotators_agreed"
+    },
+    {
+      "clause_id": "bha_16",
+      "label": "neutral",
+      "source": "adjudicated",
+      "won_by": "nidhi",
+      "nidhi": "neutral",
+      "claude": "concerning",
+      "reason": "Conceded, and she caught what I missed. The clause incorporates BHA policies by reference BUT requires them to be available for review on request and to be consistent with the lease. That is not an unseen document. Rule 1 narrowed."
+    },
+    {
+      "clause_id": "bha_17",
+      "label": "neutral",
+      "source": "adjudicated",
+      "won_by": "claude",
+      "nidhi": "favorable",
+      "claude": "neutral",
+      "reason": "Standard amendment clause, present in nearly every lease and close to the legal default. It constrains the landlord, but not beyond what a court would generally require anyway. Dissent recorded."
+    },
+    {
+      "clause_id": "bha_18_f",
+      "label": "concerning",
+      "source": "both_annotators_agreed"
+    },
+    {
+      "clause_id": "bha_18_h",
+      "label": "concerning",
+      "source": "both_annotators_agreed"
+    },
+    {
+      "clause_id": "bha_20",
+      "label": "concerning",
+      "source": "adjudicated",
+      "won_by": "claude",
+      "nidhi": "neutral",
+      "claude": "concerning",
+      "reason": "Rule 8 holds. Joint and several liability means any one signer can be pursued for the whole obligation. Noted: the extraction bundled the occupant list, the liability sentence and the signature block into one clause, which is why this reads as administrative. The clause is badly scoped, not the label."
+    }
+  ]
+}

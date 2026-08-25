@@ -22,7 +22,11 @@ load_dotenv()
 # editing this file, which is a bad way to run an experiment: the thing you are
 # varying should not live inside the code under test.
 #   CLAUSEGUARD_PROMPT_VERSION=v4 python src/prompts/test_classifier.py
-PROMPT_VERSION = os.environ.get("CLAUSEGUARD_PROMPT_VERSION", "v2")
+# v5 is the frozen default. v2 classified on typicality, which contradicted the
+# harm-based labels in both gold sets and made six clauses permanently unfixable.
+# See docs/06_annotation_guidelines.md for the definition and docs/07 for the
+# held-out result.
+PROMPT_VERSION = os.environ.get("CLAUSEGUARD_PROMPT_VERSION", "v5")
 SYSTEM_PROMPT_PATH = Path(f"src/prompts/system_prompts/clause_classifier_{PROMPT_VERSION}.txt")
 FEW_SHOT_PATH = Path("src/prompts/few_shot_examples/clause_classification_examples.json")
 

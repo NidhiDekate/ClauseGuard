@@ -1,5 +1,14 @@
 # Experiment: Model Selection (Phase 10)
 
+> **Status, Aug 25 2026: the numbers in this document were produced under prompt
+> v2 and are superseded.** v2 classified clauses on typicality while both gold
+> sets were labelled on harm. That contradiction is documented in
+> `docs/06_annotation_guidelines.md`, and it means every score here was measured
+> against a definition the labels did not use. The model ranking survived, gemini
+> still wins, and it has since been confirmed on held-out data under v5. The
+> accuracy figures below have not. Read this as the record of how the model was
+> chosen, not as current performance.
+
 **Question:** which model should classify clauses, and is the classifier's remaining error
 a limit of the model or a limit of the prompt?
 

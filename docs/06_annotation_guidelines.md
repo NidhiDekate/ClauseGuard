@@ -108,10 +108,16 @@ they were already in breach is neutral.
 These are the cases that have already caused inconsistency. They are decided here so they are
 not re-decided per clause.
 
-**1. Binding you to a document you have not seen: concerning.**
-Any clause incorporating outside policies by reference, or requiring compliance with rules the
-other party writes and can change, is concerning. The unknown counts as risk.
-Resolves: `bha_8_n` and `bha_16` are **both concerning**. They were split neutral/concerning.
+**1. Binding you to a document you have not seen: concerning, unless it is bounded and available.**
+Incorporating outside policies by reference is concerning when the person cannot find out what
+they are agreeing to. It is **not** concerning when the clause both bounds the incorporation, for
+example to policies that are "reasonable" or "not inconsistent with this lease", and gives the
+person a right to read them.
+Resolves: `bha_8_n` and `bha_16` are **both neutral**. Section 16 requires the policies to be
+available for review on request and consistent with the lease, and 8(N) is bounded to reasonable
+policies. An earlier draft made both concerning on the unbounded version of this rule; the
+annotator caught the availability guarantee and the rule was narrowed. The inconsistency this
+rubric exists to fix is that they were originally split, not which way they resolve.
 
 **2. Limitations of liability: concerning.**
 Any cap on what the other party owes you when they cause you harm, including a total disclaimer.
