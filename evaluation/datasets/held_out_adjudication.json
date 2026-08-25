@@ -1,0 +1,292 @@
+{
+  "doc_id": "lease_bha_001",
+  "annotators": [
+    "nidhi",
+    "claude"
+  ],
+  "agreement": "15/28 = 53.6%",
+  "cohen_kappa": 0.32,
+  "note": "Disagreements are systematic, not random: 8 of 13 are nidhi=concerning against claude=neutral. Fill the adjudicated field to produce the scored gold set.",
+  "rows": [
+    {
+      "clause_id": "bha_2",
+      "clause_ref": "Section 2",
+      "nidhi": "neutral",
+      "claude": "neutral",
+      "agree": true,
+      "nidhi_note": "Sets rent timing and permitted charges, including an installment option for good cause.",
+      "claude_note": "Standard rent, due date and utility allocation. The two-installment accommodation and separating rent from other charges lean tenant-friendly, but the clause as a whole is an ordinary rent term.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_4",
+      "clause_ref": "Section 4",
+      "nidhi": "concerning",
+      "claude": "concerning",
+      "agree": true,
+      "nidhi_note": "Imposes occupancy, visitor, subletting, and household-residency restrictions.",
+      "claude_note": "A 45-night annual cap on any visitor plus a requirement that each household member physically reside in the unit nine months of twelve. Most renters would not expect their own absence to put the tenancy at risk.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_5",
+      "clause_ref": "Section 5",
+      "nidhi": "concerning",
+      "claude": "concerning",
+      "agree": true,
+      "nidhi_note": "Authorizes BHA to transfer the resident to another apartment under specified circumstances.",
+      "claude_note": "BHA can move the resident to a different apartment on its own determination, including to free the unit for another resident or because it decides to close the building.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_6_b",
+      "clause_ref": "Section 6(B)",
+      "nidhi": "concerning",
+      "claude": "neutral",
+      "agree": false,
+      "nidhi_note": "Makes the resident responsible for reasonable repair costs when qualifying damage is caused by the resident, household member, or guest.",
+      "claude_note": "Landlord repairs in reasonable time, resident pays for damage they caused. Ordinary allocation.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_6_d",
+      "clause_ref": "Section 6(D)",
+      "nidhi": "favorable",
+      "claude": "favorable",
+      "agree": true,
+      "nidhi_note": "Provides proportional rent abatement when qualifying damage is not repaired within a reasonable time.",
+      "claude_note": "Rent is abated in proportion to loss of value if repairs are not made in reasonable time. An affirmative remedy most leases do not give.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_7_c",
+      "clause_ref": "Section 7(C)",
+      "nidhi": "favorable",
+      "claude": "favorable",
+      "agree": true,
+      "nidhi_note": "Requires BHA not to unreasonably deny qualifying requests for a rent extension or payment plan.",
+      "claude_note": "Landlord may not unreasonably refuse a payment plan or rent extension on good cause. Limited to one request, but an obligation few leases accept at all.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_7_d",
+      "clause_ref": "Section 7(D)",
+      "nidhi": "favorable",
+      "claude": "neutral",
+      "agree": false,
+      "nidhi_note": "Requires BHA to provide and maintain the apartment in decent, safe, and sanitary condition and provide specified services.",
+      "claude_note": "Heat, hot water, extermination and sanitary code compliance at initial occupancy. Statutory baseline rather than an extra benefit.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_7_h",
+      "clause_ref": "Section 7(H)",
+      "nidhi": "favorable",
+      "claude": "favorable",
+      "agree": true,
+      "nidhi_note": "Requires written notice of adverse-action grounds and informs the resident about applicable hearing rights.",
+      "claude_note": "Written notice of the specific grounds for any adverse action plus notice of the right to a hearing. Due process spelled out in the lease itself.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_7_n",
+      "clause_ref": "Section 7(N)",
+      "nidhi": "favorable",
+      "claude": "favorable",
+      "agree": true,
+      "nidhi_note": "Provides prompt re-keying and waiver of charges where applicable for household members with domestic-violence restraining orders.",
+      "claude_note": "Locks re-keyed promptly and charges waived for household members with a domestic violence restraining order. Specific protection well beyond typical.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_8_a",
+      "clause_ref": "Section 8(A)",
+      "nidhi": "neutral",
+      "claude": "neutral",
+      "agree": true,
+      "nidhi_note": "Sets general conduct obligations intended to protect peaceful enjoyment, safety, and housing conditions.",
+      "claude_note": "Standard quiet enjoyment and nuisance clause. The wording is broad but this is expected in nearly every lease.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_8_g",
+      "clause_ref": "Section 8(G)",
+      "nidhi": "concerning",
+      "claude": "neutral",
+      "agree": false,
+      "nidhi_note": "Makes the resident responsible for lock replacement and repair costs for qualifying BHA property damage.",
+      "claude_note": "Resident pays for damage they or their guests caused, and the bill must itemize labour and materials and is not due until the first of the second month. Ordinary, with safeguards attached.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_8_i",
+      "clause_ref": "Section 8(I)",
+      "nidhi": "neutral",
+      "claude": "neutral",
+      "agree": true,
+      "nidhi_note": "Requires return of the apartment and BHA-provided items in prior condition, with stated exceptions for normal wear and certain casualty losses.",
+      "claude_note": "Return the unit in the condition received, normal wear and tear excepted. Standard.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_8_k",
+      "clause_ref": "Section 8(K)",
+      "nidhi": "concerning",
+      "claude": "neutral",
+      "agree": false,
+      "nidhi_note": "Requires prior BHA approval for alterations and gives BHA ownership of certain permanently affixed alterations without compensation.",
+      "claude_note": "Approval needed for locks and alterations, and it may not be unreasonably withheld. Affixed alterations passing to the landlord is typical fixture treatment.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_8_n",
+      "clause_ref": "Section 8(N)",
+      "nidhi": "neutral",
+      "claude": "concerning",
+      "agree": false,
+      "nidhi_note": "Requires compliance with reasonable BHA policies adopted for the benefit and well-being of the development and residents.",
+      "claude_note": "Binds the resident to any policy BHA writes, with no detail in the lease about what those policies say or how they change. Judged on the reference-without-detail rule.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_8_t",
+      "clause_ref": "Section 8(T)",
+      "nidhi": "concerning",
+      "claude": "neutral",
+      "agree": false,
+      "nidhi_note": "Requires disclosure of Social Security or other identifying numbers upon request, subject to state and federal law.",
+      "claude_note": "Social security numbers for all household members, as permitted by law. Expected in federally subsidised housing.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_8_u",
+      "clause_ref": "Section 8(U)",
+      "nidhi": "concerning",
+      "claude": "concerning",
+      "agree": true,
+      "nidhi_note": "Requires qualifying adult residents and household members to perform eight hours of community service per month.",
+      "claude_note": "Eight hours of unpaid community service per month, per non-exempt adult, enforced through the lease. A statutory requirement for this programme, but not an obligation a person would expect a tenancy to carry. Close call and I could be argued out of it.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_9_c",
+      "clause_ref": "Section 9(C)",
+      "nidhi": "concerning",
+      "claude": "neutral",
+      "agree": false,
+      "nidhi_note": "Sets termination notice periods, including 14 days for nonpayment of rent and short periods for specified serious grounds.",
+      "claude_note": "Fourteen days notice for non-payment, thirty otherwise. Standard statutory notice periods.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_9_d",
+      "clause_ref": "Section 9(D)",
+      "nidhi": "favorable",
+      "claude": "favorable",
+      "agree": true,
+      "nidhi_note": "Requires termination notices to state grounds and informs residents of reply, document-review, and applicable hearing rights.",
+      "claude_note": "The termination notice must state specific grounds, and the resident may reply, examine their own file, and request a hearing.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_11_c",
+      "clause_ref": "Section 11(C)",
+      "nidhi": "concerning",
+      "claude": "neutral",
+      "agree": false,
+      "nidhi_note": "Allows termination based on apparent abandonment and disposal of property left behind if the resident does not respond.",
+      "claude_note": "Abandonment handled with written notice and the grievance procedure before property is disposed of. Losing possessions is serious, but the process here is the ordinary one.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_12",
+      "clause_ref": "Section 12",
+      "nidhi": "concerning",
+      "claude": "concerning",
+      "agree": true,
+      "nidhi_note": "Requires the resident to pay authorized court-related costs and fees if BHA prevails.",
+      "claude_note": "One-way fee shifting. The resident pays BHA's full legal costs when BHA wins, and the clause says nothing about the resident winning.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_14_a",
+      "clause_ref": "Section 14(A)",
+      "nidhi": "neutral",
+      "claude": "neutral",
+      "agree": true,
+      "nidhi_note": "Permits specified non-emergency BHA entry with permission or 48 hours' written notice and requires an entry record.",
+      "claude_note": "Entry with permission or forty-eight hours written notice, and a signed written statement left behind every time. Standard entry terms with above-average record keeping.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_14_b",
+      "clause_ref": "Section 14(B)",
+      "nidhi": "neutral",
+      "claude": "neutral",
+      "agree": true,
+      "nidhi_note": "Permits emergency entry without advance notice when reasonable cause exists, with safeguards including an entry record.",
+      "claude_note": "Emergency entry without notice, with the emergency conditions actually enumerated and a written statement required afterwards. Tighter than most leases that allow emergency entry.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_15",
+      "clause_ref": "Section 15",
+      "nidhi": "favorable",
+      "claude": "concerning",
+      "agree": false,
+      "nidhi_note": "Provides access to BHA's applicable grievance procedures for grievances arising under the lease.",
+      "claude_note": "Grievances 'may' be resolved under a policy BHA sets and can change, with no detail in the lease. Ambiguity in the one clause that governs how disputes get heard.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_16",
+      "clause_ref": "Section 16",
+      "nidhi": "concerning",
+      "claude": "concerning",
+      "agree": true,
+      "nidhi_note": "Incorporates applicable BHA written policies into the lease by reference.",
+      "claude_note": "Every BHA policy is incorporated into the lease by reference as if fully written into it. The resident is bound to documents they have not seen and which the landlord alone writes.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_17",
+      "clause_ref": "Section 17",
+      "nidhi": "favorable",
+      "claude": "neutral",
+      "agree": false,
+      "nidhi_note": "Limits lease changes to written agreement or legally required changes with 30 days' advance notice.",
+      "claude_note": "Standard amendment clause. Changes need written agreement, or thirty days notice when law requires them.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_18_f",
+      "clause_ref": "Section 18(F)",
+      "nidhi": "concerning",
+      "claude": "neutral",
+      "agree": false,
+      "nidhi_note": "Limits the landlord's obligation to respond to smoking unless it knows of smoking or receives written notice.",
+      "claude_note": "Defensive boilerplate disclaiming a guarantee, and it still commits the landlord to reasonable enforcement steps.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_18_h",
+      "clause_ref": "Section 18(H)",
+      "nidhi": "concerning",
+      "claude": "neutral",
+      "agree": false,
+      "nidhi_note": "Disclaims warranties about improved air quality and a smoke-free premises and limits the landlord's duty regarding smoke enforcement.",
+      "claude_note": "No-warranty and standard-of-care disclaimer. Reads badly and is the common form of this clause. Labelled on the boilerplate rule, and this is exactly the family the old eval set disputes.",
+      "adjudicated": ""
+    },
+    {
+      "clause_id": "bha_20",
+      "clause_ref": "Section 20",
+      "nidhi": "neutral",
+      "claude": "concerning",
+      "agree": false,
+      "nidhi_note": "Defines authorized household members and joint and several obligations when multiple parties sign as residents.",
+      "claude_note": "Joint and several liability. Any one signer can be pursued for the whole obligation, which is not what most people assume when several adults sign together.",
+      "adjudicated": ""
+    }
+  ]
+}

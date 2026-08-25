@@ -1,0 +1,147 @@
+{
+  "annotator": "nidhi",
+  "doc_id": "lease_bha_001",
+  "labelled_before_seeing_model_output": true,
+  "labels": [
+    {
+      "clause_id": "bha_2",
+      "label": "neutral",
+      "note": "Sets rent timing and permitted charges, including an installment option for good cause."
+    },
+    {
+      "clause_id": "bha_4",
+      "label": "concerning",
+      "note": "Imposes occupancy, visitor, subletting, and household-residency restrictions."
+    },
+    {
+      "clause_id": "bha_5",
+      "label": "concerning",
+      "note": "Authorizes BHA to transfer the resident to another apartment under specified circumstances."
+    },
+    {
+      "clause_id": "bha_6_b",
+      "label": "concerning",
+      "note": "Makes the resident responsible for reasonable repair costs when qualifying damage is caused by the resident, household member, or guest."
+    },
+    {
+      "clause_id": "bha_6_d",
+      "label": "favorable",
+      "note": "Provides proportional rent abatement when qualifying damage is not repaired within a reasonable time."
+    },
+    {
+      "clause_id": "bha_7_c",
+      "label": "favorable",
+      "note": "Requires BHA not to unreasonably deny qualifying requests for a rent extension or payment plan."
+    },
+    {
+      "clause_id": "bha_7_d",
+      "label": "favorable",
+      "note": "Requires BHA to provide and maintain the apartment in decent, safe, and sanitary condition and provide specified services."
+    },
+    {
+      "clause_id": "bha_7_h",
+      "label": "favorable",
+      "note": "Requires written notice of adverse-action grounds and informs the resident about applicable hearing rights."
+    },
+    {
+      "clause_id": "bha_7_n",
+      "label": "favorable",
+      "note": "Provides prompt re-keying and waiver of charges where applicable for household members with domestic-violence restraining orders."
+    },
+    {
+      "clause_id": "bha_8_a",
+      "label": "neutral",
+      "note": "Sets general conduct obligations intended to protect peaceful enjoyment, safety, and housing conditions."
+    },
+    {
+      "clause_id": "bha_8_g",
+      "label": "concerning",
+      "note": "Makes the resident responsible for lock replacement and repair costs for qualifying BHA property damage."
+    },
+    {
+      "clause_id": "bha_8_i",
+      "label": "neutral",
+      "note": "Requires return of the apartment and BHA-provided items in prior condition, with stated exceptions for normal wear and certain casualty losses."
+    },
+    {
+      "clause_id": "bha_8_k",
+      "label": "concerning",
+      "note": "Requires prior BHA approval for alterations and gives BHA ownership of certain permanently affixed alterations without compensation."
+    },
+    {
+      "clause_id": "bha_8_n",
+      "label": "neutral",
+      "note": "Requires compliance with reasonable BHA policies adopted for the benefit and well-being of the development and residents."
+    },
+    {
+      "clause_id": "bha_8_t",
+      "label": "concerning",
+      "note": "Requires disclosure of Social Security or other identifying numbers upon request, subject to state and federal law."
+    },
+    {
+      "clause_id": "bha_8_u",
+      "label": "concerning",
+      "note": "Requires qualifying adult residents and household members to perform eight hours of community service per month."
+    },
+    {
+      "clause_id": "bha_9_c",
+      "label": "concerning",
+      "note": "Sets termination notice periods, including 14 days for nonpayment of rent and short periods for specified serious grounds."
+    },
+    {
+      "clause_id": "bha_9_d",
+      "label": "favorable",
+      "note": "Requires termination notices to state grounds and informs residents of reply, document-review, and applicable hearing rights."
+    },
+    {
+      "clause_id": "bha_11_c",
+      "label": "concerning",
+      "note": "Allows termination based on apparent abandonment and disposal of property left behind if the resident does not respond."
+    },
+    {
+      "clause_id": "bha_12",
+      "label": "concerning",
+      "note": "Requires the resident to pay authorized court-related costs and fees if BHA prevails."
+    },
+    {
+      "clause_id": "bha_14_a",
+      "label": "neutral",
+      "note": "Permits specified non-emergency BHA entry with permission or 48 hours' written notice and requires an entry record."
+    },
+    {
+      "clause_id": "bha_14_b",
+      "label": "neutral",
+      "note": "Permits emergency entry without advance notice when reasonable cause exists, with safeguards including an entry record."
+    },
+    {
+      "clause_id": "bha_15",
+      "label": "favorable",
+      "note": "Provides access to BHA's applicable grievance procedures for grievances arising under the lease."
+    },
+    {
+      "clause_id": "bha_16",
+      "label": "concerning",
+      "note": "Incorporates applicable BHA written policies into the lease by reference."
+    },
+    {
+      "clause_id": "bha_17",
+      "label": "favorable",
+      "note": "Limits lease changes to written agreement or legally required changes with 30 days' advance notice."
+    },
+    {
+      "clause_id": "bha_18_f",
+      "label": "concerning",
+      "note": "Limits the landlord's obligation to respond to smoking unless it knows of smoking or receives written notice."
+    },
+    {
+      "clause_id": "bha_18_h",
+      "label": "concerning",
+      "note": "Disclaims warranties about improved air quality and a smoke-free premises and limits the landlord's duty regarding smoke enforcement."
+    },
+    {
+      "clause_id": "bha_20",
+      "label": "neutral",
+      "note": "Defines authorized household members and joint and several obligations when multiple parties sign as residents."
+    }
+  ]
+}
