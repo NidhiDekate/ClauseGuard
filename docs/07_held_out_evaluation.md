@@ -1,5 +1,11 @@
 # The held-out evaluation
 
+> **Update, later on Aug 25:** the held-out numbers below were measured under prompt
+> v5 with few-shot examples. The frozen configuration is now v6 zero-shot, which
+> differs in output-format instruction only. See `docs/09_few_shot_ablation.md`. The
+> held-out set was already spent, so these numbers were NOT re-measured under v6 and
+> must not be restated as v6 results.
+
 Written Aug 25, 2026. This is the first measurement in ClauseGuard taken on a document that
 had no part in building the prompt, scored against labels two people wrote independently.
 

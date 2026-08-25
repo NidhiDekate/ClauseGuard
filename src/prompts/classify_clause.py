@@ -26,7 +26,7 @@ load_dotenv()
 # harm-based labels in both gold sets and made six clauses permanently unfixable.
 # See docs/06_annotation_guidelines.md for the definition and docs/07 for the
 # held-out result.
-PROMPT_VERSION = os.environ.get("CLAUSEGUARD_PROMPT_VERSION", "v5")
+PROMPT_VERSION = os.environ.get("CLAUSEGUARD_PROMPT_VERSION", "v6")
 SYSTEM_PROMPT_PATH = Path(f"src/prompts/system_prompts/clause_classifier_{PROMPT_VERSION}.txt")
 FEW_SHOT_PATH = Path("src/prompts/few_shot_examples/clause_classification_examples.json")
 
@@ -35,9 +35,27 @@ FEW_SHOT_PATH = Path("src/prompts/few_shot_examples/clause_classification_exampl
 #   CLAUSEGUARD_MODEL=openai/gpt-oss-20b python src/prompts/test_classifier.py
 MODEL_NAME = os.environ.get("CLAUSEGUARD_MODEL", "openai/gpt-oss-120b")
 
+# E8: few-shot examples were assumed from the start and never tested against
+# zero-shot. They are not free. Nine examples ride on every single call, which
+# is where the Phase 3 cost estimate went 3.5x wrong, and they are the surface
+# that leaked the eval set into the prompt in the first place (D1). If they earn
+# nothing, deleting them makes that class of bug structurally impossible rather
+# than guarded against by evaluation/check_leakage.py.
+#   CLAUSEGUARD_FEW_SHOT=0 python evaluation/eval_models.py --only ...
+# E8 result: few-shot and zero-shot tied at 42/53. Zero-shot used 55% fewer
+# input tokens, cost 36% less, missed one fewer concerning clause, and removed
+# the surface that leaked the eval set into the prompt in the first place (D1).
+# Default is now zero-shot. See docs/09_few_shot_ablation.md.
+USE_FEW_SHOT = os.environ.get("CLAUSEGUARD_FEW_SHOT", "0") not in ("0", "false", "no")
+
 # the only three labels this system understands. anything else is a bad response,
 # not a new category.
 VALID_LABELS = {"concerning", "neutral", "favorable"}
+
+# Output budget per call. Generous, because the visible JSON is small but
+# reasoning tokens share the same budget on gpt-oss models. The real defence
+# against truncation is the length cap in the prompt; this is the backstop.
+MAX_OUTPUT_TOKENS = 512
 
 
 def _load_system_prompt():
@@ -48,6 +66,12 @@ def _load_system_prompt():
 
 
 def _load_few_shot_examples():
+    """Only called when CLAUSEGUARD_FEW_SHOT=1. The examples file was deleted
+    after E8; set the variable only if you restore it."""
+    if not FEW_SHOT_PATH.exists():
+        raise FileNotFoundError(
+            f"{FEW_SHOT_PATH} was removed after E8 showed the examples earned nothing. "
+            "See docs/09_few_shot_ablation.md. Restore the file to run the few-shot arm.")
     return json.loads(FEW_SHOT_PATH.read_text(encoding="utf-8"))
 
 
@@ -76,39 +100,45 @@ def _build_model(model_name):
             max_retries=0,
             base_url="https://openrouter.ai/api/v1",
             api_key=os.environ["OPENROUTER_API_KEY"],
+            max_tokens=MAX_OUTPUT_TOKENS,
         )
 
     if provider != "groq":
         raise ValueError(f"unknown CLAUSEGUARD_PROVIDER={provider!r}, expected 'groq' or 'openrouter'")
 
-    return ChatGroq(model=model_name, temperature=0, max_retries=0)
+    # max_tokens set explicitly. gpt-oss models emit reasoning tokens that count
+    # against the output budget, so a long chain of thought can leave too little
+    # room for the JSON and the response is cut off mid-string. src/parsing.py
+    # cannot recover that: the object genuinely never closed. Observed on 2 of 53
+    # clauses under v5, which produces longer reasons than v2 did.
+    return ChatGroq(model=model_name, temperature=0, max_retries=0,
+                    max_tokens=MAX_OUTPUT_TOKENS)
 
 
-def build_classifier_chain(model_name):
+def build_classifier_chain(model_name, use_few_shot=None):
     system_prompt = _load_system_prompt()
-    examples = _load_few_shot_examples()
+    if use_few_shot is None:
+        use_few_shot = USE_FEW_SHOT
 
-    example_prompt = ChatPromptTemplate.from_messages([
-        ("human", "Clause: {clause}"),
-        ("ai", '{{"label": "{label}", "reason": "{reason}"}}'),
-    ])
+    messages = [("system", system_prompt)]
 
-    few_shot_prompt = FewShotChatMessagePromptTemplate(
-        example_prompt=example_prompt,
-        examples=examples,
-    )
+    if use_few_shot:
+        example_prompt = ChatPromptTemplate.from_messages([
+            ("human", "Clause: {clause}"),
+            ("ai", '{{"label": "{label}", "reason": "{reason}"}}'),
+        ])
+        messages.append(FewShotChatMessagePromptTemplate(
+            example_prompt=example_prompt,
+            examples=_load_few_shot_examples(),
+        ))
 
-    final_prompt = ChatPromptTemplate.from_messages([
-        ("system", system_prompt),
-        few_shot_prompt,
-        ("human", "Clause: {clause}"),
-    ])
+    messages.append(("human", "Clause: {clause}"))
 
-    return final_prompt | _build_model(model_name)
+    return ChatPromptTemplate.from_messages(messages) | _build_model(model_name)
 
 
-def classify_clause(clause_text, model_name=MODEL_NAME, with_usage=False):
-    chain = build_classifier_chain(model_name)
+def classify_clause(clause_text, model_name=MODEL_NAME, with_usage=False, use_few_shot=None):
+    chain = build_classifier_chain(model_name, use_few_shot=use_few_shot)
 
     try:
         response = chain.invoke({"clause": clause_text})

@@ -41,7 +41,7 @@ TEST_SET_PATH = Path("evaluation/datasets/test_set.json")
 # two strategies writing to one filename, each run silently destroying the last.
 # the v2 run is committed evidence of a decision, so a v5 run must not land on top
 # of it.
-REPORT_PATH = Path(f"evaluation/reports/model_selection_{cc.PROMPT_VERSION}.json")
+REPORT_PATH = Path(f"evaluation/reports/model_selection_{cc.PROMPT_VERSION}{'' if cc.USE_FEW_SHOT else '_zeroshot'}.json")
 
 LABELS = ("concerning", "neutral", "favorable")
 
@@ -195,6 +195,13 @@ def main():
     parser.add_argument("--only", action="append", help="run just this model id, repeatable")
     parser.add_argument("--limit", type=int, help="only the first N clauses, for a cheap smoke test")
     parser.add_argument("--pause", type=float, default=1.5, help="seconds between calls")
+    parser.add_argument("--force-report", action="store_true",
+                        help="write the report even if coverage is poor and would overwrite "
+                             "a better run")
+    parser.add_argument("--provider", choices=("groq", "openrouter"),
+                        help="override the provider in CANDIDATES. Groq's free tier is 200k "
+                             "tokens per day and one full run of 53 clauses with few-shot "
+                             "examples costs about 72k, so three runs exhaust it.")
     parser.add_argument("--held-out", metavar="GOLD",
                         help="score against the held-out set instead of test_set.json, "
                              "e.g. evaluation/datasets/held_out_gold.json")
@@ -203,7 +210,7 @@ def main():
     clauses = load_held_out(args.held_out) if args.held_out else load_real_clauses()
     if args.held_out:
         globals()["REPORT_PATH"] = Path(
-            f"evaluation/reports/held_out_{cc.PROMPT_VERSION}.json")
+            f"evaluation/reports/held_out_{cc.PROMPT_VERSION}{'' if cc.USE_FEW_SHOT else '_zeroshot'}.json")
     if args.limit:
         clauses = clauses[:args.limit]
 
@@ -214,6 +221,8 @@ def main():
     print("any model at or below that line has learned nothing.\n")
 
     candidates = [c for c in CANDIDATES if not args.only or c[0] in args.only]
+    if args.provider:
+        candidates = [(m, args.provider, pi, po) for m, _, pi, po in candidates]
 
     results = []
     for model_id, provider, price_in, price_out in candidates:
@@ -257,8 +266,22 @@ def main():
     print("  alarms     clauses wrongly flagged as concerning. annoying, not dangerous.")
 
     REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
+
+    # A run that dies on rate limits still reaches this point with a report full
+    # of errors. Without this guard it overwrites the good run that came before,
+    # which is how the first E8 result was destroyed: a run answering 1 clause of
+    # 53 replaced one that answered all 53. Reports are evidence; a failed run is
+    # not entitled to replace evidence.
+    worst_coverage = min((r["coverage"] for r in results), default=0.0)
+    if worst_coverage < 0.9 and REPORT_PATH.exists() and not args.force_report:
+        print(f"\n[NOT SAVED] coverage {worst_coverage:.0%} and {REPORT_PATH.name} already "
+              f"exists. A failed run will not overwrite a good one. Re-run when the rate "
+              f"limit clears, or pass --force-report if you really mean it.")
+        return
+
     REPORT_PATH.write_text(json.dumps({
         "prompt_version": cc.PROMPT_VERSION,
+        "few_shot": cc.USE_FEW_SHOT,
         "clauses": len(clauses),
         "label_counts": dict(counts),
         "majority_baseline": majority[1] / len(clauses),

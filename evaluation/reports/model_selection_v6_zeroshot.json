@@ -1,6 +1,6 @@
 {
-  "prompt_version": "v5",
-  "few_shot": true,
+  "prompt_version": "v6",
+  "few_shot": false,
   "clauses": 53,
   "label_counts": {
     "concerning": 36,
@@ -12,419 +12,419 @@
     {
       "model": "openai/gpt-oss-120b",
       "provider": "openrouter",
-      "correct": 42,
+      "correct": 43,
       "total": 53,
-      "answered": 51,
-      "accuracy": 0.7924528301886793,
+      "answered": 53,
+      "accuracy": 0.8113207547169812,
       "accuracy_ci": [
-        0.6654199754433079,
-        0.8799552427067794
+        0.6864128355267498,
+        0.8941478805685044
       ],
-      "coverage": 0.9622641509433962,
+      "coverage": 1.0,
       "per_class": {
         "concerning": {
-          "precision": 0.868421052631579,
-          "recall": 0.9166666666666666,
-          "f1": 0.8918918918918918,
-          "tp": 33,
+          "precision": 0.875,
+          "recall": 0.9722222222222222,
+          "f1": 0.9210526315789473,
+          "tp": 35,
           "fp": 5,
-          "fn": 3
+          "fn": 1
         },
         "neutral": {
-          "precision": 0.75,
+          "precision": 0.6,
           "recall": 0.2727272727272727,
-          "f1": 0.39999999999999997,
+          "f1": 0.37499999999999994,
           "tp": 3,
-          "fp": 1,
+          "fp": 2,
           "fn": 8
         },
         "favorable": {
-          "precision": 0.6666666666666666,
-          "recall": 1.0,
-          "f1": 0.8,
-          "tp": 6,
+          "precision": 0.625,
+          "recall": 0.8333333333333334,
+          "f1": 0.7142857142857143,
+          "tp": 5,
           "fp": 3,
-          "fn": 0
+          "fn": 1
         }
       },
-      "macro_f1": 0.6972972972972973,
-      "missed_concerning": 3,
+      "macro_f1": 0.6701127819548872,
+      "missed_concerning": 1,
       "false_alarms": 5,
-      "avg_latency_seconds": 8.244325748470146,
-      "tokens_in": 71006,
-      "tokens_out": 12415,
-      "cost_usd": 0.0180999,
+      "avg_latency_seconds": 7.283464186361393,
+      "tokens_in": 33522,
+      "tokens_out": 14727,
+      "cost_usd": 0.013864500000000002,
       "per_clause": [
         {
           "doc_id": "lease_pa_001",
           "clause_ref": "XXXI",
           "expected": "concerning",
-          "predicted": null,
-          "error": "ValueError: no parseable json object in response: '{\"label\": \"concerning\", \"reason\": \"The clause shifts all repair and replacement costs for appliances to you, which is a common disclaimer but still means you could pay out\u2011of\u2011pocket if they break.\"'"
+          "predicted": "concerning",
+          "latency_seconds": 5.206993500003591
         },
         {
           "doc_id": "lease_pa_001",
           "clause_ref": "XXXIII",
           "expected": "concerning",
-          "predicted": null,
-          "error": "ValueError: model returned an empty response"
+          "predicted": "concerning",
+          "latency_seconds": 8.419638041988946
         },
         {
           "doc_id": "lease_pa_001",
           "clause_ref": "XXXV",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 3.0280744160409085
+          "latency_seconds": 1.8447672500042245
         },
         {
           "doc_id": "lease_pa_001",
           "clause_ref": "XLIV",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 11.123345750034787
+          "latency_seconds": 1.8052182500250638
         },
         {
           "doc_id": "lease_pa_001",
           "clause_ref": "XL",
           "expected": "favorable",
           "predicted": "favorable",
-          "latency_seconds": 1.0095231250161305
+          "latency_seconds": 9.963245791965164
         },
         {
           "doc_id": "lease_pa_001",
           "clause_ref": "XLII",
           "expected": "neutral",
           "predicted": "favorable",
-          "latency_seconds": 1.3727986669982783
+          "latency_seconds": 9.254087875015102
         },
         {
           "doc_id": "lease_pa_001",
           "clause_ref": "XXX",
           "expected": "neutral",
           "predicted": "neutral",
-          "latency_seconds": 7.686372834024951
+          "latency_seconds": 10.330990625021514
         },
         {
           "doc_id": "lease_pa_001",
           "clause_ref": "XXVIII",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 11.07489266700577
+          "latency_seconds": 3.7397014159942046
         },
         {
           "doc_id": "lease_ftc_001",
           "clause_ref": "5",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 4.8084720419719815
+          "latency_seconds": 7.08442049997393
         },
         {
           "doc_id": "lease_ftc_001",
           "clause_ref": "7",
           "expected": "neutral",
-          "predicted": "concerning",
-          "latency_seconds": 18.05231762502808
+          "predicted": "neutral",
+          "latency_seconds": 11.385267541976646
         },
         {
           "doc_id": "lease_ftc_001",
           "clause_ref": "8",
           "expected": "neutral",
-          "predicted": "neutral",
-          "latency_seconds": 15.081000500009395
+          "predicted": "concerning",
+          "latency_seconds": 6.993499832984526
         },
         {
           "doc_id": "lease_ftc_001",
           "clause_ref": "10",
           "expected": "concerning",
           "predicted": "neutral",
-          "latency_seconds": 9.39443216699874
+          "latency_seconds": 1.1557498750044033
         },
         {
           "doc_id": "lease_ftc_001",
           "clause_ref": "12",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 9.12497754197102
+          "latency_seconds": 14.213664499984588
         },
         {
           "doc_id": "lease_ftc_001",
           "clause_ref": "9",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 13.324943583982531
+          "latency_seconds": 7.409822540997993
         },
         {
           "doc_id": "lease_ftc_001",
           "clause_ref": "1",
           "expected": "neutral",
           "predicted": "concerning",
-          "latency_seconds": 12.322249624994583
+          "latency_seconds": 7.548761416983325
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "1.7.D",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 8.14860208396567
+          "latency_seconds": 7.773437333002221
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "2.1",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 8.547326042025816
+          "latency_seconds": 19.135492167028133
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "2.5.B",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 7.30380683299154
+          "latency_seconds": 0.5461338330060244
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "2.8",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 9.244889749970753
+          "latency_seconds": 7.121764791023452
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "2.12.B",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 5.950008500018157
+          "latency_seconds": 2.0989299999782816
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "1.12.C",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 7.268359458015766
+          "latency_seconds": 5.256783750024624
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "2.11.B",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 8.076158666983247
+          "latency_seconds": 9.251402791007422
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "4.1",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 6.761144416988827
+          "latency_seconds": 10.067004750017077
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "2.16",
           "expected": "neutral",
           "predicted": "concerning",
-          "latency_seconds": 9.63191600004211
+          "latency_seconds": 6.429786708031315
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "1.10",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 14.148131583002396
+          "latency_seconds": 21.588735624973197
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "2.13",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 6.681922209041659
+          "latency_seconds": 8.229838083032519
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "content_deletion",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 8.031176832970232
+          "latency_seconds": 6.277766874991357
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "moral_rights_waiver",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 6.521596165955998
+          "latency_seconds": 6.134499333042186
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "ai_training_use",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 7.98797866696259
+          "latency_seconds": 0.7343625419889577
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "binding_arbitration",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 4.494254834018648
+          "latency_seconds": 5.758256208966486
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "class_action_waiver",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 4.850308666005731
+          "latency_seconds": 6.3390805419767275
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "silent_terms_acceptance",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 4.944657084008213
+          "latency_seconds": 7.61013779201312
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "liability_cap",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 7.538396458956413
+          "latency_seconds": 18.409686500031967
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "content_licensing_to_third_parties",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 6.128192791016772
+          "latency_seconds": 8.580369959003292
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "data_access_rights",
           "expected": "neutral",
           "predicted": "favorable",
-          "latency_seconds": 6.433469625015277
+          "latency_seconds": 7.519065292028245
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "right_to_leave",
           "expected": "neutral",
           "predicted": "favorable",
-          "latency_seconds": 6.343647624948062
+          "latency_seconds": 5.349247874983121
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "content_ownership",
           "expected": "favorable",
           "predicted": "favorable",
-          "latency_seconds": 31.48855825001374
+          "latency_seconds": 6.9617412079824135
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "notified_term_changes",
           "expected": "neutral",
           "predicted": "concerning",
-          "latency_seconds": 7.9995448749978095
+          "latency_seconds": 7.822206125012599
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "refund_policy",
           "expected": "neutral",
           "predicted": "concerning",
-          "latency_seconds": 6.362314083962701
+          "latency_seconds": 3.750964083999861
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "shadow_profile_data",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 6.8093758749892
+          "latency_seconds": 6.954817250021733
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "identity_in_ads",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 8.781701667001471
+          "latency_seconds": 11.049995208973996
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "message_privacy",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 7.932961207989138
+          "latency_seconds": 4.721465791983064
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "ai_training_use",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 6.898338291968685
+          "latency_seconds": 10.097484999976587
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "deletion_not_real",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 7.2943067500018515
+          "latency_seconds": 6.759506999980658
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "location_despite_opt_out",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 8.434601666987874
+          "latency_seconds": 6.813019041961525
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "cross_site_tracking",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 8.346300709003117
+          "latency_seconds": 5.147006708022673
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "biometric_collection",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 8.054928750032559
+          "latency_seconds": 0.6388331670314074
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "no_forced_arbitration",
           "expected": "favorable",
           "predicted": "favorable",
-          "latency_seconds": 6.058088833000511
+          "latency_seconds": 3.256807708996348
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "30_day_change_notice",
           "expected": "favorable",
-          "predicted": "favorable",
-          "latency_seconds": 5.866977541998494
+          "predicted": "neutral",
+          "latency_seconds": 2.6380116250365973
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "no_data_sale",
           "expected": "favorable",
           "predicted": "favorable",
-          "latency_seconds": 9.184747082996182
+          "latency_seconds": 6.869922000041697
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "content_ownership",
           "expected": "favorable",
           "predicted": "favorable",
-          "latency_seconds": 4.908956166997086
+          "latency_seconds": 7.9400711670168675
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "ban_evasion_prohibited",
           "expected": "neutral",
           "predicted": "neutral",
-          "latency_seconds": 7.779529708030168
+          "latency_seconds": 10.995023583003785
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "no_damages_liability",
           "expected": "concerning",
           "predicted": "concerning",
-          "latency_seconds": 5.820036875025835
+          "latency_seconds": 7.039113500039093
         }
       ]
     }

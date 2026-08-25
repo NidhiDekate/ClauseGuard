@@ -1,5 +1,5 @@
 {
-"_notes": "Evaluation dataset containing both synthetic and real contract samples. Synthetic examples are reserved for pipeline validation only. PII has been removed from all real documents.",
+  "_notes": "Evaluation dataset containing both synthetic and real contract samples. Synthetic examples are reserved for pipeline validation only. PII has been removed from all real documents.",
   "documents": [
     {
       "doc_id": "lease_001",
@@ -91,7 +91,7 @@
           "clause_ref": "XXXI",
           "text": "If the Premises includes a washer, dryer, freezer, dehumidifier unit and/or air conditioning unit, the Landlord makes no warranty as to the repair or replacement of units if one or all shall fail to operate.",
           "label": "concerning",
-          "reason": "Landlord has no obligation to fix or replace major appliances if they break \u2014 easy to miss since it reads like a routine maintenance clause"
+          "reason": "Landlord has no obligation to fix or replace major appliances if they break — easy to miss since it reads like a routine maintenance clause"
         },
         {
           "clause_ref": "XXXIII",
@@ -103,7 +103,7 @@
           "clause_ref": "XXXV",
           "text": "Tenant, or any Occupant(s) is arrested, convicted, or given deferred adjudication for a criminal offense involving actual or potential physical harm to a person...regardless of whether arrest or conviction occurs.",
           "label": "concerning",
-          "reason": "Default can be triggered by arrest alone, without any conviction \u2014 an unusually low bar that most tenants wouldn't expect"
+          "reason": "Default can be triggered by arrest alone, without any conviction — an unusually low bar that most tenants wouldn't expect"
         },
         {
           "clause_ref": "XLIV",
@@ -115,13 +115,15 @@
           "clause_ref": "XL",
           "text": "The Landlord is prohibited from making any type of retaliatory acts against the Tenant including but not limited to restricting access to the Premises, decreasing or cancelling services or utilities, failure to repair appliances or fixtures.",
           "label": "favorable",
-          "reason": "Explicit tenant protection against landlord retaliation, stronger than many leases include"
+          "reason": "Explicit tenant protection against landlord retaliation, stronger than many leases include",
+          "relabel_note": "kept favorable: Anti-retaliation wording is broader than the Pennsylvania statute, which is mostly limited to code complaints."
         },
         {
           "clause_ref": "XLII",
           "text": "If the Tenant possesses any mental or physical impairment, the Landlord shall provide reasonable modifications to the Premises unless the modifications would be too difficult or expensive for the Landlord to provide.",
-          "label": "favorable",
-          "reason": "Clear accommodation commitment beyond baseline legal requirement framing"
+          "label": "neutral",
+          "reason": "Clear accommodation commitment beyond baseline legal requirement framing",
+          "relabel_note": "rule 3. Reasonable modifications for a disability are a statutory duty of the landlord under the Fair Housing Act. Restating a legal obligation is not a benefit."
         },
         {
           "clause_ref": "XXX",
@@ -170,13 +172,13 @@
           "clause_ref": "12",
           "text": "If the tenant does not notify landlord in a prompt matter the tenant may be held financially responsible.",
           "label": "concerning",
-          "reason": "Vague 'prompt' standard with real financial consequence attached \u2014 no defined timeframe for what counts as compliant"
+          "reason": "Vague 'prompt' standard with real financial consequence attached — no defined timeframe for what counts as compliant"
         },
         {
           "clause_ref": "9",
           "text": "If anyone removes any property belonging to Landlord without the express written consent of the Landlord, this will constitute abandonment and surrender of the premises by Tenant.",
           "label": "concerning",
-          "reason": "Broadly worded \u2014 could be triggered unintentionally and treated as full lease abandonment"
+          "reason": "Broadly worded — could be triggered unintentionally and treated as full lease abandonment"
         },
         {
           "clause_ref": "1",
@@ -207,7 +209,7 @@
           "clause_ref": "2.5.B",
           "text": "If Tenant breaks this lease in any way, the deposit is not refundable.",
           "label": "concerning",
-          "reason": "Extremely broad forfeiture condition \u2014 any lease violation, however minor, voids the entire deposit"
+          "reason": "Extremely broad forfeiture condition — any lease violation, however minor, voids the entire deposit"
         },
         {
           "clause_ref": "2.8",
@@ -225,7 +227,7 @@
           "clause_ref": "1.12.C",
           "text": "Tenant is required to purchase personal liability insurance ($100,000). Failure to maintain personal liability insurance is an incurable breach of this Lease Contract and may result in the termination of tenancy and eviction.",
           "label": "concerning",
-          "reason": "Mandatory insurance framed as an 'incurable breach' \u2014 lapsing coverage even briefly could trigger eviction with no cure period"
+          "reason": "Mandatory insurance framed as an 'incurable breach' — lapsing coverage even briefly could trigger eviction with no cure period"
         },
         {
           "clause_ref": "2.11.B",
@@ -248,8 +250,9 @@
         {
           "clause_ref": "1.10",
           "text": "We will hold the security deposit for the term of the tenancy and, upon termination of the tenancy, reserve the right to use the security deposit...to cover any charges related to your performance of this Lease Contract.",
-          "label": "neutral",
-          "reason": "Fairly standard security deposit usage language"
+          "label": "concerning",
+          "reason": "Fairly standard security deposit usage language",
+          "relabel_note": "rule 4. The deposit may be used for 'any charges related to your performance of this Lease Contract'. Open discretion over the tenant's money, with no list of what qualifies."
         },
         {
           "clause_ref": "2.13",
@@ -310,25 +313,28 @@
           "clause_ref": "content_licensing_to_third_parties",
           "text": "Your content can be licensed to third parties",
           "label": "concerning",
-          "reason": "What you upload isn't just used by the service itself \u2014 it can be passed to other companies"
+          "reason": "What you upload isn't just used by the service itself — it can be passed to other companies"
         },
         {
           "clause_ref": "data_access_rights",
           "text": "You can request access, correction and/or deletion of your data",
-          "label": "favorable",
-          "reason": "Real, actionable data rights for the user"
+          "label": "neutral",
+          "reason": "Real, actionable data rights for the user",
+          "relabel_note": "rule 3. Access, correction and deletion of personal data are a statutory duty of the service under GDPR. Restating it confers nothing."
         },
         {
           "clause_ref": "right_to_leave",
           "text": "You have the right to leave this service at any time",
-          "label": "favorable",
-          "reason": "No lock-in on account termination"
+          "label": "neutral",
+          "reason": "No lock-in on account termination",
+          "relabel_note": "rule 3 as narrowed. Being able to cancel is the norm for subscription services, so this is not better than what documents of this kind usually offer."
         },
         {
           "clause_ref": "content_ownership",
           "text": "You maintain ownership of your content",
           "label": "favorable",
-          "reason": "You retain ownership even though it can also be licensed out (see content_licensing_to_third_parties) \u2014 worth reading both together"
+          "reason": "You retain ownership even though it can also be licensed out (see content_licensing_to_third_parties) — worth reading both together",
+          "relabel_note": "kept favorable: Copyright already gives you ownership, but the norm for a ToS is a broad licence grab. Not taking one is better than the norm."
         },
         {
           "clause_ref": "notified_term_changes",
@@ -401,25 +407,29 @@
           "clause_ref": "no_forced_arbitration",
           "text": "You aren't forced into binding arbitration in case of disputes",
           "label": "favorable",
-          "reason": "Preserves your normal right to go to court, unlike Spotify's arbitration clause"
+          "reason": "Preserves your normal right to go to court, unlike Spotify's arbitration clause",
+          "relabel_note": "kept favorable: Forced arbitration is the norm for large US consumer services. Not imposing it is better than the norm, even though court access is the legal default."
         },
         {
           "clause_ref": "30_day_change_notice",
           "text": "When the service wants to make a material change to its terms, you are notified at least 30 days in advance",
           "label": "favorable",
-          "reason": "Concrete, specific notice period rather than a vague 'you'll be notified' promise"
+          "reason": "Concrete, specific notice period rather than a vague 'you'll be notified' promise",
+          "relabel_note": "kept favorable: No general legal requirement for 30 days notice of terms changes."
         },
         {
           "clause_ref": "no_data_sale",
           "text": "This service does not sell your personal data",
           "label": "favorable",
-          "reason": "Explicit commitment, notable given how much data collection is flagged elsewhere on this same page"
+          "reason": "Explicit commitment, notable given how much data collection is flagged elsewhere on this same page",
+          "relabel_note": "kept favorable: CCPA gives an opt-out; not selling at all is above that."
         },
         {
           "clause_ref": "content_ownership",
           "text": "You maintain ownership of your content",
           "label": "favorable",
-          "reason": "Same pattern as Spotify, ownership retained even though usage rights are licensed out"
+          "reason": "Same pattern as Spotify, ownership retained even though usage rights are licensed out",
+          "relabel_note": "kept favorable: Same reasoning."
         },
         {
           "clause_ref": "ban_evasion_prohibited",
@@ -430,10 +440,53 @@
         {
           "clause_ref": "no_damages_liability",
           "text": "The service assumes no liability for any damages the user incurs",
-          "label": "neutral",
-          "reason": "Boilerplate liability disclaimer, common across most services including higher-graded ones"
+          "label": "concerning",
+          "reason": "Boilerplate liability disclaimer, common across most services including higher-graded ones",
+          "relabel_note": "rule 2. A blanket disclaimer of liability for any damages cannot be less concerning than the capped version in spotify/liability_cap, which was already labelled concerning. This pair was the internal inconsistency that prompted the rubric."
         }
       ]
     }
-  ]
+  ],
+  "label_provenance": {
+    "rubric": "docs/06_annotation_guidelines.md",
+    "relabelled": "2026-08-25",
+    "method": "Labels re-derived from the written rubric after prompt v5 froze the harm definition. The second annotator applied the rubric to all 53; the primary annotator reviewed. This is weaker than the two independent blind passes used for the held-out set, and is recorded as such rather than presented as equal.",
+    "changes": [
+      {
+        "doc_id": "lease_pa_001",
+        "clause_ref": "XLII",
+        "from": "favorable",
+        "to": "neutral",
+        "reason": "rule 3. Reasonable modifications for a disability are a statutory duty of the landlord under the Fair Housing Act. Restating a legal obligation is not a benefit."
+      },
+      {
+        "doc_id": "lease_real_002",
+        "clause_ref": "1.10",
+        "from": "neutral",
+        "to": "concerning",
+        "reason": "rule 4. The deposit may be used for 'any charges related to your performance of this Lease Contract'. Open discretion over the tenant's money, with no list of what qualifies."
+      },
+      {
+        "doc_id": "tos_spotify_001",
+        "clause_ref": "data_access_rights",
+        "from": "favorable",
+        "to": "neutral",
+        "reason": "rule 3. Access, correction and deletion of personal data are a statutory duty of the service under GDPR. Restating it confers nothing."
+      },
+      {
+        "doc_id": "tos_spotify_001",
+        "clause_ref": "right_to_leave",
+        "from": "favorable",
+        "to": "neutral",
+        "reason": "rule 3 as narrowed. Being able to cancel is the norm for subscription services, so this is not better than what documents of this kind usually offer."
+      },
+      {
+        "doc_id": "tos_facebook_001",
+        "clause_ref": "no_damages_liability",
+        "from": "neutral",
+        "to": "concerning",
+        "reason": "rule 2. A blanket disclaimer of liability for any damages cannot be less concerning than the capped version in spotify/liability_cap, which was already labelled concerning. This pair was the internal inconsistency that prompted the rubric."
+      }
+    ]
+  }
 }
