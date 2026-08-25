@@ -7,6 +7,10 @@ The disagreement was not carelessness. One annotator was labelling on **harm**, 
 classifying on **typicality**, and nobody had written down which one the project meant. This
 document is that decision, made once, in writing, so it stops being made per clause.
 
+The threshold, the decision test and the reciprocity rule below come from the annotator's own
+judgment about renting, tested against real cases, not from the assistant that drafted the rest.
+That provenance matters: a rubric nobody can defend in their own words is not a rubric.
+
 It applies to every labelled set in the project: `test_set.json`, `held_out_clauses.json`, and
 anything added later. Both existing sets predate it and are being re-derived against it.
 
@@ -61,21 +65,41 @@ where uncertain clauses go.
 
 ## The threshold
 
-This is the part that stops everything becoming concerning.
+This is the part that stops everything becoming concerning. It has two tests. Either one firing
+makes the clause concerning.
 
-**Is the exposure capped, and is the cap something an ordinary person could absorb without
-changing their plans?**
+### The decision test
 
-- Uncapped, or capped at a number that would hurt: **concerning**
-- Capped and small: **neutral**
+**Could knowing this before signing reasonably change whether the person signs?**
 
-Worked: no interest paid on a security deposit is bounded and small, so neutral. A $200 minimum
-cleaning fee is a floor with no ceiling above it, so concerning. A late fee of $5 per day with
-no cap is concerning. A $25 fee for a lost key is neutral.
+Nobody reads a lease to feel informed. They read it to decide. A one-vehicle limit does not harm
+a household with one car at all, and it is disqualifying for a household with two. The clause is
+concerning not because it hurts, but because it could change the answer.
 
-The same test applies to non-money exposure. A rule that costs a normal person nothing unless
-they were already in breach is neutral. A rule that restricts ordinary use of their own home is
-concerning, because they lose something they thought they were buying.
+This replaces an earlier and vaguer rule about "restrictions on ordinary use", which would have
+fired on things like a rule against pools over eighteen inches. That rule was wrong and this one
+came from the annotator, not from the model.
+
+### The proportionality test
+
+**Is the exposure bounded, one-off, and small relative to what the person already pays under
+this contract?**
+
+Judge a stated amount against the rent or fee the document names, not against an absolute idea
+of what is a lot of money. A $200 charge against $1,000 monthly rent is a fifth of a month and is
+absorbable. The same $200 against a public housing rent set at 30% of income, which might be
+$250, is most of a month. The clause has not changed; the exposure has.
+
+Uncapped or recurring exposure is concerning regardless. A $5 per day late fee with no ceiling
+is concerning. No interest paid on a security deposit is bounded and trivial, so neutral.
+
+**Where the document names no rent or fee to compare against, flag it and state the amount.**
+Label `concerning`, and write the number into the reason: "this is a $200 charge", not "there is
+a cleaning fee". The asymmetry justifies it. A false alarm costs the reader four seconds. A miss
+costs them money they did not know they had agreed to.
+
+The same tests apply to non-money exposure. A rule that costs a normal person nothing unless
+they were already in breach is neutral.
 
 ---
 
@@ -104,9 +128,10 @@ Resolves: `bha_7_d`, `bha_15`, `bha_17` move from favorable to neutral.
 "At the Landlord's sole discretion", "as determined by us", "such other charges as we deem
 appropriate". The clause is only as good as the other party chooses to make it.
 
-**5. Restrictions on ordinary use of your own home: concerning.**
-Guest night limits, occupancy minimums, vehicle limits, restrictions on ordinary domestic
-activity. The person is losing something they believed they were renting.
+**5. Terms that could change the decision to sign: concerning.**
+Judged by the decision test above, not by how much they hurt. Guest night limits, occupancy
+minimums, vehicle limits, pet bans. A term that is irrelevant to one household and disqualifying
+to the next belongs in front of the reader before they sign.
 Resolves: `ftc 10`, one vehicle, stays **concerning**. `pa XXXIII`, 48-hour guests, stays
 **concerning**.
 
@@ -124,6 +149,15 @@ neutral, because the person can act. Silent or automatic acceptance is concernin
 Any one signer can be pursued for the whole obligation. Most people signing with a partner or
 housemate do not know this.
 Resolves: `bha_20` moves from neutral to concerning.
+
+**9. Reciprocity: a cost with something on the other side of it is weaker.**
+A charge the person receives value for is not the same as a charge that appears alone. A cleaning
+fee where the unit was delivered clean is an exchange. The same fee with nothing given in return
+is not. Reciprocity does not by itself make a clause neutral, but it is a legitimate reason to
+land on neutral where the proportionality test is borderline.
+Resolves: `ftc 8`, the $200 minimum cleaning fee against $1,000-ish rent, is **neutral**. An
+earlier draft of this document called it concerning on the reasoning that a minimum has no
+ceiling above it. That is a lawyer's reading, not a renter's, and it was withdrawn.
 
 ---
 
