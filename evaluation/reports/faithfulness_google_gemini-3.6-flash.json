@@ -1,0 +1,554 @@
+{
+  "system_under_test": "google/gemini-3.6-flash",
+  "judge": "anthropic/claude-opus-5",
+  "source_report": "evaluation/reports/model_selection_v6_zeroshot.json",
+  "judged": 53,
+  "faithful": 46,
+  "results": [
+    {
+      "doc_id": "lease_pa_001",
+      "clause_ref": "XXXI",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "While fairly common in leases, this term means the landlord won't fix or replace major appliances like air conditioning or washers if they break.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The explanation tracks the clause's disclaimer of any warranty for repair/replacement of the listed appliances; the 'common in leases' remark is out of scope."
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "clause_ref": "XXXIII",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This guest restriction is common in leases, but it limits your visitors to 48 hours and could put your housing at risk if breached.",
+      "faithful": false,
+      "unsupported": [
+        "could put your housing at risk if breached"
+      ],
+      "note": "The 48-hour limit is stated, but the clause creates no consequence such as loss of housing for a breach; the \"common in leases\" remark is out of scope."
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "clause_ref": "XXXV",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This is common in leases, but it allows your landlord to evict you based on a mere arrest, even if you are never convicted.",
+      "faithful": false,
+      "unsupported": [
+        "it allows your landlord to evict you based on a mere arrest"
+      ],
+      "note": "The clause only lists arrest/conviction/deferred adjudication as a triggering condition and never mentions a landlord or an eviction remedy, though the 'arrest without conviction' point is supported."
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "clause_ref": "XLIV",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This clause is common in leases, but it limits your ability to recover costs for injuries or damages unless the landlord is 100% at fault.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The claim that recovery requires the landlord being solely (100%) at fault follows directly from the clause's 'unless caused solely by the Landlord's negligence'; the 'common in leases' remark is a general characterisation and out of scope."
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "clause_ref": "XL",
+      "predicted_label": "favorable",
+      "label_correct": true,
+      "reason": "This protects you from landlord retaliation such as shutting off utilities or delaying repairs, which is favorable to tenants and common in standard leases.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The utilities and repair examples track the clause's listed retaliatory acts; the \"common in standard leases\" remark is an out-of-scope general characterisation."
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "clause_ref": "XLII",
+      "predicted_label": "favorable",
+      "label_correct": false,
+      "reason": "This term is standard in residential leases, and it requires the landlord to accommodate your physical or mental impairment with reasonable property modifications.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The duty to provide reasonable modifications for an impairment is stated in the clause; the 'standard in residential leases' remark is a general characterisation and out of scope."
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "clause_ref": "XXX",
+      "predicted_label": "neutral",
+      "label_correct": true,
+      "reason": "This is standard in leases, and it allows your landlord to enter the property during business hours after providing 24 hours' notice.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The entry right, business-hours limit, and 24-hour notice all track the clause; the \"standard in leases\" remark is a general characterisation and thus out of scope."
+    },
+    {
+      "doc_id": "lease_pa_001",
+      "clause_ref": "XXVIII",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This clause is common in leases, but it allows your landlord to terminate your agreement immediately if you leave for just seven days.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The seven-day termination right is stated in the clause; the 'common in leases' remark is a general characterisation and out of scope."
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "clause_ref": "5",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "Late fees are common in leases, but this clause will cost you extra money through daily accruing penalties without any exceptions for financial or medical emergencies.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The daily accruing penalty and the refusal of health/financial excuses are both stated in the clause; the \"common in leases\" remark is a general claim outside the clause's scope."
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "clause_ref": "7",
+      "predicted_label": "concerning",
+      "label_correct": false,
+      "reason": "This is common in leases, but it prevents you from earning interest on your deposit and delays its return for over six weeks.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The no-interest point and the roughly six-week (30 working days) holding period both follow from the clause; 'common in leases' is an out-of-scope general remark."
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "clause_ref": "8",
+      "predicted_label": "concerning",
+      "label_correct": false,
+      "reason": "This is common in rental agreements, but it means you will be charged at least $200 if the landlord decides the property needs professional cleaning.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The $200 minimum fee tied to professional cleaning is stated in the clause; the \"common in rental agreements\" remark is out of scope."
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "clause_ref": "10",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This limit is standard in residential leases, but it restricts how many cars you can park and could force you to pay for off-site parking.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The one-vehicle restriction is stated in the clause, the off-site parking cost is a hedged direct implication of that limit, and the 'standard in leases' remark is an out-of-scope general claim."
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "clause_ref": "12",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This requirement is standard in leases, but it can make you personally responsible for costly repairs if you do not report property issues quickly.",
+      "faithful": false,
+      "unsupported": [
+        "it can make you personally responsible for costly repairs",
+        "if you do not report property issues quickly"
+      ],
+      "note": "The clause mentions only unspecified financial responsibility for failure to notify promptly; it never mentions repairs or property issues."
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "clause_ref": "9",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This clause is unusual in leases, and it means you could lose your home if anyone removes landlord property without written permission.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The claim that anyone's removal of landlord property without written consent triggers deemed abandonment/surrender (loss of the premises) tracks the clause; the \"unusual in leases\" remark is an out-of-scope general characterization."
+    },
+    {
+      "doc_id": "lease_ftc_001",
+      "clause_ref": "1",
+      "predicted_label": "concerning",
+      "label_correct": false,
+      "reason": "This term is standard in residential leases, but you will automatically remain responsible for paying monthly rent if you miss the 30-day notice deadline.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The automatic month-to-month continuation absent 30-day written notice is stated in the clause, and continued rent obligation follows directly from it; the \"standard in residential leases\" remark is a general characterisation and out of scope."
+    },
+    {
+      "doc_id": "lease_real_002",
+      "clause_ref": "1.7.D",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "Auto-renewal clauses are common in leases, but this automatically increases your rent by $100 a month unless you give 120 days' advance notice.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The $100 increase and 120-day notice condition both come directly from the clause; the 'common in leases' remark is out of scope."
+    },
+    {
+      "doc_id": "lease_real_002",
+      "clause_ref": "2.1",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This is standard in some residential leases, but it waives your right to receive advance notice before the landlord takes you to court.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The waiver of notice before court action is stated in the clause; the 'standard in some leases' remark is a general claim about the world and out of scope."
+    },
+    {
+      "doc_id": "lease_real_002",
+      "clause_ref": "2.5.B",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This clause is common in leases, but it means you lose your entire deposit for even minor, accidental breaches.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The \"any way\" language supports loss of the whole deposit for even minor or accidental breaches; the \"common in leases\" remark is a general claim about the world and out of scope."
+    },
+    {
+      "doc_id": "lease_real_002",
+      "clause_ref": "2.8",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This imposes a $100 fee if you fail to respond within three days, which is an unusually strict penalty for consumer agreements.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The $100 fee and three-day non-response trigger are stated in the clause; the comparison to other consumer agreements is a general characterisation and out of scope."
+    },
+    {
+      "doc_id": "lease_real_002",
+      "clause_ref": "2.12.B",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This is unusual in leases, and it allows your landlord to enter your home at any time without giving you any advance notice.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The entry-at-any-time-without-notice statement matches the clause; the \"unusual in leases\" remark is a general characterisation and out of scope."
+    },
+    {
+      "doc_id": "lease_real_002",
+      "clause_ref": "1.12.C",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This requirement is standard in residential leases, but it forces you to pay for insurance and allows immediate eviction if your coverage lapses.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The insurance requirement, the cost burden, and the eviction consequence are all stated in the clause; 'immediate' follows reasonably from the clause's 'incurable breach' language, and the 'standard in residential leases' remark is a general claim outside the clause."
+    },
+    {
+      "doc_id": "lease_real_002",
+      "clause_ref": "2.11.B",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "While animal penalties are common in leases, this charges you $500 monthly even if a guest brings a pet without your knowledge.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The $500 recurring monthly charge and liability regardless of tenant knowledge are both stated in the clause; the remark about leases generally is out of scope."
+    },
+    {
+      "doc_id": "lease_real_002",
+      "clause_ref": "4.1",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "While smoking bans are common in leases, this allows the landlord to charge you a $500 fine based entirely on their own judgment.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The $500 fine and the landlord's sole discretion are both stated in the clause; the remark about leases generally is out of scope."
+    },
+    {
+      "doc_id": "lease_real_002",
+      "clause_ref": "2.16",
+      "predicted_label": "neutral",
+      "label_correct": true,
+      "reason": "This voluntary dispute resolution option is common in leases and does not force you to give up your right to go to court.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The clause's permissive \"may agree\" language supports the voluntary characterization, and the commonality remark is out of scope."
+    },
+    {
+      "doc_id": "lease_real_002",
+      "clause_ref": "1.10",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This is standard in leases, but it allows the landlord to deduct money from your deposit for any charges related to your lease contract.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The deduction right described matches the clause's reservation to use the deposit for charges related to lease performance; the \"standard in leases\" remark is a general claim and out of scope."
+    },
+    {
+      "doc_id": "lease_real_002",
+      "clause_ref": "2.13",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "Waiving notice rights is common in some leases, but it means you can face eviction proceedings without standard advance warning.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The clause explicitly waives the Tenant's right to a Notice to Quit, so losing advance warning before eviction follows directly; the commonality remark is out of scope."
+    },
+    {
+      "doc_id": "tos_spotify_001",
+      "clause_ref": "content_deletion",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This is common in online terms, but it allows the service to delete your content at any time without warning or explanation.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The explanation restates the clause's grant of deletion without reason or prior notice; the 'common in online terms' remark is a general characterisation and out of scope."
+    },
+    {
+      "doc_id": "tos_spotify_001",
+      "clause_ref": "moral_rights_waiver",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This is common in creative and service contracts, but it means you give up the right to be credited for or control how your work is used.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The explanation restates the definitional content of waiving moral rights (attribution and integrity), and the 'common in contracts' remark is a general characterisation that is out of scope."
+    },
+    {
+      "doc_id": "tos_spotify_001",
+      "clause_ref": "ai_training_use",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "While increasingly common in modern terms of service, this allows the company to use your personal information to train AI models and make automated decisions about you.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The explanation's claims about AI training and automated decisions restate the clause; the 'increasingly common' remark is an out-of-scope general characterisation."
+    },
+    {
+      "doc_id": "tos_spotify_001",
+      "clause_ref": "binding_arbitration",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This is common in consumer agreements, and it removes your right to take the company to court over disputes.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The claim that court access is removed follows directly from forced binding arbitration; the 'common in consumer agreements' remark is a general characterisation and out of scope."
+    },
+    {
+      "doc_id": "tos_spotify_001",
+      "clause_ref": "class_action_waiver",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "While standard in consumer agreements, this prevents you from joining a class action lawsuit to sue the company collectively.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The explanation restates the clause's waiver of class action rights; the 'standard in consumer agreements' remark is an out-of-scope general characterisation."
+    },
+    {
+      "doc_id": "tos_spotify_001",
+      "clause_ref": "silent_terms_acceptance",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This implied consent is common in online terms, but it means the service can change your contract without directly notifying or asking you.",
+      "faithful": false,
+      "unsupported": [
+        "without directly notifying"
+      ],
+      "note": "The clause says consent is assumed from usage instead of being asked for directly, but it says nothing about whether users are notified of changes; the 'common in online terms' remark is out of scope."
+    },
+    {
+      "doc_id": "tos_spotify_001",
+      "clause_ref": "liability_cap",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This limitation of liability is standard in terms of service, but it severely caps what you can recover if the service causes you major financial harm.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The explanation's only clause-specific claim — that recovery is capped — follows directly from the clause; the 'standard in terms of service' remark is a general characterisation and out of scope."
+    },
+    {
+      "doc_id": "tos_spotify_001",
+      "clause_ref": "content_licensing_to_third_parties",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This is common in online service terms, but it allows the company to share or sell rights to your content to outside parties without paying you.",
+      "faithful": false,
+      "unsupported": [
+        "without paying you"
+      ],
+      "note": "The clause says content can be licensed to third parties but says nothing about compensation (or lack of it), so the 'without paying you' detail is added; the 'common in online service terms' remark is out of scope."
+    },
+    {
+      "doc_id": "tos_spotify_001",
+      "clause_ref": "data_access_rights",
+      "predicted_label": "favorable",
+      "label_correct": false,
+      "reason": "This gives you control to view, fix, or delete your personal information, which is standard in modern privacy policies.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The explanation paraphrases the clause's access/correction/deletion request rights; the 'standard in privacy policies' remark is a general out-of-scope characterisation."
+    },
+    {
+      "doc_id": "tos_spotify_001",
+      "clause_ref": "right_to_leave",
+      "predicted_label": "favorable",
+      "label_correct": false,
+      "reason": "This is common in digital services, and it protects you by allowing you to cancel your account whenever you want without lock-in.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The claim about cancelling at any time follows directly from the clause; the 'common in digital services' remark is a general characterisation and out of scope."
+    },
+    {
+      "doc_id": "tos_spotify_001",
+      "clause_ref": "content_ownership",
+      "predicted_label": "favorable",
+      "label_correct": true,
+      "reason": "This is common in terms of service, and it ensures you keep full legal ownership of everything you upload or create.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The explanation restates the clause's grant of ownership over the user's content; the 'common in terms of service' remark is a general claim about the wider world and thus out of scope."
+    },
+    {
+      "doc_id": "tos_spotify_001",
+      "clause_ref": "notified_term_changes",
+      "predicted_label": "concerning",
+      "label_correct": false,
+      "reason": "This is common in terms of service, but it allows the company to change your contract rules at any time without your consent.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The clause permits changes at any time with only notification, so the unilateral-change point follows; the 'common in terms of service' remark is out of scope."
+    },
+    {
+      "doc_id": "tos_spotify_001",
+      "clause_ref": "refund_policy",
+      "predicted_label": "concerning",
+      "label_correct": false,
+      "reason": "This is common in digital services, but it means you cannot get your money back if you are dissatisfied, and the exceptions are left vague.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The no-refund inference and the vagueness of the exceptions both follow from the clause; the 'common in digital services' remark is a general claim and out of scope."
+    },
+    {
+      "doc_id": "tos_facebook_001",
+      "clause_ref": "shadow_profile_data",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This is common in online privacy policies, and it means the company tracks and stores your data even if you never use their service.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The explanation restates the clause's meaning; the 'common in privacy policies' remark is a general-world claim and out of scope."
+    },
+    {
+      "doc_id": "tos_facebook_001",
+      "clause_ref": "identity_in_ads",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "While common in online terms, this lets the company use your name and image in advertisements to other users without compensating you.",
+      "faithful": false,
+      "unsupported": [
+        "without compensating you"
+      ],
+      "note": "The clause says identity is used in ads to other users but says nothing about compensation; the 'common in online terms' remark is out of scope."
+    },
+    {
+      "doc_id": "tos_facebook_001",
+      "clause_ref": "message_privacy",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This is common for unencrypted messaging services, but it means the company can read your private messages.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The explanation restates the clause's point that unencrypted private messages are readable; the framing as \"common\" is a general-world claim and out of scope."
+    },
+    {
+      "doc_id": "tos_facebook_001",
+      "clause_ref": "ai_training_use",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This is becoming common in modern terms, but it allows the company to use your private data for AI training and automated decisions.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The claim about AI training and automated decisions matches the clause; the 'becoming common' remark is a general characterisation and out of scope."
+    },
+    {
+      "doc_id": "tos_facebook_001",
+      "clause_ref": "deletion_not_real",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "While common in digital terms of service, this means the platform keeps your content and data even after you try to delete it.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The explanation restates the clause's meaning that deleted content is retained; the 'common in digital terms of service' remark is a general characterisation and out of scope."
+    },
+    {
+      "doc_id": "tos_facebook_001",
+      "clause_ref": "location_despite_opt_out",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "While location collection is common, tracking and sharing your location after you turn it off strips your privacy controls.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The claim about tracking and sharing location after the user turns it off restates the clause; the remark about commonality is a general-world statement and out of scope."
+    },
+    {
+      "doc_id": "tos_facebook_001",
+      "clause_ref": "cross_site_tracking",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This is common in online services, but it allows the company to track your activity across the internet.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The tracking-across-other-websites claim restates the clause; the \"common in online services\" remark is a general characterisation and out of scope."
+    },
+    {
+      "doc_id": "tos_facebook_001",
+      "clause_ref": "biometric_collection",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This is increasingly common in tech terms, but collecting your highly sensitive biometric data creates permanent privacy and security risks if compromised.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The explanation only asserts that biometric data is collected, which the clause states; the rest is general real-world commentary about biometric risk, which is out of scope."
+    },
+    {
+      "doc_id": "tos_facebook_001",
+      "clause_ref": "no_forced_arbitration",
+      "predicted_label": "favorable",
+      "label_correct": true,
+      "reason": "This is uncommon in modern terms of service, and it protects your right to take legal disputes to court.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The claim about preserving court access follows directly from the absence of forced binding arbitration, and the prevalence remark is a general characterisation (out of scope)."
+    },
+    {
+      "doc_id": "tos_facebook_001",
+      "clause_ref": "30_day_change_notice",
+      "predicted_label": "favorable",
+      "label_correct": true,
+      "reason": "This gives you 30 days to review major changes before they take effect, which provides helpful protection and is better than standard terms.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The 30-day advance notice for material changes is stated in the clause; the comparison to \"standard terms\" is an out-of-scope general characterisation rather than an unsupported fact."
+    },
+    {
+      "doc_id": "tos_facebook_001",
+      "clause_ref": "no_data_sale",
+      "predicted_label": "favorable",
+      "label_correct": true,
+      "reason": "This commitment is common in privacy policies, and it protects you by guaranteeing your personal information will not be sold to third parties.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The claim that personal data will not be sold to third parties follows directly from the clause; the \"common in privacy policies\" remark is a general-world characterisation and out of scope."
+    },
+    {
+      "doc_id": "tos_facebook_001",
+      "clause_ref": "content_ownership",
+      "predicted_label": "favorable",
+      "label_correct": true,
+      "reason": "This is standard in modern online terms, and it ensures you keep full legal ownership of the content you upload.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The claim that you retain ownership of your content restates the clause; the 'standard in online terms' remark is a general world claim and out of scope."
+    },
+    {
+      "doc_id": "tos_facebook_001",
+      "clause_ref": "ban_evasion_prohibited",
+      "predicted_label": "concerning",
+      "label_correct": false,
+      "reason": "This is standard in online terms, and it permanently bars you from ever creating a new account if your original account is banned.",
+      "faithful": false,
+      "unsupported": [
+        "it permanently bars you from ever creating a new account if your original account is banned"
+      ],
+      "note": "The clause applies only to users who have been permanently banned, whereas the explanation extends the prohibition to any banned account; the \"standard in online terms\" remark is out of scope."
+    },
+    {
+      "doc_id": "tos_facebook_001",
+      "clause_ref": "no_damages_liability",
+      "predicted_label": "concerning",
+      "label_correct": true,
+      "reason": "This liability disclaimer is standard in online terms, but it means you cannot recover money if the service causes you harm or financial loss.",
+      "faithful": true,
+      "unsupported": [],
+      "note": "The inability to recover for harm or loss follows directly from the blanket disclaimer of liability for any damages; the \"standard in online terms\" remark is an out-of-scope general characterisation."
+    }
+  ]
+}

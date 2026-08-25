@@ -1,0 +1,636 @@
+{
+  "k": 3,
+  "runs": 3,
+  "summary": [
+    {
+      "present_correct": 11,
+      "present_total": 12,
+      "absent_correct": 3,
+      "absent_total": 4,
+      "precision": 0.9166666666666666,
+      "distractor_picks": 0,
+      "false_none": 1,
+      "excluded": 0
+    },
+    {
+      "present_correct": 11,
+      "present_total": 12,
+      "absent_correct": 3,
+      "absent_total": 4,
+      "precision": 0.9166666666666666,
+      "distractor_picks": 0,
+      "false_none": 1,
+      "excluded": 0
+    },
+    {
+      "present_correct": 0,
+      "present_total": 0,
+      "absent_correct": 0,
+      "absent_total": 0,
+      "precision": 0.0,
+      "distractor_picks": 0,
+      "false_none": 0,
+      "excluded": 0
+    }
+  ],
+  "results": [
+    [
+      {
+        "doc_id": "lease_pa_001",
+        "category": "late fees and rent payment terms",
+        "expected": "present",
+        "must_find_ref": "X",
+        "candidate_kinds": [
+          "answer",
+          "distractor",
+          "distractor"
+        ],
+        "answer_available": true,
+        "picked_index": 0,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 1 directly sets a rule for late fees when rent is overdue, addressing the concern more specifically than the generic rent payment clause."
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "early termination and lease-breaking fees",
+        "expected": "present",
+        "must_find_ref": "XIX",
+        "candidate_kinds": [
+          "answer",
+          "other",
+          "other"
+        ],
+        "answer_available": true,
+        "picked_index": 0,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 1 directly sets the tenant's right to terminate early and specifies an early termination fee, matching the concern category."
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "security deposit terms",
+        "expected": "present",
+        "must_find_ref": "XIV",
+        "candidate_kinds": [
+          "answer",
+          "other",
+          "other"
+        ],
+        "answer_available": true,
+        "picked_index": 0,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 1 provides explicit terms for the security deposit amount, payment timing, and return deadline, directly addressing the concern."
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "landlord right of entry and notice period",
+        "expected": "present",
+        "must_find_ref": "XXX",
+        "candidate_kinds": [
+          "answer",
+          "other",
+          "other"
+        ],
+        "answer_available": true,
+        "picked_index": 0,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 1 explicitly sets the landlord's right to enter and requires a 24‑hour notice period, directly addressing the concern."
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "guest and occupancy restrictions",
+        "expected": "present",
+        "must_find_ref": "XXXIII",
+        "candidate_kinds": [
+          "distractor",
+          "other",
+          "answer"
+        ],
+        "answer_available": true,
+        "picked_index": 2,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 3 explicitly limits residency to the tenant and listed occupants and caps guest stays at 48 hours, providing a concrete rule."
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "maintenance and repair responsibilities",
+        "expected": "present",
+        "must_find_ref": "XXXI",
+        "candidate_kinds": [
+          "answer",
+          "other",
+          "other"
+        ],
+        "answer_available": true,
+        "picked_index": 0,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 1 explicitly allocates maintenance and repair duties between tenant and landlord, providing clear obligations."
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "liability and indemnification",
+        "expected": "present",
+        "must_find_ref": "XLIV",
+        "candidate_kinds": [
+          "answer",
+          "other",
+          "other"
+        ],
+        "answer_available": true,
+        "picked_index": 0,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 1 explicitly sets indemnification and liability limits, providing a clear rule between the parties."
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "automatic renewal and rent increases",
+        "expected": "present",
+        "must_find_ref": "II",
+        "candidate_kinds": [
+          "answer",
+          "distractor",
+          "other"
+        ],
+        "answer_available": true,
+        "picked_index": null,
+        "picked_kind": "none",
+        "correct": false,
+        "reason": "None of the clauses provide terms about automatic renewal or rent increase provisions."
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "late fees and rent payment terms",
+        "expected": "present",
+        "must_find_ref": "5",
+        "candidate_kinds": [
+          "answer",
+          "distractor",
+          "other"
+        ],
+        "answer_available": true,
+        "picked_index": 0,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 1 directly sets rent due date, grace period, and specific late fee amounts, fully addressing late fees and rent payment terms."
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "early termination and lease-breaking fees",
+        "expected": "absent",
+        "must_find_ref": null,
+        "candidate_kinds": [
+          "other",
+          "other",
+          "other"
+        ],
+        "answer_available": false,
+        "picked_index": null,
+        "picked_kind": "none",
+        "correct": true,
+        "reason": "None of the clauses discuss early termination or lease-breaking fees; they only cover rent payment timing, amount, or bad checks."
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "security deposit terms",
+        "expected": "present",
+        "must_find_ref": "7",
+        "candidate_kinds": [
+          "answer",
+          "other",
+          "other"
+        ],
+        "answer_available": true,
+        "picked_index": 0,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 1 provides detailed terms for the security deposit, including amount, refund conditions, deductions, and timelines."
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "landlord right of entry and notice period",
+        "expected": "absent",
+        "must_find_ref": null,
+        "candidate_kinds": [
+          "other",
+          "other",
+          "other"
+        ],
+        "answer_available": false,
+        "picked_index": null,
+        "picked_kind": "none",
+        "correct": true,
+        "reason": "None of the clauses set rules or obligations regarding the landlord's right to enter the premises or required notice periods"
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "guest and occupancy restrictions",
+        "expected": "absent",
+        "must_find_ref": null,
+        "candidate_kinds": [
+          "other",
+          "other",
+          "other"
+        ],
+        "answer_available": false,
+        "picked_index": null,
+        "picked_kind": "none",
+        "correct": true,
+        "reason": "None of the clauses pertain to guest or occupancy restrictions; they focus on vehicles and pets."
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "maintenance and repair responsibilities",
+        "expected": "present",
+        "must_find_ref": "12",
+        "candidate_kinds": [
+          "other",
+          "answer",
+          "other"
+        ],
+        "answer_available": true,
+        "picked_index": 1,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 2 explicitly sets tenant duties to report building problems and outlines potential financial responsibility, directly addressing maintenance and repair responsibilities."
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "liability and indemnification",
+        "expected": "absent",
+        "must_find_ref": null,
+        "candidate_kinds": [
+          "distractor",
+          "other",
+          "other"
+        ],
+        "answer_available": false,
+        "picked_index": 0,
+        "picked_kind": "distractor",
+        "correct": false,
+        "reason": "Clause 1 explicitly states the tenant will face legal and financial consequences for violating the agreement, directly addressing liability"
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "automatic renewal and rent increases",
+        "expected": "present",
+        "must_find_ref": "1",
+        "candidate_kinds": [
+          "distractor",
+          "other",
+          "answer"
+        ],
+        "answer_available": true,
+        "picked_index": 2,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 3 explicitly sets the automatic continuation terms after lease expiration, providing a concrete rule for renewal"
+      }
+    ],
+    [
+      {
+        "doc_id": "lease_pa_001",
+        "category": "late fees and rent payment terms",
+        "expected": "present",
+        "must_find_ref": "X",
+        "candidate_kinds": [
+          "answer",
+          "distractor",
+          "distractor"
+        ],
+        "answer_available": true,
+        "picked_index": 0,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 1 directly sets a rule for late fees when rent is overdue, addressing the concern more specifically than the generic rent payment clause."
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "early termination and lease-breaking fees",
+        "expected": "present",
+        "must_find_ref": "XIX",
+        "candidate_kinds": [
+          "answer",
+          "other",
+          "other"
+        ],
+        "answer_available": true,
+        "picked_index": 0,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 1 directly sets the right to terminate early and specifies an early termination fee, matching the concern category."
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "security deposit terms",
+        "expected": "present",
+        "must_find_ref": "XIV",
+        "candidate_kinds": [
+          "answer",
+          "other",
+          "other"
+        ],
+        "answer_available": true,
+        "picked_index": 0,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 1 provides explicit terms for the security deposit amount, payment timing, and return deadline."
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "landlord right of entry and notice period",
+        "expected": "present",
+        "must_find_ref": "XXX",
+        "candidate_kinds": [
+          "answer",
+          "other",
+          "other"
+        ],
+        "answer_available": true,
+        "picked_index": 0,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 1 explicitly sets the landlord's right to enter and requires a 24‑hour notice period, directly addressing the concern."
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "guest and occupancy restrictions",
+        "expected": "present",
+        "must_find_ref": "XXXIII",
+        "candidate_kinds": [
+          "distractor",
+          "other",
+          "answer"
+        ],
+        "answer_available": true,
+        "picked_index": 2,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 3 explicitly limits guests to 48 hours and restricts other persons from living on the premises, providing a concrete rule on guest and occupancy restrictions."
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "maintenance and repair responsibilities",
+        "expected": "present",
+        "must_find_ref": "XXXI",
+        "candidate_kinds": [
+          "answer",
+          "other",
+          "other"
+        ],
+        "answer_available": true,
+        "picked_index": 0,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 1 explicitly allocates maintenance and repair duties between tenant and landlord, setting clear obligations."
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "liability and indemnification",
+        "expected": "present",
+        "must_find_ref": "XLIV",
+        "candidate_kinds": [
+          "answer",
+          "other",
+          "other"
+        ],
+        "answer_available": true,
+        "picked_index": 0,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 1 directly establishes indemnification and liability obligations, providing a clear rule on who is liable and when the landlord must be held harmless"
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "automatic renewal and rent increases",
+        "expected": "present",
+        "must_find_ref": "II",
+        "candidate_kinds": [
+          "answer",
+          "distractor",
+          "other"
+        ],
+        "answer_available": true,
+        "picked_index": null,
+        "picked_kind": "none",
+        "correct": false,
+        "reason": "None of the clauses set terms for automatic renewal or rent increases"
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "late fees and rent payment terms",
+        "expected": "present",
+        "must_find_ref": "5",
+        "candidate_kinds": [
+          "answer",
+          "distractor",
+          "other"
+        ],
+        "answer_available": true,
+        "picked_index": 0,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 1 explicitly sets rent due date, grace period, and specific late fee amounts, directly addressing late fees and rent payment terms."
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "early termination and lease-breaking fees",
+        "expected": "absent",
+        "must_find_ref": null,
+        "candidate_kinds": [
+          "other",
+          "other",
+          "other"
+        ],
+        "answer_available": false,
+        "picked_index": null,
+        "picked_kind": "none",
+        "correct": true,
+        "reason": "None of the clauses discuss early termination or lease-breaking fees; they only cover rent payment timing, amount, or bad checks."
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "security deposit terms",
+        "expected": "present",
+        "must_find_ref": "7",
+        "candidate_kinds": [
+          "answer",
+          "other",
+          "other"
+        ],
+        "answer_available": true,
+        "picked_index": 0,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 1 provides detailed security deposit amount, hold conditions, refund timeline, and permissible deductions."
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "landlord right of entry and notice period",
+        "expected": "absent",
+        "must_find_ref": null,
+        "candidate_kinds": [
+          "other",
+          "other",
+          "other"
+        ],
+        "answer_available": false,
+        "picked_index": null,
+        "picked_kind": "none",
+        "correct": true,
+        "reason": "None of the clauses set rules or obligations regarding the landlord's right to enter the premises or required notice periods"
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "guest and occupancy restrictions",
+        "expected": "absent",
+        "must_find_ref": null,
+        "candidate_kinds": [
+          "other",
+          "other",
+          "other"
+        ],
+        "answer_available": false,
+        "picked_index": null,
+        "picked_kind": "none",
+        "correct": true,
+        "reason": "None of the clauses set rules or limits regarding guests or occupancy; they only cover vehicles and pets."
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "maintenance and repair responsibilities",
+        "expected": "present",
+        "must_find_ref": "12",
+        "candidate_kinds": [
+          "other",
+          "answer",
+          "other"
+        ],
+        "answer_available": true,
+        "picked_index": 1,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 2 imposes a clear duty on the tenant to promptly notify the landlord of maintenance issues, establishing responsibility for repairs."
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "liability and indemnification",
+        "expected": "absent",
+        "must_find_ref": null,
+        "candidate_kinds": [
+          "distractor",
+          "other",
+          "other"
+        ],
+        "answer_available": false,
+        "picked_index": 0,
+        "picked_kind": "distractor",
+        "correct": false,
+        "reason": "Clause 1 explicitly imposes legal and financial consequences for breach, directly addressing liability"
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "automatic renewal and rent increases",
+        "expected": "present",
+        "must_find_ref": "1",
+        "candidate_kinds": [
+          "distractor",
+          "other",
+          "answer"
+        ],
+        "answer_available": true,
+        "picked_index": 2,
+        "picked_kind": "answer",
+        "correct": true,
+        "reason": "Clause 3 explicitly sets the automatic renewal rule for the lease term"
+      }
+    ],
+    [
+      {
+        "doc_id": "lease_pa_001",
+        "category": "late fees and rent payment terms",
+        "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kmg7dbn3e49a07hbesg91hyg` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199607, Requested 944. Please try again in 3m58.032s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "early termination and lease-breaking fees",
+        "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kmg7dbn3e49a07hbesg91hyg` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199604, Requested 964. Please try again in 4m5.376s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "security deposit terms",
+        "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kmg7dbn3e49a07hbesg91hyg` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199602, Requested 1447. Please try again in 7m33.167999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "landlord right of entry and notice period",
+        "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kmg7dbn3e49a07hbesg91hyg` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199599, Requested 1438. Please try again in 7m27.984s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "guest and occupancy restrictions",
+        "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kmg7dbn3e49a07hbesg91hyg` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199596, Requested 874. Please try again in 3m23.04s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "maintenance and repair responsibilities",
+        "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kmg7dbn3e49a07hbesg91hyg` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199594, Requested 1074. Please try again in 4m48.576s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "liability and indemnification",
+        "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kmg7dbn3e49a07hbesg91hyg` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199591, Requested 1096. Please try again in 4m56.784s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+      },
+      {
+        "doc_id": "lease_pa_001",
+        "category": "automatic renewal and rent increases",
+        "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kmg7dbn3e49a07hbesg91hyg` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199594, Requested 606. Please try again in 1m26.4s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "late fees and rent payment terms",
+        "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kmg7dbn3e49a07hbesg91hyg` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199585, Requested 952. Please try again in 3m51.983999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "early termination and lease-breaking fees",
+        "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kmg7dbn3e49a07hbesg91hyg` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199582, Requested 973. Please try again in 3m59.76s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "security deposit terms",
+        "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kmg7dbn3e49a07hbesg91hyg` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199579, Requested 1076. Please try again in 4m42.96s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "landlord right of entry and notice period",
+        "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kmg7dbn3e49a07hbesg91hyg` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199584, Requested 778. Please try again in 2m36.384s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "guest and occupancy restrictions",
+        "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kmg7dbn3e49a07hbesg91hyg` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199580, Requested 679. Please try again in 1m51.887999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "maintenance and repair responsibilities",
+        "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kmg7dbn3e49a07hbesg91hyg` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199571, Requested 1405. Please try again in 7m1.632s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "liability and indemnification",
+        "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kmg7dbn3e49a07hbesg91hyg` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199568, Requested 1354. Please try again in 6m38.304s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+      },
+      {
+        "doc_id": "lease_ftc_001",
+        "category": "automatic renewal and rent increases",
+        "error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kmg7dbn3e49a07hbesg91hyg` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199565, Requested 1017. Please try again in 4m11.423999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+      }
+    ]
+  ]
+}

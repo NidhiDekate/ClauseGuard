@@ -14,7 +14,7 @@ This is an AI engineering case study. The application works, but the point of th
 
 Every one of those was measured rather than assumed, and the write-ups include the experiments that failed and the numbers that turned out to be wrong.
 
-In August 2026 the whole project was re-audited from scratch. That audit found 67 defects in my own work, including a data leak that invalidated every accuracy number I had published. Those numbers are corrected below. The story of the audit is in `docs/10_what_i_learned.md`.
+In August 2026 the whole project was re-audited from scratch. That audit found 67 defects in my own work, including a data leak that invalidated every accuracy number I had published. Those numbers are corrected below. The story of the audit is in `docs/11_what_i_learned.md`.
 
 ## Results
 
@@ -26,7 +26,7 @@ All figures are scored on 53 hand-labelled clauses from 5 real documents. The te
 
 | | `gemini-3.6-flash` (default) | `gpt-oss-120b` (fallback) |
 |---|---|---|
-| Correct, per run | 43, 44, 44 | 41, 41, 44 |
+| Correct, per run | 44, 44, 44 | 41, 41, 44 |
 | Missed concerning clauses | **0, 0, 0** | 1, 1, 1 |
 | Coverage | 100% | 100% |
 | Cost per 53 clauses | $0.14 | $0.014 |
@@ -34,6 +34,10 @@ All figures are scored on 53 hand-labelled clauses from 5 real documents. The te
 
 **On accuracy these two models are not distinguishable.** Both reach 44 of 53 and their ranges
 overlap. Quoting a 3-point gap from any single pair of runs would be quoting noise.
+
+**And a stable total is not a stable system.** Gemini scores 44 in all three runs, but two
+clauses flip between runs in opposite directions, so nine are wrong every time and the errors
+cancel. Only per-clause reporting shows that.
 
 **On the safety metric they separate cleanly.** Gemini missed zero concerning clauses in all
 three runs; the fallback missed exactly one in all three. No overlap, and both perfectly
@@ -50,13 +54,20 @@ were produced.
 
 **Latency is not a stable number.** LangSmith traces show per-call latency ranging from 0.6s to 21.6s on clauses of near-identical length and token count. The averages reported in the experiment write-ups hide a distribution with a 30x spread, most of it provider variance rather than model behaviour. Treat every latency comparison in this repository as weak.
 
+**Faithfulness.** 46 of 53 explanations are fully grounded in their clause, 86.8%, judged by a
+different model from a different vendor. **Six carry the right label and a claim the clause does
+not support**, which every accuracy figure above scores as a win. Three of those six are the same
+failure: the model states that a protection is absent when the clause is simply silent on it, for
+example "without paying you" on a clause that never mentions payment. Full write-up in
+`docs/10_faithfulness_evaluation.md`.
+
 **Retrieval.** Every correct clause is within the top 3 retrieved chunks. Recall@1 75%, recall@2 83%, recall@3 100%, over 12 cases where an answer exists. The pipeline fetches 3.
 
 **Chunking.** Clause-boundary chunking finds every answer at k=3. Against recursive character splitting, which is what most production RAG uses, it is better on 4 of 12 cases and worse on none, which at n=12 is suggestive and not conclusive. It beats naive fixed-size slicing by a wide margin, but that is a weak baseline and the earlier version of this README oversold it.
 
 **Few-shot examples.** Removed. They tied with zero-shot on accuracy, cost 55% more input tokens, and were the surface that leaked the test set into the prompt in the first place.
 
-Write-ups: `docs/05_model_selection.md`, `docs/06_annotation_guidelines.md`, `docs/07_held_out_evaluation.md`, `docs/08_chunking_comparison.md`, `docs/09_few_shot_ablation.md`. Earlier experiments in `docs/01` to `docs/03`, each carrying a banner where its numbers have been superseded.
+Write-ups: `docs/05_model_selection.md`, `docs/06_annotation_guidelines.md`, `docs/07_held_out_evaluation.md`, `docs/08_chunking_comparison.md`, `docs/09_few_shot_ablation.md`, `docs/10_faithfulness_evaluation.md`. Earlier experiments in `docs/01` to `docs/03`, each carrying a banner where its numbers have been superseded.
 
 ## The finding this project is actually about
 
@@ -94,7 +105,7 @@ The Reviewer is an LLM-as-a-judge. It has never been evaluated as one, which is 
 Listed because a project that names its own limits is easier to trust than one that does not.
 
 - **The Reviewer is not evaluated.** It is an LLM judge with no measured precision or recall.
-- **Generation is not evaluated.** Nothing checks whether the `reason` written for a clause actually follows from that clause. Retrieval and classification are measured; faithfulness is not.
+- **Faithfulness is measured but not fixed.** 86.8% of explanations are grounded. The six that are not have a named pattern and no remedy yet, because fixing it means a prompt change and the held-out set that would validate it is spent.
 - **Coverage is bounded by eight fixed categories.** This is a checklist, not a full document sweep. A clause outside those categories is never examined.
 - **The MCP server is not finished.** It exists and has never been run as a real process end to end.
 - **Observability is tracing only.** LangSmith records every call, but no evaluator or alert runs on top of it, and nothing is measured from live traffic.

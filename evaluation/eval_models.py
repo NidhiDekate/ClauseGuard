@@ -159,6 +159,11 @@ def evaluate(model_id, provider, price_in, price_out, clauses, pause):
         rows.append({
             "doc_id": item["doc_id"], "clause_ref": item["clause_ref"],
             "expected": item["expected_label"], "predicted": predicted,
+            # the reason was generated and thrown away until E3 needed it.
+            # faithfulness cannot be evaluated from a report that only stores
+            # the label, and the sentence is the thing a human would actually
+            # want to read when a label looks wrong.
+            "reason": result.get("reason"),
             "latency_seconds": elapsed,
         })
         print(f"{'correct' if predicted == item['expected_label'] else 'wrong  '} "
