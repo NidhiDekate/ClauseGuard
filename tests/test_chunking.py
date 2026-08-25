@@ -142,3 +142,86 @@ def test_no_document_shape_yields_a_single_chunk():
 def test_empty_document():
     assert chunk_document("") == ([], "empty")
     assert chunk_document("   \n  ") == ([], "empty")
+
+
+# --- D28: non-clause material --------------------------------------------
+
+def test_title_and_preamble_are_dropped():
+    text = (SAMPLES / "ftc_lease_sample.txt").read_text(encoding="utf-8")
+    kept, _ = chunk_document(text)
+    dropped, _ = chunk_document(text, drop_non_clause=False)
+    assert len(kept) < len(dropped) or all(not c.startswith("SAMPLE RENTAL") for c in kept)
+    # the specific chunk that caused the Reviewer false match
+    assert not any(c.startswith("SAMPLE RENTAL AGREEMENT") for c in kept)
+
+
+def test_a_clause_is_never_dropped():
+    """Dropping a real clause is far worse than keeping a preamble, so the
+    filter must never touch anything carrying a clause reference."""
+    for name in ("pa_lease_sample.txt", "ftc_lease_sample.txt"):
+        text = (SAMPLES / name).read_text(encoding="utf-8")
+        kept, _ = chunk_document(text)
+        refs = {c.split(".")[0] for c in kept if c[:1].isalnum()}
+        assert len(refs) > 5, name
+
+
+def test_signature_block_detected():
+    from chunking import _looks_like_signature_block
+    assert _looks_like_signature_block(
+        "IN WITNESS WHEREOF the parties have executed this lease.\n"
+        "Signature: ____________________  Date: ______________")
+    assert not _looks_like_signature_block(
+        "The Landlord shall provide heat and hot water at all times.")
+
+
+# --- D29 / D35: oversized chunks -----------------------------------------
+
+def test_no_chunk_exceeds_the_embedding_limit():
+    from chunking import MAX_CHUNK_CHARS
+    for name in ("pa_lease_sample.txt", "ftc_lease_sample.txt"):
+        text = (SAMPLES / name).read_text(encoding="utf-8")
+        chunks, _ = chunk_document(text)
+        oversize = [c for c in chunks if len(c) > MAX_CHUNK_CHARS]
+        assert not oversize, f"{name}: {len(oversize)} chunk(s) over the limit"
+
+
+def test_split_pieces_keep_the_clause_reference():
+    # a realistic document: several normal clauses plus one oversized one.
+    # two clauses where one holds 98% of the text is the disguised-failure
+    # shape _worked rejects on purpose, so it would not exercise this path.
+    filler = "\n".join(
+        f"{n}. CLAUSE {n}. " + "The parties agree to the terms stated in this section. " * 3
+        for n in range(1, 8))
+    long_clause = "XXXV. DEFAULT. " + ("The Tenant shall be in default if any rent "
+                                       "remains unpaid for ten days after due. ") * 20
+    chunks, _ = chunk_document(filler + "\n" + long_clause)
+    parts = [c for c in chunks if c.startswith("XXXV")]
+    assert len(parts) > 1, "the oversized clause was not split"
+    assert all(c.startswith("XXXV") for c in parts), "a split piece lost its reference"
+
+
+def test_token_counter_is_used_when_supplied():
+    """Production passes the real tokenizer. A deliberately harsh counter
+    should force more splits than the character fallback."""
+    text = (SAMPLES / "ftc_lease_sample.txt").read_text(encoding="utf-8")
+    default, _ = chunk_document(text)
+    harsh, _ = chunk_document(text, token_counter=lambda s: len(s) // 2)
+    assert len(harsh) > len(default)
+
+
+def test_warns_when_no_token_counter_on_template_text():
+    """The character fallback under-splits fill-in-the-blank templates because
+    underscore runs tokenize at roughly one token per character. That must be
+    loud, not silent, since silent truncation is exactly what D29 was."""
+    import pytest
+    text = (SAMPLES / "pa_lease_sample.txt").read_text(encoding="utf-8")
+    with pytest.warns(RuntimeWarning, match="token_counter"):
+        chunk_document(text)
+
+
+def test_no_warning_when_counter_supplied():
+    import warnings as w
+    text = (SAMPLES / "pa_lease_sample.txt").read_text(encoding="utf-8")
+    with w.catch_warnings():
+        w.simplefilter("error")
+        chunk_document(text, token_counter=lambda s: len(s) // 4)

@@ -23,6 +23,14 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parents[1] / "src" / "rag"))
 
 from chunking import chunk_by_clause, chunk_fixed_size  # noqa: E402
+from tokenizer_util import token_counter  # noqa: E402
+
+
+def chunk_by_clause_like_production(text):
+    """The eval must chunk the way production chunks, or it measures a
+    different system. retriever.py splits against the embedding model's real
+    256-token limit, so this does too."""
+    return chunk_by_clause(text, token_counter=token_counter())
 from langchain_chroma import Chroma  # noqa: E402
 from langchain_huggingface import HuggingFaceEmbeddings  # noqa: E402
 
@@ -42,7 +50,7 @@ TEXT_MATCH_THRESHOLD = 0.8
 RECALL_DEPTHS = (1, 2, 3, 5, 10)
 
 STRATEGIES = {
-    "by_clause": chunk_by_clause,
+    "by_clause": chunk_by_clause_like_production,
     "fixed_size": chunk_fixed_size,
 }
 

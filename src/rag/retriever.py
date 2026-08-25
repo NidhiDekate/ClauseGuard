@@ -10,6 +10,7 @@ from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 
 from chunking import chunk_document
+from tokenizer_util import token_counter
 
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 
@@ -22,7 +23,10 @@ def build_retriever(document_text, collection_name=None):
     if collection_name is None:
         collection_name = f"clauseguard_{uuid.uuid4().hex[:8]}"
 
-    chunks, strategy = chunk_document(document_text)
+    # D29: all-MiniLM-L6-v2 stops at 256 word-piece tokens and silently drops
+    # the rest. Pass its real tokenizer so oversized clauses are split against
+    # the true limit rather than the character estimate the tests use.
+    chunks, strategy = chunk_document(document_text, token_counter=token_counter())
 
     # D39: the chunker used to match only "I." / "1." at line start, so a
     # Terms of Service written with headings or paragraphs became one chunk
