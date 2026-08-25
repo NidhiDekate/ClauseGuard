@@ -25,6 +25,8 @@ sys.path.append(str(Path(__file__).resolve().parents[1] / "src" / "rag"))
 from chunking import chunk_by_clause, chunk_fixed_size  # noqa: E402
 from tokenizer_util import token_counter  # noqa: E402
 
+sys.path.append(str(Path(__file__).resolve().parent))
+
 
 def chunk_by_clause_like_production(text):
     """The eval must chunk the way production chunks, or it measures a
@@ -51,6 +53,8 @@ RECALL_DEPTHS = (1, 2, 3, 5, 10)
 
 STRATEGIES = {
     "by_clause": chunk_by_clause_like_production,
+    "recursive": lambda t: __import__("chunking_baselines").chunk_recursive(t),
+    "semantic": lambda t: __import__("chunking_baselines").chunk_semantic(t),
     "fixed_size": chunk_fixed_size,
 }
 
@@ -85,13 +89,38 @@ def contains_snippet(chunk, snippet):
 
 
 def find_rank(chunks, case):
-    """1-based rank of the first chunk that is the required clause, else None."""
+    """1-based rank of the first single chunk that is the required clause.
+
+    This metric rewards keeping a clause intact, which is a real advantage:
+    the classifier is handed one chunk and has to judge the whole term from it.
+    But it is NOT neutral across strategies. Clause chunking matches on the
+    section reference, which is exact. Recursive and semantic chunking have no
+    reference to match on and must clear the containment threshold inside a
+    single chunk, so a strategy that splits the answer across two chunks scores
+    zero here even though the pipeline would have retrieved both halves.
+
+    Read this alongside coverage_at_k, which is fair to splitting strategies.
+    """
     for position, chunk in enumerate(chunks, start=1):
         if case["must_find_ref"] and leading_ref(chunk) == case["must_find_ref"]:
             return position, "ref"
         if case["must_find_snippet"] and contains_snippet(chunk, case["must_find_snippet"]) >= TEXT_MATCH_THRESHOLD:
             return position, "text"
     return None, None
+
+
+def coverage_at_k(chunks, case, k):
+    """Did the top k chunks TOGETHER contain the answer?
+
+    The union, not the best single chunk. This is what the pipeline actually
+    passes downstream, and it is the only way to compare a strategy that keeps
+    clauses whole against one that cuts them in half without the metric itself
+    deciding the winner.
+    """
+    if not case["must_find_snippet"]:
+        return None
+    joined = " ".join(chunks[:k])
+    return contains_snippet(joined, case["must_find_snippet"]) >= TEXT_MATCH_THRESHOLD
 
 
 def build_store(document_text, strategy, name):
@@ -156,6 +185,7 @@ def main():
             "rank": rank,
             "matched_by": matched_by,
             "retrieved_refs": retrieved_refs,
+            "covered": {d: coverage_at_k(retrieved, case, d) for d in RECALL_DEPTHS if d <= args.k},
         })
 
     scorable = [r for r in results if r["expected"] == "present"]
@@ -184,6 +214,19 @@ def main():
         marker = "   <-- what the pipeline currently reads" if depth == 1 else marker
         print(f"  recall@{depth:<3} {hits}/{total}  {recall[depth]:.1%}{marker}")
 
+    print()
+    print(f"coverage: did the top k chunks TOGETHER contain the answer?")
+    print("  (fair across strategies; clause chunking is favoured by recall above,")
+    print("   because only it can match on an exact section reference)")
+    coverage = {}
+    for depth in RECALL_DEPTHS:
+        if depth > args.k:
+            continue
+        judged = [r for r in scorable if r["covered"].get(depth) is not None]
+        hits = sum(1 for r in judged if r["covered"][depth])
+        coverage[depth] = hits / len(judged) if judged else 0.0
+        print(f"  coverage@{depth:<3} {hits}/{len(judged)}  {coverage[depth]:.1%}")
+
     missed = [r for r in scorable if not r["rank"]]
     if missed:
         print(f"\nnot found at any depth up to {args.k}:")
@@ -197,6 +240,7 @@ def main():
     report_path.write_text(json.dumps({
         "strategy": args.strategy,
         "k": args.k,
+        "coverage": coverage,
         "embedding_model": EMBEDDING_MODEL,
         "cases_scored": total,
         "recall": {str(d): v for d, v in recall.items()},

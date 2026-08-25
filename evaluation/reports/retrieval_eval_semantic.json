@@ -1,20 +1,20 @@
 {
-  "strategy": "by_clause",
+  "strategy": "semantic",
   "k": 10,
   "coverage": {
-    "1": 0.75,
+    "1": 0.6666666666666666,
     "2": 0.8333333333333334,
-    "3": 1.0,
-    "5": 1.0,
+    "3": 0.9166666666666666,
+    "5": 0.9166666666666666,
     "10": 1.0
   },
   "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
   "cases_scored": 12,
   "recall": {
     "1": 0.75,
-    "2": 0.8333333333333334,
-    "3": 1.0,
-    "5": 1.0,
+    "2": 0.9166666666666666,
+    "3": 0.9166666666666666,
+    "5": 0.9166666666666666,
     "10": 1.0
   },
   "per_case": [
@@ -24,18 +24,18 @@
       "expected": "present",
       "must_find_ref": "X",
       "rank": 1,
-      "matched_by": "ref",
+      "matched_by": "text",
       "retrieved_refs": [
-        "X",
-        "IX",
-        "VIII",
-        "XII",
-        "XXXV",
-        "XI",
-        "XIX",
+        null,
+        null,
+        null,
+        null,
         "XVI",
+        null,
         "XIV",
-        "I"
+        "VI",
+        null,
+        null
       ],
       "covered": {
         "1": true,
@@ -54,15 +54,15 @@
       "matched_by": "ref",
       "retrieved_refs": [
         "XIX",
-        "X",
-        "XII",
-        "IX",
-        "XI",
-        "VIII",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         "XVI",
-        "XXXV",
-        "II",
-        "XIII"
+        "XVII"
       ],
       "covered": {
         "1": true,
@@ -81,15 +81,15 @@
       "matched_by": "ref",
       "retrieved_refs": [
         "XIV",
+        null,
         "XXVI",
-        "XXV",
-        "IX",
         "XVI",
-        "XXXV",
-        "I",
-        "L",
-        "VIII",
-        "XXXVI"
+        "XLIX",
+        null,
+        null,
+        null,
+        null,
+        null
       ],
       "covered": {
         "1": true,
@@ -108,15 +108,15 @@
       "matched_by": "ref",
       "retrieved_refs": [
         "XXX",
-        "XXXV",
         "XXIII",
-        "XIX",
-        "XXXVI",
+        null,
+        null,
         "XXVI",
-        "XI",
+        "XVII",
         "XIV",
-        "IV",
-        "I"
+        "XXIX",
+        null,
+        null
       ],
       "covered": {
         "1": true,
@@ -131,23 +131,23 @@
       "category": "guest and occupancy restrictions",
       "expected": "present",
       "must_find_ref": "XXXIII",
-      "rank": 3,
+      "rank": 2,
       "matched_by": "ref",
       "retrieved_refs": [
-        "III",
-        "V",
+        null,
         "XXXIII",
-        "XXXVI",
-        "XXXV",
-        "I",
+        null,
+        "III",
         "XXVI",
         "XXII",
         "XXXIV",
-        "XXX"
+        "XXX",
+        null,
+        "XLII"
       ],
       "covered": {
         "1": false,
-        "2": false,
+        "2": true,
         "3": true,
         "5": true,
         "10": true
@@ -163,18 +163,18 @@
       "retrieved_refs": [
         "XXXI",
         "XXIV",
-        "XVIII",
-        "XV",
-        "VII",
+        null,
         "XVII",
-        "XLVI",
-        "XXXVI",
-        "XXXIV",
-        "XLII"
+        null,
+        "XV",
+        null,
+        null,
+        "VI",
+        null
       ],
       "covered": {
-        "1": true,
-        "2": true,
+        "1": false,
+        "2": false,
         "3": true,
         "5": true,
         "10": true
@@ -186,18 +186,18 @@
       "expected": "present",
       "must_find_ref": "XLIV",
       "rank": 1,
-      "matched_by": "ref",
+      "matched_by": "text",
       "retrieved_refs": [
+        null,
+        null,
+        null,
+        null,
         "XLIV",
-        "XXXVI",
-        "XLVI",
-        "XXXV",
-        "XXI",
-        "XLIII",
-        "XVIII",
-        "XXXVIII",
-        "IX",
-        "XLVIII"
+        null,
+        "XVII",
+        null,
+        null,
+        "XLIII"
       ],
       "covered": {
         "1": true,
@@ -213,17 +213,17 @@
       "expected": "present",
       "must_find_ref": "II",
       "rank": 1,
-      "matched_by": "ref",
+      "matched_by": "text",
       "retrieved_refs": [
-        "II",
-        "VIII",
-        "XII",
-        "X",
-        "XXXI",
-        "XI",
-        "XXXV",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         "XLII",
-        "IX",
+        "XXXI",
+        "XVII",
         "XXVI"
       ],
       "covered": {
@@ -240,18 +240,18 @@
       "expected": "present",
       "must_find_ref": "5",
       "rank": 1,
-      "matched_by": "ref",
+      "matched_by": "text",
       "retrieved_refs": [
-        "5",
+        null,
         "6",
         "3",
         "2",
+        null,
+        null,
         "4",
-        "7",
         "11",
-        "8",
-        "1",
-        "13"
+        null,
+        null
       ],
       "covered": {
         "1": true,
@@ -268,16 +268,16 @@
       "rank": null,
       "matched_by": null,
       "retrieved_refs": [
-        "5",
+        null,
+        null,
         "2",
         "6",
-        "8",
-        "1",
+        null,
+        null,
         "7",
-        "13",
-        "4",
-        "3",
-        "14"
+        null,
+        null,
+        "4"
       ]
     },
     {
@@ -289,15 +289,15 @@
       "matched_by": "ref",
       "retrieved_refs": [
         "7",
+        null,
         "3",
-        "14",
-        "1",
+        null,
+        null,
+        null,
         "6",
-        "13",
-        "2",
-        "4",
-        "10",
-        "11"
+        null,
+        null,
+        "2"
       ],
       "covered": {
         "1": true,
@@ -314,16 +314,16 @@
       "rank": null,
       "matched_by": null,
       "retrieved_refs": [
-        "12",
-        "5",
-        "7",
+        null,
+        null,
+        null,
+        null,
+        null,
         "13",
         "2",
-        "14",
+        null,
         "4",
-        "3",
-        "1",
-        "9"
+        "3"
       ]
     },
     {
@@ -335,14 +335,14 @@
       "retrieved_refs": [
         "10",
         "13",
-        "13",
+        null,
+        null,
         "2",
+        null,
         "3",
-        "14",
-        "9",
+        null,
         "4",
-        "1",
-        "11"
+        null
       ]
     },
     {
@@ -351,18 +351,18 @@
       "expected": "present",
       "must_find_ref": "12",
       "rank": 2,
-      "matched_by": "ref",
+      "matched_by": "text",
       "retrieved_refs": [
         "11",
-        "12",
-        "14",
-        "8",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         "10",
-        "7",
-        "6",
-        "13",
-        "4",
-        "3"
+        "5",
+        "6"
       ],
       "covered": {
         "1": false,
@@ -379,16 +379,16 @@
       "rank": null,
       "matched_by": null,
       "retrieved_refs": [
-        "14",
+        null,
         "11",
-        "9",
+        null,
+        null,
+        null,
         "10",
-        "12",
-        "13",
+        null,
+        null,
         "6",
-        "7",
-        "13",
-        "5"
+        null
       ]
     },
     {
@@ -396,25 +396,25 @@
       "category": "automatic renewal and rent increases",
       "expected": "present",
       "must_find_ref": "1",
-      "rank": 3,
-      "matched_by": "ref",
+      "rank": 7,
+      "matched_by": "text",
       "retrieved_refs": [
         "2",
-        "5",
-        "1",
+        null,
+        null,
+        null,
         "4",
         "3",
+        null,
         "10",
-        "13",
         "11",
-        "12",
-        "8"
+        null
       ],
       "covered": {
         "1": false,
         "2": false,
-        "3": true,
-        "5": true,
+        "3": false,
+        "5": false,
         "10": true
       }
     }

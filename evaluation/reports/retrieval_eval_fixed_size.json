@@ -1,6 +1,13 @@
 {
   "strategy": "fixed_size",
   "k": 10,
+  "coverage": {
+    "1": 0.5833333333333334,
+    "2": 0.8333333333333334,
+    "3": 0.8333333333333334,
+    "5": 0.9166666666666666,
+    "10": 1.0
+  },
   "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
   "cases_scored": 12,
   "recall": {
@@ -29,7 +36,14 @@
         null,
         null,
         null
-      ]
+      ],
+      "covered": {
+        "1": true,
+        "2": true,
+        "3": true,
+        "5": true,
+        "10": true
+      }
     },
     {
       "doc_id": "lease_pa_001",
@@ -49,7 +63,14 @@
         null,
         null,
         null
-      ]
+      ],
+      "covered": {
+        "1": true,
+        "2": true,
+        "3": true,
+        "5": true,
+        "10": true
+      }
     },
     {
       "doc_id": "lease_pa_001",
@@ -69,7 +90,14 @@
         null,
         null,
         null
-      ]
+      ],
+      "covered": {
+        "1": false,
+        "2": true,
+        "3": true,
+        "5": true,
+        "10": true
+      }
     },
     {
       "doc_id": "lease_pa_001",
@@ -89,7 +117,14 @@
         null,
         null,
         null
-      ]
+      ],
+      "covered": {
+        "1": true,
+        "2": true,
+        "3": true,
+        "5": true,
+        "10": true
+      }
     },
     {
       "doc_id": "lease_pa_001",
@@ -109,7 +144,14 @@
         null,
         null,
         null
-      ]
+      ],
+      "covered": {
+        "1": false,
+        "2": true,
+        "3": true,
+        "5": true,
+        "10": true
+      }
     },
     {
       "doc_id": "lease_pa_001",
@@ -129,7 +171,14 @@
         null,
         null,
         null
-      ]
+      ],
+      "covered": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "5": true,
+        "10": true
+      }
     },
     {
       "doc_id": "lease_pa_001",
@@ -149,7 +198,14 @@
         null,
         null,
         null
-      ]
+      ],
+      "covered": {
+        "1": false,
+        "2": true,
+        "3": true,
+        "5": true,
+        "10": true
+      }
     },
     {
       "doc_id": "lease_pa_001",
@@ -169,7 +225,14 @@
         null,
         null,
         null
-      ]
+      ],
+      "covered": {
+        "1": true,
+        "2": true,
+        "3": true,
+        "5": true,
+        "10": true
+      }
     },
     {
       "doc_id": "lease_ftc_001",
@@ -189,7 +252,14 @@
         null,
         null,
         null
-      ]
+      ],
+      "covered": {
+        "1": true,
+        "2": true,
+        "3": true,
+        "5": true,
+        "10": true
+      }
     },
     {
       "doc_id": "lease_ftc_001",
@@ -228,7 +298,14 @@
         null,
         null,
         null
-      ]
+      ],
+      "covered": {
+        "1": true,
+        "2": true,
+        "3": true,
+        "5": true,
+        "10": true
+      }
     },
     {
       "doc_id": "lease_ftc_001",
@@ -286,7 +363,14 @@
         null,
         null,
         null
-      ]
+      ],
+      "covered": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "5": false,
+        "10": true
+      }
     },
     {
       "doc_id": "lease_ftc_001",
@@ -325,7 +409,14 @@
         null,
         null,
         null
-      ]
+      ],
+      "covered": {
+        "1": true,
+        "2": true,
+        "3": true,
+        "5": true,
+        "10": true
+      }
     }
   ]
 }

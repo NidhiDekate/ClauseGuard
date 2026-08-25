@@ -1,5 +1,12 @@
 # Experiment: Chunking Strategy and Vector Store Comparison (Phase 4)
 
+> **Status, Aug 25 2026: superseded by `docs/08_chunking_comparison.md`.** The comparison
+> below is against naive fixed-size character slicing, which cuts mid-word and mid-sentence.
+> That is a strawman, not a baseline, so the margin reported here is inflated. Against
+> recursive character splitting, what most production RAG systems actually use, clause
+> chunking wins by a single test case out of twelve. The conclusion survives; the magnitude
+> does not.
+
 **Question:** does clause-boundary-aware chunking actually retrieve better than generic fixed-size chunking? And does the choice of vector store (local vs. hosted) change anything besides speed?
 
 ## Setup
