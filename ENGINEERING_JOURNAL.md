@@ -211,7 +211,7 @@ Real decisions made while building ClauseGuard — what happened, what the numbe
 
 - Nothing checked whether the sentence written about a clause follows from that clause. Accuracy scores a right label with an invented reason as a win.
 - Judge is `claude-opus-5`, chosen because it is **not** the model under test. The script refuses to run if judge and system are the same model.
-- Result: 46 of 53 grounded, 86.8%. Six have the right label and an unsupported claim. Three are the same failure: the model states a protection is **absent** where the clause is silent. "Without paying you" on a clause that never mentions payment.
+- Result on the abridged gold set: 46 of 53 grounded, 86.8%. Six have the right label and an unsupported claim. Three are the same failure: the model states a protection is **absent** where the clause is silent. "Without paying you" on a clause that never mentions payment. Superseded by entry 30, which reran this against the restored clause text.
 - The judge flagged one explanation as invented and **it was our dataset that was wrong.** Seven gold clauses were stored abridged with an ellipsis. One, `2.13`, was two unrelated clauses spliced under a third clause's number, and half of it duplicated a clause already in the set.
 - Takeaway: the judge was right, the model was right, and the ground truth was wrong. Nothing else in this project could have caught that.
 
@@ -273,6 +273,18 @@ Real decisions made while building ClauseGuard — what happened, what the numbe
 - Added a module-level `_DEAD` set in `src/llm.py`. First failure marks the model dead for the rest of the process and later calls go straight to the fallback. `reset_circuit_breaker()` clears it.
 - It does not persist across runs on purpose. A daily quota and a one-off blip look the same at the call site, and the run boundary is the only place I can honestly retry.
 - Takeaway: the retry is cheap once and expensive nine times.
+
+---
+
+## Entry 30 — Rerunning E3 on the restored clause text
+
+- Entry 23's numbers were measured on the abridged gold set. I wrote that write-up as though the restoration scripts had run. They had not. Reran both passes end to end today: a fresh classification on the restored text, then a fresh judging pass on those explanations.
+- Accuracy 44/53. Faithfulness 47/53, 88.7%, up from 86.8%. Right-label-invented went 6 to 5.
+- **Neither move is a result.** The five abridged runs scored 41, 43, 44, 45, 46, so 44 is inside the noise, and 88.7% versus 86.8% is one clause.
+- Worse for interpretation: the rerun regenerated the explanations as well as the clause text, and the classifier writes different wording every run. Two things moved at once and nothing in the design separates them.
+- What did get fixed is specific and is not a number: `pa XXXV` was previously flagged for inventing an eviction consequence that the lease actually contains and our dataset had ellipsed out. That verdict was wrong because of us.
+- New failure shape in this run, which I had not seen before: on `binding_arbitration` the model wrote "or join a class action". The class action waiver is real, and it is a **different clause**, sitting in this same test set under its own reference. The sentence is true about the contract and false about the clause it cites.
+- Takeaway: a per-clause citation product fails in a way accuracy cannot see when the model merges two clauses. Added it as the second candidate prompt rule alongside "silence is not a term".
 
 ---
 

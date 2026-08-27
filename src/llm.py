@@ -32,6 +32,24 @@ def reset_circuit_breaker():
     _DEAD.clear()
 
 
+def _require_key(name, provider):
+    """Fail with a sentence that says what to do, not a bare KeyError.
+
+    This matters on Streamlit Cloud specifically. Secrets set there are exposed
+    as environment variables, so a missing one shows up at the first model call,
+    deep inside a worker thread, as KeyError('OPENROUTER_API_KEY'). That is a
+    hostile way to learn you forgot to paste a key.
+    """
+    key = os.environ.get(name)
+    if not key:
+        raise RuntimeError(
+            f"{name} is not set, so the {provider} provider cannot start. "
+            f"Locally: put it in .env. On Streamlit Cloud: Settings > Secrets, "
+            f"as a top-level {name} = \"...\" entry."
+        )
+    return key
+
+
 def build_model(model_name=None, provider=None, temperature=0):
     """Chat model on the given provider. Reads the environment when not told."""
     model_name = model_name or os.environ.get("CLAUSEGUARD_MODEL", DEFAULT_MODEL)
@@ -44,13 +62,14 @@ def build_model(model_name=None, provider=None, temperature=0):
             temperature=temperature,
             max_retries=0,
             base_url="https://openrouter.ai/api/v1",
-            api_key=os.environ["OPENROUTER_API_KEY"],
+            api_key=_require_key("OPENROUTER_API_KEY", "openrouter"),
             max_tokens=MAX_OUTPUT_TOKENS,
         )
 
     if provider != "groq":
         raise ValueError(f"unknown provider {provider!r}, expected 'groq' or 'openrouter'")
 
+    _require_key("GROQ_API_KEY", "groq")
     from langchain_groq import ChatGroq
     # max_retries=0 because the default client retries rate limits silently with
     # a sleep, which just looks like the app has frozen.

@@ -1,15 +1,16 @@
 # Faithfulness: does the explanation follow from the clause?
 
-> **Correction, later on Aug 25.** This document originally read as though the clause-text
-> restoration below happened BEFORE the faithfulness run. It did not. The scripts were written,
-> the write-up was drafted as if they had been executed, and `git status` caught it hours later.
+> **Rerun Aug 25, 2026.** The first version of this document was written as though the clause-text
+> restoration described below had already been applied. It had not. The scripts existed, the
+> write-up was drafted from what they were going to do, and `git status` caught it hours later. The
+> first number, 86.8%, was measured on the abridged set.
 >
-> **So the 86.8% was measured on the abridged set.** At least one of the six unfaithful verdicts,
-> `pa XXXV`, is an artifact of text our own dataset had removed rather than a model hallucination.
-> The restoration has now been applied and the eval has NOT been rerun against it. Treat every
-> number here as provisional until it is.
+> The restoration has now been applied and the whole thing rerun end to end: a fresh classification
+> pass on the restored text, then a fresh judging pass on those explanations. **Every number below
+> is from the rerun.** The old numbers are kept where they are useful for comparison and are
+> labelled as such.
 >
-> Writing a result up as though a command had run is the exact failure this document is about,
+> Writing up a result as though a command had run is the exact failure this document is about,
 > committed inside the document about it.
 
 Written Aug 25, 2026. E3.
@@ -43,107 +44,141 @@ Zero extra classifier calls: the reasons are read from an existing report. About
 ## Result
 
 ```
-46 of 53 explanations fully grounded   86.8%
+47 of 53 explanations fully grounded   88.7%
 
-label correct + reason grounded : 38
-label correct + reason invented :  6   <- accuracy scored all six as wins
+label correct + reason grounded : 39
+label correct + reason invented :  5   <- accuracy scored all five as wins
 label wrong   + reason grounded :  8
 label wrong   + reason invented :  1
 ```
 
-The cross-tab is the point. **Six explanations carry the right label and a claim the clause does
-not support.** Every metric in this repository counts those as successes.
+The cross-tab is the point. **Five explanations carry the right label and a claim the clause does
+not support.** Every other metric in this repository counts those five as successes.
 
-## The pattern: inventing the absence of a protection
+For comparison, the same eval on the abridged gold set scored 46 of 53, 86.8%, with six in the
+right-label-invented cell. That comparison is weaker than it looks and the next section says why.
 
-Three of the seven are the same failure.
+## What the restoration actually changed, and what it did not
 
-```
-clause: "Your content can be licensed to third parties"
-model:  "...allows the company to share or sell rights to your content to outside parties
-         WITHOUT PAYING YOU"
+The restored run scored 44 of 53 on accuracy. The abridged runs scored 41, 43, 44, 45 and 46 across
+five runs of the same model at temperature 0. **44 sits inside that spread, so the restoration
+moved accuracy by an amount this project cannot measure.**
 
-clause: "Your identity is used in ads that are shown to other users"
-model:  "...lets the company use your name and image in advertisements to other users
-         WITHOUT COMPENSATING YOU"
+Faithfulness went 86.8% to 88.7%, which is one clause. Also not a result.
 
-clause: "this Service will assume your consent to changes of terms merely from your usage"
-model:  "...the service can change your contract WITHOUT DIRECTLY NOTIFYING or asking you"
-```
+There is a second problem with reading anything into the change. The rerun regenerated the
+explanations as well as the clause text, and the classifier writes a different sentence every time.
+So two things moved at once: the input the model saw, and the wording it produced. A clause can
+flip from unfaithful to faithful because the gold text was fixed, or because the model happened to
+write a more careful sentence this time. **Nothing in this design separates those.**
 
-In each case the clause is **silent** on the point, and the model states there is no protection.
+What the restoration did fix is specific and it is not a number. `pa XXXV` was previously flagged
+for inventing an eviction consequence. The lease says exactly that. Our dataset had cut it out with
+an ellipsis, so the model had never seen it. That verdict was wrong, and it was wrong because of us.
 
-This is not vagueness or overstatement. It is a specific factual claim about the person's rights,
-asserted in the confident one-sentence format the product is built around. A user reading "without
-paying you" reasonably concludes the contract rules out compensation. It does not. It says nothing.
-
-Silence in a contract is not the same as a term against you, and the classifier does not know the
-difference.
-
-## The other four
+## The five that carry a right label and an unsupported claim
 
 **Inventing a consequence the clause does not create.**
 
-`pa XXXIII` limits guests to 48 hours and states no penalty. The model added "could put your
-housing at risk if breached."
+`pa XXXV`, the DEFAULT clause, now flagged for a different span than before:
 
-`ftc 12` says a tenant "may be held financially responsible" without saying for what. The model
-added "personally responsible for costly repairs."
+```
+model: "...allows your landlord to evict you and DEMAND ALL REMAINING RENT IMMEDIATELY
+        if you breach the agreement"
+```
 
-`pa XXXV` is the DEFAULT clause, which covers failure to comply with lease provisions. The model
-wrote "allows your landlord to evict you based on a mere arrest." The arrest language sits
-elsewhere in the lease; this clause does not make that link.
+Eviction is in the clause. Rent acceleration is not. The model attached a second, more expensive
+remedy to a clause that does not grant it.
 
-**And one that is wrong in both label and reasoning.** `ban_evasion_prohibited` says banned users
-are not allowed to re-register. The model wrote that it "permanently bars you from ever creating a
-new account." Neither "permanently" nor "ever" is in the clause.
+`ftc 12` says a tenant "may be held financially responsible" and does not say for what:
 
-## What this eval found that was not about the model
+```
+model: "...you could be held financially liable if YOU FAIL TO REPORT MAINTENANCE ISSUES QUICKLY"
+```
 
-The first run flagged `pa XXXV` as unfaithful. My first reading was that the model had invented an
-eviction consequence. It had not: the lease says exactly that, and **our own dataset had cut it
-out.** Seven of the 53 gold clauses were stored abridged with an ellipsis, so the classifier had
-never seen the full text.
+The clause names no trigger. The model supplied one, and it reads as a rule the tenant could
+actually follow.
 
-Checking the sources found worse. The clause stored as `lease_real_002 / 2.13` was two unrelated
-clauses spliced together under a third clause's number: the first half from 2.1 Notice to Quit, the
-second from 2.21 Reporting of Past Rent Owed, filed under 2.13, which is Lead Based Paint. And 2.1
-was already in the set separately, so that waiver was counted twice.
+**Importing a term from a different clause.**
 
-All seven are now restored from source, and the fabricated clause replaced with the real 2.21.
+```
+clause: binding arbitration
+model:  "...takes away your right to resolve disputes in court or JOIN A CLASS ACTION"
+```
 
-**The judge was right, the model was right, and the ground truth was wrong.** That combination is
-the one nothing else in this project could have detected.
+The class action waiver is real and it is a separate clause in the same document, sitting in this
+test set under its own reference. The model merged them. The conclusion a reader draws is true of
+the contract and false of the clause, which is exactly the failure mode a per-clause citation
+product is supposed to make impossible.
 
-## A side effect worth recording
+**Overstating what the clause grants.**
 
-After restoring the clause text, gemini scored 44, 44, 44 across three runs, where four earlier
-runs on the abridged set gave 42, 43, 44, 44.
+```
+clause: your content can be licensed to third parties
+model:  "...allows the platform to share or PROFIT FROM your content with outside companies
+         WITHOUT YOUR CONTROL"
+```
 
-Plausible mechanism: truncated clauses are ambiguous, ambiguity produces borderline decisions, and
-borderline decisions flip between runs. Three runs is not proof.
+Licensing to third parties is in the clause. Profiting from it is an inference. So is the absence
+of control.
 
-**And the stability is partly an illusion.** Two clauses still flip between runs in opposite
-directions, so nine are wrong every time and the total is 44 every time. An aggregate that is
-stable because its errors cancel is not a stable system, and only per-clause reporting shows the
-difference.
+**Stating an absence the clause is silent on.**
+
+```
+clause: your identity is used in ads shown to other users
+model:  "...use your personal identity in advertisements WITHOUT EXTRA PERMISSION OR PAYMENT"
+```
+
+The clause says nothing about permission or payment. The model says there is none. A reader
+concludes the contract rules out compensation. It does not. It is silent, and **silence in a
+contract is not a term against you.**
+
+This was the dominant pattern in the abridged run, three of six. In the rerun it is one of five.
+Whether that is the restoration, the rewording, or noise at n=53 is not something one run can say.
+
+## And one that is wrong in both label and reasoning
+
+`ftc 1` is an automatic renewal clause. Gold label neutral, model said concerning:
+
+```
+model: "...you could owe extra rent if you fail to give 30 DAYS' WRITTEN NOTICE before moving out"
+```
+
+There is no notice period in the clause. The model produced a specific, actionable, invented
+number. This is the worst shape a failure can take here, because "30 days' written notice" is the
+kind of detail a person would write on a calendar.
 
 ## What to do about it
 
-Not fixed here, because the fix is a prompt change and prompt changes need a held-out set to
-validate, which is spent.
+Not fixed here, because the fix is a prompt change and validating a prompt change needs a held-out
+set, which is spent.
 
-The obvious candidate is a rule in the prompt: **do not state that something is absent unless the
-clause says it is absent.** Silence is not a term. That is one sentence, it targets three of the
-six failures directly, and it should be the first experiment when a second held-out set exists.
+Two candidate rules, in the order the evidence supports:
+
+1. **Do not state that something is absent unless the clause says it is absent.** Silence is not a
+   term.
+2. **Do not attribute a consequence, a number, or a condition that is not in this clause, even if
+   it is elsewhere in the document.**
+
+The second one is new to this run and it is the more interesting of the two, because the class
+action example shows the model producing a claim that is true about the contract while being false
+about the clause it cites. A citation-based product cannot tolerate that, and no accuracy metric
+would ever surface it.
+
+Both should be the first experiment when a second held-out set exists.
 
 ## What this does not establish
 
-n=53, one classification run, one judging run. No variance estimate on the judge itself, which is
-the obvious gap: a second judge, or the same judge twice, would say how stable 86.8% is.
+n=53. One classification run, one judging run.
 
-The judge is a single model with no measured precision or recall of its own. It was spot-checked
-by hand on seven verdicts and was correct on all seven, including two where it was right and the
-dataset was wrong. That is reassuring and it is not a measurement.
+No variance estimate on the judge. A second judge, or the same judge twice on the same
+explanations, would say how stable 88.7% is. Nothing here does.
 
-86.8% is measured on gemini's explanations only. The fallback model was not judged.
+The judge is a single model with no measured precision or recall of its own. It was spot-checked by
+hand on seven verdicts in the first run and was correct on all seven, including two where it was
+right and our dataset was wrong. That is reassuring and it is not a measurement.
+
+88.7% is measured on gemini's explanations only. The fallback model was never judged.
+
+And the comparison against the abridged run confounds two changes at once. It is reported because
+hiding it would be worse, not because it supports a conclusion.

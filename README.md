@@ -54,12 +54,13 @@ were produced.
 
 **Latency is not a stable number.** LangSmith traces show per-call latency ranging from 0.6s to 21.6s on clauses of near-identical length and token count. The averages reported in the experiment write-ups hide a distribution with a 30x spread, most of it provider variance rather than model behaviour. Treat every latency comparison in this repository as weak.
 
-**Faithfulness.** 46 of 53 explanations are fully grounded in their clause, 86.8%, judged by a
-different model from a different vendor. **Six carry the right label and a claim the clause does
-not support**, which every accuracy figure above scores as a win. Three of those six are the same
-failure: the model states that a protection is absent when the clause is simply silent on it, for
-example "without paying you" on a clause that never mentions payment. Full write-up in
-`docs/10_faithfulness_evaluation.md`, `docs/11_reviewer_as_judge.md`.
+**Faithfulness.** 47 of 53 explanations are fully grounded in their clause, 88.7%, judged by a
+different model from a different vendor. **Five carry the right label and a claim the clause does
+not support**, which every accuracy figure above scores as a win. Two shapes recur: stating that a
+protection is absent when the clause is simply silent on it, and importing a term from a different
+clause in the same document, so the sentence is true about the contract and false about the clause
+it cites. Full write-up in `docs/10_faithfulness_evaluation.md`,
+`docs/11_reviewer_as_judge.md`.
 
 **Retrieval.** Every correct clause is within the top 3 retrieved chunks. Recall@1 75%, recall@2 83%, recall@3 100%, over 12 cases where an answer exists. The pipeline fetches 3.
 
@@ -105,7 +106,7 @@ The Reviewer is an LLM-as-a-judge. It has never been evaluated as one, which is 
 Listed because a project that names its own limits is easier to trust than one that does not.
 
 - **The Reviewer is measured but thin.** 11/12 recall and 3/4 on absent categories, n=16. One false positive on a document with no liability clause. See `docs/11_reviewer_as_judge.md`.
-- **Faithfulness is measured but not fixed.** 86.8% of explanations are grounded. The six that are not have a named pattern and no remedy yet, because fixing it means a prompt change and the held-out set that would validate it is spent.
+- **Faithfulness is measured but not fixed.** 88.7% of explanations are grounded. The six that are not have two named patterns and no remedy yet, because fixing it means a prompt change and the held-out set that would validate it is spent.
 - **Coverage is bounded by eight fixed categories.** This is a checklist, not a full document sweep. A clause outside those categories is never examined.
 - **The MCP server is not finished.** It exists and has never been run as a real process end to end.
 - **Observability is tracing only.** LangSmith records every call, but no evaluator or alert runs on top of it, and nothing is measured from live traffic.

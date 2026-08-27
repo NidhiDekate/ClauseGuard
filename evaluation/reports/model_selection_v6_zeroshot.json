@@ -50,587 +50,434 @@
       "macro_f1": 0.6769230769230768,
       "missed_concerning": 0,
       "false_alarms": 6,
-      "avg_latency_seconds": 4.494107499963578,
-      "tokens_in": 30851,
-      "tokens_out": 33205,
-      "cost_usd": 0.14765699999999998,
+      "avg_latency_seconds": 4.227892472509752,
+      "tokens_in": 31384,
+      "tokens_out": 32889,
+      "cost_usd": 0.14687175000000002,
       "per_clause": [
         {
           "doc_id": "lease_pa_001",
           "clause_ref": "XXXI",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "While fairly common in leases, this term means the landlord won't fix or replace major appliances like air conditioning or washers if they break.",
-          "latency_seconds": 4.4944669160177
+          "reason": "This is relatively common in leases, but it means you could be left without working appliances or forced to pay for their repair yourself.",
+          "latency_seconds": 4.693308208952658
         },
         {
           "doc_id": "lease_pa_001",
           "clause_ref": "XXXIII",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This guest restriction is common in leases, but it limits your visitors to 48 hours and could put your housing at risk if breached.",
-          "latency_seconds": 4.1368670830270275
+          "reason": "While guest restrictions are common in leases, this strictly limits your guests to 48 hours without written landlord permission, restricting how you use your home.",
+          "latency_seconds": 2.6422880830359645
         },
         {
           "doc_id": "lease_pa_001",
           "clause_ref": "XXXV",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This is common in leases, but it allows your landlord to evict you based on a mere arrest, even if you are never convicted.",
-          "latency_seconds": 4.728263375000097
+          "reason": "This default clause is standard in leases, but it allows your landlord to evict you and demand all remaining rent immediately if you breach the agreement.",
+          "latency_seconds": 3.09935245802626
         },
         {
           "doc_id": "lease_pa_001",
           "clause_ref": "XLIV",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This clause is common in leases, but it limits your ability to recover costs for injuries or damages unless the landlord is 100% at fault.",
-          "latency_seconds": 3.9229047910193913
+          "reason": "This is standard in leases, but it makes you responsible for injuries or property damage on the premises unless the landlord is solely at fault.",
+          "latency_seconds": 5.317591083003208
         },
         {
           "doc_id": "lease_pa_001",
           "clause_ref": "XL",
           "expected": "favorable",
           "predicted": "favorable",
-          "reason": "This protects you from landlord retaliation such as shutting off utilities or delaying repairs, which is favorable to tenants and common in standard leases.",
-          "latency_seconds": 6.367036083014682
+          "reason": "This protection is common in leases, and it prevents your landlord from cutting off utilities, access, or repairs if a dispute arises.",
+          "latency_seconds": 3.71456658403622
         },
         {
           "doc_id": "lease_pa_001",
           "clause_ref": "XLII",
           "expected": "neutral",
           "predicted": "favorable",
-          "reason": "This term is standard in residential leases, and it requires the landlord to accommodate your physical or mental impairment with reasonable property modifications.",
-          "latency_seconds": 4.539184624969494
+          "reason": "This clause requires the landlord to adapt the property for your physical or mental disability, which offers more protection than a standard lease provides.",
+          "latency_seconds": 7.056007541017607
         },
         {
           "doc_id": "lease_pa_001",
           "clause_ref": "XXX",
           "expected": "neutral",
           "predicted": "neutral",
-          "reason": "This is standard in leases, and it allows your landlord to enter the property during business hours after providing 24 hours' notice.",
-          "latency_seconds": 7.720995125011541
+          "reason": "This is standard in residential leases, allowing your landlord to enter your home during business hours with 24 hours' notice.",
+          "latency_seconds": 7.708147208031733
         },
         {
           "doc_id": "lease_pa_001",
           "clause_ref": "XXVIII",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This clause is common in leases, but it allows your landlord to terminate your agreement immediately if you leave for just seven days.",
-          "latency_seconds": 6.074234125029761
+          "reason": "This clause is common in residential leases, but it allows your landlord to terminate your lease if you leave your home for just seven days.",
+          "latency_seconds": 4.6428524579969235
         },
         {
           "doc_id": "lease_ftc_001",
           "clause_ref": "5",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "Late fees are common in leases, but this clause will cost you extra money through daily accruing penalties without any exceptions for financial or medical emergencies.",
-          "latency_seconds": 4.530145917029586
+          "reason": "This is standard in residential leases, and it forces you to pay accumulating daily late fees even during personal or financial emergencies.",
+          "latency_seconds": 5.195365916995797
         },
         {
           "doc_id": "lease_ftc_001",
           "clause_ref": "7",
           "expected": "neutral",
           "predicted": "concerning",
-          "reason": "This is common in leases, but it prevents you from earning interest on your deposit and delays its return for over six weeks.",
-          "latency_seconds": 3.65126324997982
+          "reason": "While common in leases, this clause prevents you from earning interest on your deposit and delays its return for at least six weeks after you move out.",
+          "latency_seconds": 4.438310125027783
         },
         {
           "doc_id": "lease_ftc_001",
           "clause_ref": "8",
           "expected": "neutral",
           "predicted": "concerning",
-          "reason": "This is common in rental agreements, but it means you will be charged at least $200 if the landlord decides the property needs professional cleaning.",
-          "latency_seconds": 3.472223583026789
+          "reason": "While common in residential leases, this clause means you could be forced to pay at least $200 if the landlord decides professional cleaning is needed.",
+          "latency_seconds": 5.5477917499956675
         },
         {
           "doc_id": "lease_ftc_001",
           "clause_ref": "10",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This limit is standard in residential leases, but it restricts how many cars you can park and could force you to pay for off-site parking.",
-          "latency_seconds": 6.389727999980096
+          "reason": "This restriction is standard in residential leases, but it prevents you or your household from keeping more than one vehicle on the property.",
+          "latency_seconds": 4.821248874999583
         },
         {
           "doc_id": "lease_ftc_001",
           "clause_ref": "12",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This requirement is standard in leases, but it can make you personally responsible for costly repairs if you do not report property issues quickly.",
-          "latency_seconds": 3.0931059590075165
+          "reason": "This is standard in leases, but its vague wording means you could be held financially liable if you fail to report maintenance issues quickly.",
+          "latency_seconds": 3.518052291008644
         },
         {
           "doc_id": "lease_ftc_001",
           "clause_ref": "9",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This clause is unusual in leases, and it means you could lose your home if anyone removes landlord property without written permission.",
-          "latency_seconds": 3.3078951670322567
+          "reason": "This is highly unusual in leases, and it means you could lose your home if anyone removes the landlord's property without written permission.",
+          "latency_seconds": 3.9535854589776136
         },
         {
           "doc_id": "lease_ftc_001",
           "clause_ref": "1",
           "expected": "neutral",
           "predicted": "concerning",
-          "reason": "This term is standard in residential leases, but you will automatically remain responsible for paying monthly rent if you miss the 30-day notice deadline.",
-          "latency_seconds": 5.736522875027731
+          "reason": "This automatic rollover is standard in leases, but you could owe extra rent if you fail to give 30 days' written notice before moving out.",
+          "latency_seconds": 5.017027333029546
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "1.7.D",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "Auto-renewal clauses are common in leases, but this automatically increases your rent by $100 a month unless you give 120 days' advance notice.",
-          "latency_seconds": 3.940928708994761
+          "reason": "Although automatic renewals are common in leases, this clause automatically increases your rent by $100 monthly unless you give an unusually long 120 days' notice.",
+          "latency_seconds": 5.378363666997757
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "2.1",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This is standard in some residential leases, but it waives your right to receive advance notice before the landlord takes you to court.",
-          "latency_seconds": 4.760297624976374
+          "reason": "This is common in leases, but it waives your right to receive advance warning before your landlord takes court action to evict you.",
+          "latency_seconds": 3.6356247090152465
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "2.5.B",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This clause is common in leases, but it means you lose your entire deposit for even minor, accidental breaches.",
-          "latency_seconds": 3.0052491250098683
+          "reason": "While deposit retention rules are common, this clause forces you to forfeit your entire security deposit for any lease violation, even minor ones.",
+          "latency_seconds": 2.3023595410049893
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "2.8",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This imposes a $100 fee if you fail to respond within three days, which is an unusually strict penalty for consumer agreements.",
-          "latency_seconds": 3.7790112079819664
+          "reason": "This imposes an unusual $100 penalty fee if you fail to respond to their contact attempts within three days.",
+          "latency_seconds": 3.776817584002856
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "2.12.B",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This is unusual in leases, and it allows your landlord to enter your home at any time without giving you any advance notice.",
-          "latency_seconds": 4.164936167013366
+          "reason": "This is uncommon in standard leases, and it allows your landlord to enter your home at any time without advance notice.",
+          "latency_seconds": 4.420711166982073
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "1.12.C",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This requirement is standard in residential leases, but it forces you to pay for insurance and allows immediate eviction if your coverage lapses.",
-          "latency_seconds": 3.759739500004798
+          "reason": "This requirement is common in leases, but buying insurance costs you extra money and losing coverage could cause you to be evicted.",
+          "latency_seconds": 3.6235400830046274
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "2.11.B",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "While animal penalties are common in leases, this charges you $500 monthly even if a guest brings a pet without your knowledge.",
-          "latency_seconds": 3.347769125015475
+          "reason": "Animal penalties are common in leases, but this charges you $500 recurring monthly for pet violations even if done without your knowledge.",
+          "latency_seconds": 3.1366256249602884
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "4.1",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "While smoking bans are common in leases, this allows the landlord to charge you a $500 fine based entirely on their own judgment.",
-          "latency_seconds": 3.2944948750082403
+          "reason": "While no-smoking rules are standard in leases, this allows your landlord to fine you $500 and evict you based entirely on their subjective judgment.",
+          "latency_seconds": 6.4245380840147845
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "2.16",
           "expected": "neutral",
           "predicted": "neutral",
-          "reason": "This voluntary dispute resolution option is common in leases and does not force you to give up your right to go to court.",
-          "latency_seconds": 8.771717540977988
+          "reason": "This is common in leases, and it simply allows you and the landlord to voluntarily use mediation or arbitration if a dispute arises.",
+          "latency_seconds": 6.96922154200729
         },
         {
           "doc_id": "lease_real_002",
           "clause_ref": "1.10",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This is standard in leases, but it allows the landlord to deduct money from your deposit for any charges related to your lease contract.",
-          "latency_seconds": 3.606533749960363
+          "reason": "Although standard in lease agreements, this clause allows your landlord to deduct money from your security deposit for cleaning and repairs when you move out.",
+          "latency_seconds": 5.118158209021203
         },
         {
           "doc_id": "lease_real_002",
-          "clause_ref": "2.13",
+          "clause_ref": "2.21",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "Waiving notice rights is common in some leases, but it means you can face eviction proceedings without standard advance warning.",
-          "latency_seconds": 5.4311460420140065
+          "reason": "This is standard in leases, and it means late or unpaid fees can damage your credit score and affect your ability to rent future housing.",
+          "latency_seconds": 4.241601749963593
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "content_deletion",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This is common in online terms, but it allows the service to delete your content at any time without warning or explanation.",
-          "latency_seconds": 2.654021750029642
+          "reason": "While common in online terms of service, this allows the company to delete your content at any time without warning or explanation.",
+          "latency_seconds": 3.5791753330267966
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "moral_rights_waiver",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This is common in creative and service contracts, but it means you give up the right to be credited for or control how your work is used.",
-          "latency_seconds": 3.8993217920069583
+          "reason": "While common in content and freelance contracts, this clause strips away your right to be credited for your work or prevent it from being altered.",
+          "latency_seconds": 3.245347457996104
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "ai_training_use",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "While increasingly common in modern terms of service, this allows the company to use your personal information to train AI models and make automated decisions about you.",
-          "latency_seconds": 4.524289458000567
+          "reason": "This clause allows the company to use your private information to train AI models and make automated decisions about you, which is increasingly common in online services.",
+          "latency_seconds": 2.5650505000376143
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "binding_arbitration",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This is common in consumer agreements, and it removes your right to take the company to court over disputes.",
-          "latency_seconds": 4.392828749958426
+          "reason": "This is common in modern contracts, but it takes away your right to resolve disputes in court or join a class action.",
+          "latency_seconds": 2.5640247499686666
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "class_action_waiver",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "While standard in consumer agreements, this prevents you from joining a class action lawsuit to sue the company collectively.",
-          "latency_seconds": 5.360134250018746
+          "reason": "While common in consumer contracts, this stops you from joining a group lawsuit against the company if they wrong many people.",
+          "latency_seconds": 3.6998384579783306
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "silent_terms_acceptance",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This implied consent is common in online terms, but it means the service can change your contract without directly notifying or asking you.",
-          "latency_seconds": 4.5045639999443665
+          "reason": "This is common in online terms, but it allows the company to change contract rules without explicitly asking for your approval first.",
+          "latency_seconds": 5.900405332969967
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "liability_cap",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This limitation of liability is standard in terms of service, but it severely caps what you can recover if the service causes you major financial harm.",
-          "latency_seconds": 4.249693624966312
+          "reason": "While standard in online terms, this caps what the company owes you if they cause major damage to just $30 or what you paid.",
+          "latency_seconds": 4.6643983329995535
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "content_licensing_to_third_parties",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This is common in online service terms, but it allows the company to share or sell rights to your content to outside parties without paying you.",
-          "latency_seconds": 3.939720499969553
+          "reason": "This is common in online terms, but it allows the platform to share or profit from your content with outside companies without your control.",
+          "latency_seconds": 3.8779783330392092
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "data_access_rights",
           "expected": "neutral",
           "predicted": "favorable",
-          "reason": "This gives you control to view, fix, or delete your personal information, which is standard in modern privacy policies.",
-          "latency_seconds": 8.707680666004308
+          "reason": "This is standard in modern privacy policies, and it gives you the right to access, fix, or delete your personal data.",
+          "latency_seconds": 3.6696618330315687
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "right_to_leave",
           "expected": "neutral",
           "predicted": "favorable",
-          "reason": "This is common in digital services, and it protects you by allowing you to cancel your account whenever you want without lock-in.",
-          "latency_seconds": 4.731008417031262
+          "reason": "This is standard in online services, and it ensures you can cancel your account at any time without being locked into a contract.",
+          "latency_seconds": 5.316721958981361
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "content_ownership",
           "expected": "favorable",
           "predicted": "favorable",
-          "reason": "This is common in terms of service, and it ensures you keep full legal ownership of everything you upload or create.",
-          "latency_seconds": 5.654490332992282
+          "reason": "This is standard in terms of service, and it protects you by ensuring you keep full legal ownership of everything you post or upload.",
+          "latency_seconds": 3.0790529170189984
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "notified_term_changes",
           "expected": "neutral",
           "predicted": "concerning",
-          "reason": "This is common in terms of service, but it allows the company to change your contract rules at any time without your consent.",
-          "latency_seconds": 3.1570990410400555
+          "reason": "While common in online terms, this allows the company to change your agreement at any time without requiring your consent.",
+          "latency_seconds": 2.6321498340112157
         },
         {
           "doc_id": "tos_spotify_001",
           "clause_ref": "refund_policy",
           "expected": "neutral",
           "predicted": "concerning",
-          "reason": "This is common in digital services, but it means you cannot get your money back if you are dissatisfied, and the exceptions are left vague.",
-          "latency_seconds": 3.8834544160054065
+          "reason": "This is common in service terms, but it means you generally cannot get your money back if you want to cancel or are unsatisfied.",
+          "latency_seconds": 4.001118165964726
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "shadow_profile_data",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This is common in online privacy policies, and it means the company tracks and stores your data even if you never use their service.",
-          "latency_seconds": 5.139087791962083
+          "reason": "This tracking practice is common in web privacy policies, but it means your data is collected and stored even if you never use the service.",
+          "latency_seconds": 3.474908833974041
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "identity_in_ads",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "While common in online terms, this lets the company use your name and image in advertisements to other users without compensating you.",
-          "latency_seconds": 4.3020985829643905
+          "reason": "This is common in tech terms, but it allows the company to use your personal identity in advertisements without extra permission or payment.",
+          "latency_seconds": 3.3655885829939507
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "message_privacy",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This is common for unencrypted messaging services, but it means the company can read your private messages.",
-          "latency_seconds": 2.931348917016294
+          "reason": "This is standard for unencrypted platforms, but it means the company can monitor and read your private messages.",
+          "latency_seconds": 3.745702165993862
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "ai_training_use",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This is becoming common in modern terms, but it allows the company to use your private data for AI training and automated decisions.",
-          "latency_seconds": 4.74377275002189
+          "reason": "This is increasingly common in online terms, and it allows the company to use your private data to train AI and make automated decisions about you.",
+          "latency_seconds": 2.9870030420133844
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "deletion_not_real",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "While common in digital terms of service, this means the platform keeps your content and data even after you try to delete it.",
-          "latency_seconds": 3.1592082080314867
+          "reason": "This is standard in online terms, but it means the company keeps your content and data even after you attempt to delete it.",
+          "latency_seconds": 2.465349707985297
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "location_despite_opt_out",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "While location collection is common, tracking and sharing your location after you turn it off strips your privacy controls.",
-          "latency_seconds": 4.08625754195964
+          "reason": "This is unusual even for privacy policies, and it allows the company to track and share your location even after you turn off location sharing.",
+          "latency_seconds": 9.119220666994806
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "cross_site_tracking",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This is common in online services, but it allows the company to track your activity across the internet.",
-          "latency_seconds": 2.7513287920155562
+          "reason": "While common in online terms, this allows the service to monitor your browsing activity across other websites, compromising your privacy.",
+          "latency_seconds": 2.849693958996795
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "biometric_collection",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This is increasingly common in tech terms, but collecting your highly sensitive biometric data creates permanent privacy and security risks if compromised.",
-          "latency_seconds": 5.492174334009178
+          "reason": "This is increasingly common in digital services, but it gives the company access to permanent, highly sensitive personal data that poses privacy risks if breached.",
+          "latency_seconds": 4.753925249970052
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "no_forced_arbitration",
           "expected": "favorable",
           "predicted": "favorable",
-          "reason": "This is uncommon in modern terms of service, and it protects your right to take legal disputes to court.",
-          "latency_seconds": 4.63903137500165
+          "reason": "While uncommon in online contracts, this preserves your right to take legal disputes to court rather than forcing you into binding arbitration.",
+          "latency_seconds": 3.860173124994617
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "30_day_change_notice",
           "expected": "favorable",
           "predicted": "favorable",
-          "reason": "This gives you 30 days to review major changes before they take effect, which provides helpful protection and is better than standard terms.",
-          "latency_seconds": 5.377535749983508
+          "reason": "This gives you 30 days' advance notice before major contract changes take effect, which is more protective than standard terms of service.",
+          "latency_seconds": 3.515097750001587
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "no_data_sale",
           "expected": "favorable",
           "predicted": "favorable",
-          "reason": "This commitment is common in privacy policies, and it protects you by guaranteeing your personal information will not be sold to third parties.",
-          "latency_seconds": 3.502764166041743
+          "reason": "This protection is increasingly common in privacy policies, and it ensures the company will not sell your personal information.",
+          "latency_seconds": 3.4121337919496
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "content_ownership",
           "expected": "favorable",
           "predicted": "favorable",
-          "reason": "This is standard in modern online terms, and it ensures you keep full legal ownership of the content you upload.",
-          "latency_seconds": 4.378740791988093
+          "reason": "This clause ensures you keep full legal ownership of your content, which is common in online terms of service.",
+          "latency_seconds": 2.7509777080267668
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "ban_evasion_prohibited",
           "expected": "neutral",
           "predicted": "concerning",
-          "reason": "This is standard in online terms, and it permanently bars you from ever creating a new account if your original account is banned.",
-          "latency_seconds": 3.666534957999829
+          "reason": "This is standard in online services, and it prevents you from ever creating a new account if you are banned.",
+          "latency_seconds": 5.327116541971918
         },
         {
           "doc_id": "tos_facebook_001",
           "clause_ref": "no_damages_liability",
           "expected": "concerning",
           "predicted": "concerning",
-          "reason": "This liability disclaimer is standard in online terms, but it means you cannot recover money if the service causes you harm or financial loss.",
-          "latency_seconds": 4.332845999975689
-        }
-      ],
-      "runs": 3,
-      "correct_per_run": [
-        44,
-        44,
-        44
-      ],
-      "correct_min": 44,
-      "correct_max": 44,
-      "missed_per_run": [
-        0,
-        0,
-        0
-      ],
-      "all_runs": [
-        {
-          "model": "google/gemini-3.6-flash",
-          "provider": "openrouter",
-          "correct": 44,
-          "total": 53,
-          "answered": 53,
-          "accuracy": 0.8301886792452831,
-          "accuracy_ci": [
-            0.7077446317626587,
-            0.9080015822777624
-          ],
-          "coverage": 1.0,
-          "per_class": {
-            "concerning": {
-              "precision": 0.8571428571428571,
-              "recall": 1.0,
-              "f1": 0.923076923076923,
-              "tp": 36,
-              "fp": 6,
-              "fn": 0
-            },
-            "neutral": {
-              "precision": 1.0,
-              "recall": 0.18181818181818182,
-              "f1": 0.3076923076923077,
-              "tp": 2,
-              "fp": 0,
-              "fn": 9
-            },
-            "favorable": {
-              "precision": 0.6666666666666666,
-              "recall": 1.0,
-              "f1": 0.8,
-              "tp": 6,
-              "fp": 3,
-              "fn": 0
-            }
-          },
-          "macro_f1": 0.6769230769230768,
-          "missed_concerning": 0,
-          "false_alarms": 6,
-          "avg_latency_seconds": 4.444879448131377,
-          "tokens_in": 30847,
-          "tokens_out": 33361,
-          "cost_usd": 0.148239
-        },
-        {
-          "model": "google/gemini-3.6-flash",
-          "provider": "openrouter",
-          "correct": 44,
-          "total": 53,
-          "answered": 53,
-          "accuracy": 0.8301886792452831,
-          "accuracy_ci": [
-            0.7077446317626587,
-            0.9080015822777624
-          ],
-          "coverage": 1.0,
-          "per_class": {
-            "concerning": {
-              "precision": 0.8571428571428571,
-              "recall": 1.0,
-              "f1": 0.923076923076923,
-              "tp": 36,
-              "fp": 6,
-              "fn": 0
-            },
-            "neutral": {
-              "precision": 1.0,
-              "recall": 0.18181818181818182,
-              "f1": 0.3076923076923077,
-              "tp": 2,
-              "fp": 0,
-              "fn": 9
-            },
-            "favorable": {
-              "precision": 0.6666666666666666,
-              "recall": 1.0,
-              "f1": 0.8,
-              "tp": 6,
-              "fp": 3,
-              "fn": 0
-            }
-          },
-          "macro_f1": 0.6769230769230768,
-          "missed_concerning": 0,
-          "false_alarms": 6,
-          "avg_latency_seconds": 4.494107499963578,
-          "tokens_in": 30851,
-          "tokens_out": 33205,
-          "cost_usd": 0.14765699999999998
-        },
-        {
-          "model": "google/gemini-3.6-flash",
-          "provider": "openrouter",
-          "correct": 44,
-          "total": 53,
-          "answered": 53,
-          "accuracy": 0.8301886792452831,
-          "accuracy_ci": [
-            0.7077446317626587,
-            0.9080015822777624
-          ],
-          "coverage": 1.0,
-          "per_class": {
-            "concerning": {
-              "precision": 0.8571428571428571,
-              "recall": 1.0,
-              "f1": 0.923076923076923,
-              "tp": 36,
-              "fp": 6,
-              "fn": 0
-            },
-            "neutral": {
-              "precision": 1.0,
-              "recall": 0.18181818181818182,
-              "f1": 0.3076923076923077,
-              "tp": 2,
-              "fp": 0,
-              "fn": 9
-            },
-            "favorable": {
-              "precision": 0.6666666666666666,
-              "recall": 1.0,
-              "f1": 0.8,
-              "tp": 6,
-              "fp": 3,
-              "fn": 0
-            }
-          },
-          "macro_f1": 0.6769230769230768,
-          "missed_concerning": 0,
-          "false_alarms": 6,
-          "avg_latency_seconds": 5.249078425401954,
-          "tokens_in": 30859,
-          "tokens_out": 32923,
-          "cost_usd": 0.1466055
+          "reason": "This is standard in online terms, but it prevents you from recovering money or compensation if the service causes you harm or financial loss.",
+          "latency_seconds": 3.2634293750161305
         }
       ]
     }

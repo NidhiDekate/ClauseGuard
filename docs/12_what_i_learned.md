@@ -192,10 +192,12 @@ because my own search or metric was broken.
 
 ## What is still not done
 
-Faithfulness is measured at 86.8% and not fixed. Six explanations carry the right label and an
-unsupported claim, and three of those are the same failure: the model states a protection is absent
-where the clause is simply silent. "Without paying you" on a clause that never mentions payment.
-The fix is a prompt rule, and validating a prompt change needs a held-out set, which is spent.
+Faithfulness is measured at 88.7% and not fixed. Five explanations carry the right label and an
+unsupported claim. One states a protection is absent where the clause is simply silent. One pulls
+the class action waiver into the arbitration clause, so the sentence is true about the contract and
+false about the clause it cites, which is the failure a per-clause citation product is supposed to
+make impossible. The fix is a prompt rule, and validating a prompt change needs a held-out set,
+which is spent.
 
 The MCP server exists and has never run as a real process.
 
