@@ -288,6 +288,17 @@ Real decisions made while building ClauseGuard — what happened, what the numbe
 
 ---
 
+## Entry 31 — The deployed app was running one model where the design says two
+
+- Deployed to Streamlit Cloud, ran both samples, no errors. Then noticed the live results differed from local on the same documents: PA went 6 concerning / 1 not addressed locally to 7 / 0 live, and FTC went the other way on maintenance.
+- Two candidate explanations: run-to-run variance, which entry 25 already measured at 41 to 46, or a silent fallback. Checked LangSmith rather than guessing. **A Reviewer call came back `ChatOpenAI / google/gemini-3.6-flash`.** Groq had failed and the breaker sent every later Reviewer call to gemini.
+- So the deployed app ran gemini as both the Reviewer and the classifier. The Reviewer exists to be an independent check on retrieval, and `docs/11` spends a page arguing a model should not judge its own output. That property was gone in production on day one, and nothing on screen said so.
+- Then found the worse half. `reset_circuit_breaker()` was defined and **never called**. `_DEAD` is module level and Streamlit Cloud keeps one process alive for days, so one Groq failure would route every later run, for every visitor, to the fallback until someone rebooted the app. A breaker meant to save nine timeouts inside one document had become a permanent decision made on one bad minute.
+- Fixed both: reset at the start of every analysis, and record what fell back so the report can say "Ran on a backup model" instead of looking identical to a normal run.
+- Takeaway: a fallback that is invisible is not resilience, it is a silent change of system. The app degraded exactly as designed and reported the degraded answer with full confidence, which is the same failure as entry 27 wearing different clothes.
+
+---
+
 ## Template for future entries
 
 - What happened:

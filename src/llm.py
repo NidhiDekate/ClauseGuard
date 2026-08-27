@@ -26,10 +26,25 @@ MAX_OUTPUT_TOKENS = 2048
 # the number of categories. Once a model has failed, stop trying it.
 _DEAD = set()
 
+# What fell back during the current run, so the UI can say so. A silent fallback
+# is how the deployed app ended up running the Reviewer and the classifier on the
+# SAME model, which is the exact thing docs/11 argues against, with nothing on
+# screen to say it had happened. One line in a log nobody reads is not telling
+# anyone.
+FALLBACKS = []
+
 
 def reset_circuit_breaker():
-    """Forget which models have failed. Call between documents, or in tests."""
+    """Forget which models have failed. Call at the START of every document.
+
+    This used to be defined and never called. The set is module level, and
+    Streamlit Cloud keeps one process alive for days, so a single Groq failure
+    routed every later run for every visitor to the fallback until someone
+    rebooted the app. The breaker is meant to save nine timeouts inside one
+    document, not to make a permanent decision on the basis of one bad minute.
+    """
     _DEAD.clear()
+    FALLBACKS.clear()
 
 
 def _require_key(name, provider):
@@ -105,6 +120,8 @@ def invoke_with_fallback(build_chain, payload, model_name=None, provider=None,
         if not fb_model or model_name == fb_model:
             raise
         _DEAD.add(model_name)
+        FALLBACKS.append({"label": label or "call", "wanted": model_name,
+                          "used": fb_model, "error": type(e).__name__})
         print(f"  [{label or model_name} failed ({type(e).__name__}), "
               f"falling back to {fb_model} for the rest of this run]", flush=True)
         return build_chain(build_model(fb_model, fb_provider)).invoke(payload)

@@ -107,6 +107,36 @@ the "not addressed" total, which had been quietly inflating it.
 answer, and the moment you collapse them the tool is more dangerous than no tool, because the user
 came here specifically to stop reading the document themselves.
 
+## The failure I only found by deploying
+
+The app ran clean locally, twice, both samples, zero errors. Deployed, it ran clean again. The
+numbers were different.
+
+Same commit, same documents. PA said 6 concerning and 1 not addressed locally, and 7 and 0 live.
+
+Two things could do that. Run-to-run variance, which I had already measured at 41 to 46 on
+identical inputs. Or a silent fallback. I went and looked instead of picking, and the trace said
+`ChatOpenAI / google/gemini-3.6-flash` on a Reviewer call. Groq had failed. The circuit breaker sent
+every later Reviewer call to gemini.
+
+**The deployed app was running one model where the design says two.** The Reviewer's whole job is to
+be an independent check on what retrieval handed it, and `docs/11` argues at length that a model
+should not grade its own output. In production that property was gone, on the first day, and the
+screen looked exactly like a healthy run.
+
+The second half was worse. `reset_circuit_breaker()` existed and was never called anywhere. The dead
+set is module level and Streamlit Cloud keeps one process alive for days, so a single Groq failure
+would have routed every run, for every visitor, to the fallback until somebody rebooted the app. I
+wrote that breaker to save nine wasted timeouts inside one document. It had quietly become a
+permanent decision made on the basis of one bad minute.
+
+Both are fixed. The breaker resets per document, and a run that fell back now says so on screen.
+
+The thing I want to keep is not the bug. It is that **local testing could not have found this.** It
+needed a real deployment, a real provider failure, and a trace. And the failure shape is the same
+one as the not-addressed bug: the system degraded, and then reported the degraded answer with the
+same confidence as a good one.
+
 ## What actually won
 
 **Zero-shot beat few-shot.** They tied on accuracy, and zero-shot used 55% fewer input tokens and

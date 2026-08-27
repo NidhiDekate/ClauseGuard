@@ -39,6 +39,8 @@ except Exception:
 sys.path.append(str(Path(__file__).resolve().parent / "src" / "agents"))
 
 from graph import graph
+sys.path.append(str(Path(__file__).resolve().parent / "src"))
+from llm import reset_circuit_breaker, FALLBACKS
 from guardrails import validate_document, DocumentValidationError, CallBudgetError
 from logging_db import log_request
 
@@ -83,6 +85,7 @@ if "document_text" in st.session_state:
 
         with st.spinner("Analyzing document... real model calls happening, takes about a minute"):
             start = time.monotonic()
+            reset_circuit_breaker()
             try:
                 result = graph.invoke({"document_text": doc_text, "document_type": "lease"})
             except (DocumentValidationError, CallBudgetError) as e:
@@ -100,6 +103,21 @@ if "document_text" in st.session_state:
         log_request("lease", len(doc_text), report, elapsed)
 
         st.caption(f"Analyzed in {elapsed:.1f}s")
+
+        # Say it out loud when a node did not run on the model it was meant to.
+        # The Reviewer is supposed to be a second opinion from a different
+        # vendor; if it quietly ran on the same model as the classifier, the
+        # check is weaker than the documentation claims and the reader deserves
+        # to know before they trust the result.
+        if FALLBACKS:
+            swapped = {f"{f['wanted']} to {f['used']}" for f in FALLBACKS}
+            st.warning(
+                "Ran on a backup model. "
+                + "; ".join(sorted(swapped))
+                + ". The primary provider failed, so results may differ from a "
+                "normal run, and the Reviewer may have used the same model as "
+                "the classifier rather than an independent one."
+            )
 
         concerning = [f for f in report if f.get("label") == "concerning"]
         neutral = [f for f in report if f.get("label") == "neutral"]
