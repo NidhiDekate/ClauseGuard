@@ -16,3 +16,6 @@ data/processed/
 
 # helper scripts, not part of the codebase
 _*.py
+
+# streamlit secrets are keys, same class as .env
+.streamlit/secrets.toml

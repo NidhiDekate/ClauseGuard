@@ -1,0 +1,11 @@
+# The file watcher walks every module an imported package exposes. transformers
+# exposes hundreds of image processors, each of which imports torchvision, which
+# this project does not install and does not need. Every failed walk prints a
+# full traceback, so a normal startup buries its own output under about 200 of
+# them.
+#
+# "none" turns the watcher off. Cost: the app no longer reruns when you save a
+# file, so press R in the browser instead. Streamlit Cloud does not hot-reload
+# anyway, so this only changes local dev.
+[server]
+fileWatcherType = "none"

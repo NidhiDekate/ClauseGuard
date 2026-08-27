@@ -18,7 +18,23 @@ import sys
 import time
 from pathlib import Path
 
+import os
+
 import streamlit as st
+
+# Streamlit Cloud puts secrets in st.secrets. Everything under src/ reads
+# os.environ, because that is what .env gives you in local dev. Copy one into
+# the other before anything imports a model, so there is exactly one place keys
+# come from and the deployed app behaves like the local one.
+#
+# Local runs have no secrets.toml and st.secrets raises rather than returning
+# empty, so this is wrapped. .env is already loaded by then.
+try:
+    for _k, _v in st.secrets.items():
+        if isinstance(_v, str):
+            os.environ.setdefault(_k, _v)
+except Exception:
+    pass
 
 sys.path.append(str(Path(__file__).resolve().parent / "src" / "agents"))
 
