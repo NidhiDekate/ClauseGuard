@@ -65,8 +65,10 @@ originally an approve-or-reject gate on the top result, which could reject noise
 nothing about a miss. Choosing the best of k costs no extra API calls, since it was already one
 call per category.
 
-**It has never been evaluated.** Its precision and recall as a judge are unmeasured. That is E2 and
-it is the largest gap in this repository.
+**It has now been evaluated as a judge.** 11/12 recall on categories the document does address, 3/4
+on categories it does not, 92% precision on its picks, over 16 cases. Perfectly consistent across two
+complete runs, which is worth noting on its own: the classifier moves by up to three clauses between
+identical runs and the Reviewer did not move at all. See `docs/11`.
 
 **Calculator** — Numeric work on fee and cost clauses, for example total exposure from an
 escalating late fee. It runs after the Reviewer. An earlier version ran it first, and it produced a
@@ -76,8 +78,10 @@ fixed by reordering the graph, not by changing either node.
 **Decision report** — Findings grouped as concerning, neutral or favorable, each with a
 one-sentence plain-language explanation and the source clause attached.
 
-**Whether each explanation actually follows from its clause is not checked.** That is E3, and it is
-the README's core promise going unverified.
+**Whether each explanation actually follows from its clause is now checked.** A different vendor's
+model judges every explanation against the clause it cites: 47 of 53 fully grounded, 88.7%. Five carry
+the right label and an unsupported claim, which every accuracy figure in this repository scores as a
+win. See `docs/10`.
 
 ## Monitoring
 
@@ -103,5 +107,7 @@ a 30x spread that is mostly provider variance.
 | Which model, and why? | `docs/05`, `docs/07` |
 | What does `concerning` mean? | `docs/06` |
 | Do few-shot examples earn their place? | `docs/09` |
-| Is the Reviewer any good? | **nowhere, E2** |
-| Do the explanations follow from the clauses? | **nowhere, E3** |
+| Is the Reviewer any good? | `docs/11` |
+| Do the explanations follow from the clauses? | `docs/10` |
+| Does the answer address the question asked? | **nowhere, E4** |
+| Is the pipeline worth it against one well-prompted call? | **nowhere, E9** |

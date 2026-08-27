@@ -88,7 +88,7 @@ Document → Chunking → Embeddings → Chroma
 
 The Reviewer runs before the Calculator because of a real bug: an earlier version ran the Calculator first and produced a confident dollar figure from a clause the Reviewer rejected as irrelevant moments later. Reordering the graph fixed it without changing either node.
 
-The Reviewer is an LLM-as-a-judge. It has never been evaluated as one, which is the largest gap in this repository and is listed below.
+The Reviewer is an LLM-as-a-judge, and it has now been evaluated as one: 11/12 recall, 92% precision, n=16. See `docs/11_reviewer_as_judge.md`.
 
 ## Core features
 
@@ -111,7 +111,7 @@ Listed because a project that names its own limits is easier to trust than one t
 - **The MCP server is not finished.** It exists and has never been run as a real process end to end.
 - **Observability is tracing only.** LangSmith records every call, but no evaluator or alert runs on top of it, and nothing is measured from live traffic.
 - **Sample sizes are small.** 53 clauses, 28 held-out, 12 retrieval cases. One case in the retrieval set is 8 percentage points. Most results here are suggestive.
-- **The deployed app runs `gpt-oss-120b`**, not `gemini-3.6-flash` which scored better, because switching means an API key in Streamlit secrets and about two cents per analysis on a public demo with no rate limiting.
+- **The Groq free tier is a single point of failure for the Reviewer.** The deployed app runs `gemini-3.6-flash` on the classifier and `gpt-oss-120b` on the Reviewer, each falling back to the other's model. When Groq's daily limit is reached the Reviewer falls back to gemini, so both nodes run the same model and the Reviewer stops being an independent check. The report says so on screen when it happens. This was found in production, not in testing; see `ENGINEERING_JOURNAL.md` entry 31.
 
 ## Tech stack
 

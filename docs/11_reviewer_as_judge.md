@@ -123,9 +123,15 @@ points on absent rejection.
 
 Two runs, not three. The third was lost to a rate limit.
 
-The Reviewer runs `gpt-oss-120b`, hardcoded, while the classifier runs `gemini-3.6-flash` from the
-environment. That is an unexamined default rather than a decision, and if the false positive
-matters, running the Reviewer on the better model is the first thing to try.
+The Reviewer runs `gpt-oss-120b` and the classifier runs `gemini-3.6-flash`. That was an unexamined
+default when this was written and is now a decision, made on which error costs more rather than on a
+measured difference. See the section above.
+
+**And in production it did not hold.** On the first live deployment Groq rate limited, the circuit
+breaker sent every Reviewer call to gemini, and the app ran one model on both nodes. The judge and
+the system under test were the same model, which is the arrangement this document argues against,
+and nothing on screen said so. A run that falls back now says so in the report. Entry 31 of the
+journal has the full account.
 
 Two documents, both leases. No Terms of Service, where "not addressed" is a much more common
 answer and false positives would be more costly.

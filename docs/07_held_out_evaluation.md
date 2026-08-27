@@ -105,7 +105,10 @@ quietly absorbed, and it is the reason v5 was frozen rather than improved.
 
 Prompt **v5** is the default in `classify_clause.py`.
 
-Model **gemini-3.6-flash** for the classifier. The deployed Streamlit app stays on
-`gpt-oss-120b`, because switching means an OpenRouter key in Streamlit secrets and roughly two
-cents per analysis on a public demo with no rate limiting. That is a separate decision for after
-rate limiting exists.
+Model **gemini-3.6-flash** for the classifier.
+
+> **Update, Aug 27 2026.** The deployed app now runs this configuration rather than staying on
+> `gpt-oss-120b`. The classifier runs gemini and falls back to gpt-oss; the Reviewer runs the
+> mirror. Recall on `concerning` is the reason: gemini missed zero concerning clauses in every run
+> and gpt-oss missed exactly one in every run, and that is the only comparison in this project
+> where the two models' ranges do not overlap.
