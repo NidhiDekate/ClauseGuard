@@ -36,11 +36,21 @@ try:
 except Exception:
     pass
 
-sys.path.append(str(Path(__file__).resolve().parent / "src" / "agents"))
+_ROOT = Path(__file__).resolve().parent
+sys.path.append(str(_ROOT / "src"))
+sys.path.append(str(_ROOT / "src" / "agents"))
 
 from graph import graph
-sys.path.append(str(Path(__file__).resolve().parent / "src"))
-from llm import reset_circuit_breaker, FALLBACKS
+
+# The fallback banner is telemetry. It must never be able to stop the app from
+# starting, which is exactly what it did on the first deploy: a bad import here
+# took down a working analyzer over a status message. Degrade to silence.
+try:
+    from llm import reset_circuit_breaker, FALLBACKS
+except Exception:
+    def reset_circuit_breaker():
+        pass
+    FALLBACKS = []
 from guardrails import validate_document, DocumentValidationError, CallBudgetError
 from logging_db import log_request
 
